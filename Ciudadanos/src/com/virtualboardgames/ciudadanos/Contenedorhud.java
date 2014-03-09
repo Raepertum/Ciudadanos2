@@ -13,7 +13,6 @@ public class Contenedorhud {
 	};
 	private void init(){
 		contenedordeactores = new Stage();
-		
 		botondeeventos = new Botondeeventos(contenedordeactores);
 		contenedordeactores.addActor(botondeeventos);
 	};

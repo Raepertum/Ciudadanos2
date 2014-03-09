@@ -8,21 +8,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Botondeeventos extends Actor {
 	
-	//Prueba commit
+	
 	private float posicionx = 750;
 	private float posiciony = 580;
 	private Vector2 vectordeposicion = new Vector2(posicionx,posiciony);
 	private Stage contexto;
 	
 	private TextureRegion texturabotondeeventos;
-	private boolean prueba;
+	
 	
 	public Botondeeventos(Stage stage){
 		this.contexto = stage;
-		System.out.println(stage.getHeight());
-		System.out.println(this.localToStageCoordinates(vectordeposicion));
-		System.out.println(this.getWidth());
-	 
+		
 		init();
 	};
 	private void init(){

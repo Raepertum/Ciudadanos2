@@ -22,11 +22,6 @@ public class Renderizador implements Disposable{
 	private OrthographicCamera camaraparalagui;
 	private SpriteBatch batch;
 	private Logica logica;	
-	private Torre torre;
-	//private Tierra tierra;
-	private Array <Tierra> tierras;
-	//private Guideprueba guideprueba;
-	private Contenedorhud contenedorhud;
 	
 public Renderizador(Logica logica){
 	this.logica = logica;
@@ -45,26 +40,8 @@ private void iniciarclase(){
 	camaraparalagui.setToOrtho(true);
 	camaraparalagui.update();
 	
+};
 	
-	//Las tierras
-	tierras = new Array<Tierra>();
-	for(int i=0;i<22;i++){
-		for(int j=0;j<8;j++){
-	Tierra tierra = new Tierra();
-	tierra.posicionX+=i*1.0f-10;
-	tierra.posicionY-=j*1.0f;
-	tierras.add(tierra);
-	}
-	};
-	
-	//La torre	
-	torre = new Torre();
-	
-	//El contenedor hud
-	contenedorhud = new Contenedorhud();
-	
-	}
-
 public void render(){
 	
 	actualizarMovimientoCamara();
@@ -105,10 +82,10 @@ private void renderizarObjetos(){
 	//Objetos
 	batch.setProjectionMatrix(camara.combined);
 	batch.begin();	
-	for(Tierra tierra:this.tierras){
+	for(Tierra tierra:logica.tierras){
 		tierra.render(batch);
 	};
-	torre.render(batch);
+	logica.torre.render(batch);
 	batch.end();
 }
 
@@ -135,7 +112,7 @@ private void renderizarHud(){
 	//Gui
 	batch.setProjectionMatrix(camaraparalagui.combined);
 	batch.begin();
-	contenedorhud.render(batch);
+	logica.contenedorhud.render(batch);
 	batch.end();	
 
 }
