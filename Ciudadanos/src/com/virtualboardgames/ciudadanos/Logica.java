@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Files.FileType;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,6 +25,8 @@ import com.badlogic.gdx.utils.UBJsonReader;
 
 public class Logica extends InputAdapter implements InputProcessor{
 	
+	//Referencias para la recogida de eventos (El gui y la lógica)
+	InputMultiplexer marcodeeventos = new InputMultiplexer();
 	
 	//Teclas
 	boolean pulsandoA,pulsandoW,pulsandoS,pulsandoD;
@@ -33,9 +36,6 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public Torre torre;
     public Array <Tierra> tierras;
 	public Contenedorhud contenedorhud;
-	
-	
-	
 	
 	//Para crear el reloj
 	long tiempoinicial;
@@ -54,7 +54,6 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	private void iniciarclase(){
 		
-		Gdx.input.setInputProcessor(this);
 		
 		//Creamos el objeto
 		//La torre	
@@ -75,8 +74,14 @@ public class Logica extends InputAdapter implements InputProcessor{
 		
 		//El reloj
 		tiempoinicial=TimeUtils.millis();
-		
 		ultimotiempo=tiempotranscurrido=(TimeUtils.millis()-tiempoinicial)/1000;
+		
+		//Añadir tanto la stage como la propia lógica al marco de eventos
+		marcodeeventos.addProcessor(this);
+		marcodeeventos.addProcessor(contenedorhud.contenedordeactores);
+		Gdx.input.setInputProcessor(marcodeeventos);
+		
+		
 		}	
 	};
 	
@@ -111,7 +116,9 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	public void actualizarcamposdecultivo(){
 		for(Tierra tierra:tierras){
+			if ((MathUtils.random(0, 30)==0)){
 			tierra.actualizarestacion(estacion);
+			}
 		};
 	};
 	

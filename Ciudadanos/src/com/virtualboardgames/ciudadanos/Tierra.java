@@ -34,6 +34,8 @@ private String estacion="primavera";
 			
 			textura = tierraflorecida;
 		}
+		
+		
 		public void actualizarestacion(String estacion){
 			if(estacion!=this.estacion){
 				this.estacion=estacion;

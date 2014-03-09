@@ -73,10 +73,10 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 		
 		public TierraGrafica(TextureAtlas atlas){
 			tierrasinabonar = atlas.findRegion("tierra");
-			tierraflorecida = atlas.findRegion("tierra");
-			tierraseca = atlas.findRegion("tierra");
-			tierraconcharcos = atlas.findRegion("tierra");
-			tierranevada = atlas.findRegion("tierra");
+			tierraflorecida = atlas.findRegion("tierraflorecida");
+			tierraseca = atlas.findRegion("tierraseca");
+			tierraconcharcos = atlas.findRegion("tierraconcharcos");
+			tierranevada = atlas.findRegion("tierranevada");
 		}
 	}
 
