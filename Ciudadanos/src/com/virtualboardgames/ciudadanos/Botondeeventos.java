@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Botondeeventos extends Actor {
 	
+	//Prueba commit
 	private float posicionx = 750;
 	private float posiciony = 580;
 	private Vector2 vectordeposicion = new Vector2(posicionx,posiciony);
