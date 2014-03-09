@@ -22,6 +22,8 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	public TorreGrafica torre;
 	//La tierra (Y el campo más adelante)
 	public TierraGrafica tierra;
+	//Los botones del juego
+	public BotonesGrafica botones;
 	
 	
 	public void init(AssetManager assetmanager){
@@ -39,6 +41,7 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	
 	torre = new TorreGrafica(atlasdetodaslastexturas);
 	tierra = new TierraGrafica(atlasdetodaslastexturas);
+	botones = new BotonesGrafica(atlasdetodaslastexturas);
 	}
 	
 	@Override
@@ -79,5 +82,48 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 			tierranevada = atlas.findRegion("tierranevada");
 		}
 	}
+	public class BotonesGrafica{
+		public final AtlasRegion botoncomercio;
+		public final AtlasRegion botoncomerciosobre;
+		public final AtlasRegion botoncomerciopulsado;
+		public final AtlasRegion botonespionaje;
+		public final AtlasRegion botonespionajesobre;
+		public final AtlasRegion botonespionajepulsado;
+	    public final AtlasRegion botoneventos;
+		public final AtlasRegion botoneventossobre;
+		public final AtlasRegion botoneventospulsado;
+		public final AtlasRegion botonsocial;
+		public final AtlasRegion botonsocialsobre;
+		public final AtlasRegion botonsocialpulsado;
+		public final AtlasRegion botonalmacen;
+		public final AtlasRegion botonalmacensobre;
+		public final AtlasRegion botonalmacenpulsado;
+		public final AtlasRegion botonejercito;
+		public final AtlasRegion botonejercitosobre;
+		public final AtlasRegion botonejercitopulsado;
+		
+		public BotonesGrafica(TextureAtlas atlas){
+			botoncomercio = atlas.findRegion("BotonComercio");
+			botoncomerciosobre = atlas.findRegion("BotonComercioSobre");
+			botoncomerciopulsado = atlas.findRegion("BotonComercioPulsado");
+			botonespionaje = atlas.findRegion("BotonEspionaje");
+			botonespionajesobre = atlas.findRegion("BotonEspionajeSobre");
+			botonespionajepulsado = atlas.findRegion("BotonEspionajePulsado");
+			botoneventos = atlas.findRegion("BotonEventos");
+			botoneventossobre = atlas.findRegion("BotonEventosSobre");
+			botoneventospulsado = atlas.findRegion("BotonEventosPulsado");
+			botonsocial = atlas.findRegion("BotonSocial");
+			botonsocialsobre = atlas.findRegion("BotonSocialSobre");
+			botonsocialpulsado = atlas.findRegion("BotonSocialPulsado");
+			botonalmacen = atlas.findRegion("BotonAlmacen");
+			botonalmacensobre = atlas.findRegion("BotonAlmacenSobre");
+			botonalmacenpulsado = atlas.findRegion("BotonAlmacenPulsado");
+			botonejercito = atlas.findRegion("BotonEjercito");
+			botonejercitosobre = atlas.findRegion("BotonEjercitoSobre");
+			botonejercitopulsado = atlas.findRegion("BotonEjercitoPulsado");			
+		};
+		
+	}
+	
 
 }

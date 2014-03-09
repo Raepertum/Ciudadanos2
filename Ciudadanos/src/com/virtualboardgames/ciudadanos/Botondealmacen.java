@@ -7,42 +7,41 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Botondeeventos extends Actor {
-	
-	
-	private float posicionx = 725;
+public class Botondealmacen extends Actor{
+
+	private float posicionx = 750;
 	private float posiciony = 575;
 	
+	private TextureRegion texturabotondealmacen;
 	
-	private TextureRegion texturabotondeeventos;
-	
-	
-	public Botondeeventos(Stage stage){
+	public Botondealmacen(Stage stage){
 		init();
 	};
 	private void init(){
-		texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos;
-		this.setBounds(725, 575, 25, 25);
+		texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacen;
+		this.setBounds(750, 575, 25, 25);
 		
 		this.addListener(new InputListener(){
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
 				System.out.println("Dentrodelarea");
-				texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventospulsado;
+				texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacenpulsado;
 				return true;
 			};
 			public void enter(InputEvent event, float x, float y, int pointer, Actor actor){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventossobre;
+				texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacensobre;
 			};
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos;
+				texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacen;
 			}
 		 	public void exit(InputEvent event, float x, float y, int pointer, Actor actor){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos; 
+		 		texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacen; 
 		 	};
 		});
 	};
 	
 	public void draw(SpriteBatch batch, float alpha){
-        batch.draw(texturabotondeeventos,posicionx,posiciony);
+        batch.draw(texturabotondealmacen,posicionx,posiciony);
 }
 };
+
+

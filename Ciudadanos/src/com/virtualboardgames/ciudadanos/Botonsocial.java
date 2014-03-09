@@ -7,42 +7,43 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Botondeeventos extends Actor {
-	
-	
+public class Botonsocial extends Actor{
+
+
 	private float posicionx = 725;
-	private float posiciony = 575;
+	private float posiciony = 550;
 	
 	
-	private TextureRegion texturabotondeeventos;
+	private TextureRegion texturabotonsocial;
 	
 	
-	public Botondeeventos(Stage stage){
+	public Botonsocial(Stage stage){
 		init();
 	};
 	private void init(){
-		texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos;
-		this.setBounds(725, 575, 25, 25);
+		texturabotonsocial = Texturasysonidos.texturasysonidos.botones.botonsocial;
+		this.setBounds(725, 550, 25, 25);
 		
 		this.addListener(new InputListener(){
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
 				System.out.println("Dentrodelarea");
-				texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventospulsado;
+				texturabotonsocial = Texturasysonidos.texturasysonidos.botones.botonsocialpulsado;
 				return true;
 			};
 			public void enter(InputEvent event, float x, float y, int pointer, Actor actor){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventossobre;
+				texturabotonsocial = Texturasysonidos.texturasysonidos.botones.botonsocialsobre;
 			};
 			public void touchUp(InputEvent event, float x, float y, int pointer, int button){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos;
+				texturabotonsocial = Texturasysonidos.texturasysonidos.botones.botonsocial;
 			}
 		 	public void exit(InputEvent event, float x, float y, int pointer, Actor actor){
-			     texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventos; 
+		 		texturabotonsocial = Texturasysonidos.texturasysonidos.botones.botonsocial; 
 		 	};
 		});
 	};
 	
 	public void draw(SpriteBatch batch, float alpha){
-        batch.draw(texturabotondeeventos,posicionx,posiciony);
+        batch.draw(texturabotonsocial,posicionx,posiciony);
 }
 };
+

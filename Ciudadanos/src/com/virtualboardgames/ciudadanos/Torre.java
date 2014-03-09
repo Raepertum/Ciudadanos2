@@ -23,7 +23,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 //Tercer paso(éste) crear el objeto con su lógica y su método render(). Se deben cargar las texturas
 //en el propio método de inicialización
 //Cuarto paso: Para verlo tienes que actualizar el renderizador, para que la lógica del objeto se ejecute,
-//tienes que llamarla desde Logica
+//tienes que llamarla desde Logica. El objeto se instancia en "lógica"
 
 
 public class Torre extends Objetodejuego{

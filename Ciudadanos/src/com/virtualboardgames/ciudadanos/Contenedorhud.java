@@ -7,6 +7,12 @@ public class Contenedorhud {
 	
 	Stage contenedordeactores;
 	Botondeeventos botondeeventos;
+	Botonsocial botonsocial;
+	Botondealmacen botondealmacen;
+	Botondecomercio botondecomercio;
+	Botondeespionaje botondeespionaje;
+	Botondeejercito botondeejercito;
+	
 	
 	public Contenedorhud(){
 		init();
@@ -15,7 +21,17 @@ public class Contenedorhud {
 		contenedordeactores = new Stage();
 		
 		botondeeventos = new Botondeeventos(contenedordeactores);
+		botonsocial = new Botonsocial(contenedordeactores);
+		botondealmacen = new Botondealmacen(contenedordeactores);
+		botondecomercio = new Botondecomercio(contenedordeactores);
+		botondeespionaje = new Botondeespionaje(contenedordeactores);
+		botondeejercito = new Botondeejercito(contenedordeactores);
 		contenedordeactores.addActor(botondeeventos);
+		contenedordeactores.addActor(botonsocial);
+		contenedordeactores.addActor(botondealmacen);
+		contenedordeactores.addActor(botondecomercio);
+		contenedordeactores.addActor(botondeespionaje);
+		contenedordeactores.addActor(botondeejercito);
 	};
 	
 	public void render(SpriteBatch batch){
