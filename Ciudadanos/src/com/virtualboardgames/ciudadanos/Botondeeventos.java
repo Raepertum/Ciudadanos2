@@ -15,6 +15,7 @@ public class Botondeeventos extends Actor {
 	private Stage contexto;
 	
 	private TextureRegion texturabotondeeventos;
+	private boolean prueba;
 	
 	public Botondeeventos(Stage stage){
 		this.contexto = stage;
