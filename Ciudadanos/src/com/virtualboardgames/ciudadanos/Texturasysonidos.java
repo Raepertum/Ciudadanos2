@@ -31,6 +31,8 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	public TierraGrafica tierra;
 	//Los botones del juego
 	public BotonesGrafica botones;
+	//Los fondos de los menús
+	public Fondos fondos;
 	
 	
 	
@@ -51,6 +53,7 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	torre = new TorreGrafica(atlasdetodaslastexturas);
 	tierra = new TierraGrafica(atlasdetodaslastexturas);
 	botones = new BotonesGrafica(atlasdetodaslastexturas);
+	fondos = new Fondos(atlasdetodaslastexturas);
 	}
 	
 	@Override
@@ -65,6 +68,8 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 		fuentes.ComicNegra.dispose();
 		
 	}
+	
+	
 	
 	public class Fuentes{
 		public final BitmapFont ComicNegra;
@@ -85,6 +90,15 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 		}
 	}
 	
+	
+	public class Fondos{
+		public final AtlasRegion fondomenualmacen;
+		
+		public Fondos(TextureAtlas atlas){
+			fondomenualmacen = atlas.findRegion("fondomenualmacen");
+		}
+	}
+		
 	
 	public class TorreGrafica{
 		public final AtlasRegion base;
@@ -145,7 +159,7 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 			botonsocial = atlas.findRegion("BotonSocial");
 			botonsocialsobre = atlas.findRegion("BotonSocialSobre");
 			botonsocialpulsado = atlas.findRegion("BotonSocialPulsado");
-			botonalmacen = atlas.findRegion("BotonAlmacen");
+			botonalmacen = atlas.findRegion("botonalmacen");
 			botonalmacensobre = atlas.findRegion("BotonAlmacenSobre");
 			botonalmacenpulsado = atlas.findRegion("BotonAlmacenPulsado");
 			botonejercito = atlas.findRegion("BotonEjercito");

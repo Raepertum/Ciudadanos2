@@ -45,8 +45,6 @@ public class Botondealmacen extends Actor{
 	
 	private void abrirmenualmacen() {
 		MenuAlmacen menualmacen = new MenuAlmacen();
-		menualmacen.setPosition(0, 0);
-		menualmacen.setX(0);
 		stage.addActor(menualmacen);
 		
 	};
