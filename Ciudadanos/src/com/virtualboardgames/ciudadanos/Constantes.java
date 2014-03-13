@@ -12,5 +12,7 @@ public class Constantes {
 	public static final float LOMASALAIZQUIERDAQUEPUEDEIRLACAMARA = 1.50f;
 	public static final float LOMASALADERECHAQUEPUEDEIRLACAMARA = -1.50f;
 	public static final String TEXTURE_ATLAS = "texturas/Texturas.pack";
+	public static final String TEXTURE_ATLAS_GUI = "texturas/TexturasGui.pack";
+	public static final String TEXTURE_ATLAS_JSON = "estilos/Default.json";
 
 }
