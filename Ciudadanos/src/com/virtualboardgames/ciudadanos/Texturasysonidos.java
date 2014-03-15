@@ -9,6 +9,11 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Disposable;
 
 public class Texturasysonidos implements Disposable, AssetErrorListener{
@@ -20,8 +25,11 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	//Para que sólo se pueda instanciar una vez
 	private Texturasysonidos(){};
 	
-	//Para poder crear skins para los widgets
+	//Para los objetos de juego
 	TextureAtlas atlasdetodaslastexturas;
+	
+	//Para el gui
+	TextureAtlas atlasdetexturasdelgui;
 	
 	//Las fuentes
 	public Fuentes fuentes;	
@@ -31,8 +39,8 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	public TierraGrafica tierra;
 	//Los botones del juego
 	public BotonesGrafica botones;
-	//Los fondos de los menús
-	public Fondos fondos;
+	//Estilos y actores
+	public Estilosyactores estilosyactores;
 	
 	
 	
@@ -40,12 +48,17 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 		this.assetmanager = assetmanager;
 		assetmanager.setErrorListener(this);
 		assetmanager.load(Constantes.TEXTURE_ATLAS, TextureAtlas.class);
+		assetmanager.load(Constantes.TEXTURE_ATLAS_GUI, TextureAtlas.class);
 		assetmanager.finishLoading();
-	
-	
+		
 	atlasdetodaslastexturas = assetmanager.get(Constantes.TEXTURE_ATLAS);
 	for (Texture t : atlasdetodaslastexturas.getTextures())
 		t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	atlasdetexturasdelgui = assetmanager.get(Constantes.TEXTURE_ATLAS_GUI);
+	for (Texture t : atlasdetexturasdelgui.getTextures())
+		t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+	
+	
 	
 	//Cada vez que creemos un nuevo objeto, hay que registrar aquí los gráficos
 	
@@ -53,7 +66,10 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	torre = new TorreGrafica(atlasdetodaslastexturas);
 	tierra = new TierraGrafica(atlasdetodaslastexturas);
 	botones = new BotonesGrafica(atlasdetodaslastexturas);
-	fondos = new Fondos(atlasdetodaslastexturas);
+	
+	estilosyactores = new Estilosyactores();
+	
+	
 	}
 	
 	@Override
@@ -70,6 +86,50 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 	}
 	
 	
+		
+    public class Estilosyactores{
+		
+    	//La skin común a todos los widgets
+    	public Skin skindelgui;
+    	public TextButtonStyle estilobotondefault;
+    	public LabelStyle estilolabeldefault;
+    	
+    	//Necesitas dos variables por cada estado de un widget, la texture region y la texture region drawable
+    	private TextureRegion textureregionbotonarriba;
+    	private TextureRegionDrawable textureregiondrawablebotonarriba;
+    	
+    	
+    	public Estilosyactores(){
+    		//Inicialización de variables
+    		skindelgui = new Skin();
+    		estilobotondefault = new TextButtonStyle();
+    		estilolabeldefault = new LabelStyle();    		
+    		
+    		//Añadir todas las texturas que vayan a formar parte del gui
+    		skindelgui.addRegions(Texturasysonidos.texturasysonidos.atlasdetexturasdelgui);
+    		//Añadir todas las fuentes que vayan a formar parte del gui
+    		skindelgui.add("arial-15", Texturasysonidos.texturasysonidos.fuentes.Arial15);
+    		skindelgui.add("comicb", Texturasysonidos.texturasysonidos.fuentes.ComicBlanca);
+    		skindelgui.add("comicn", Texturasysonidos.texturasysonidos.fuentes.ComicNegra);
+    		
+    		//Necesitas una textureregion
+    		textureregionbotonarriba = skindelgui.get("botonpresionado",TextureRegion.class);
+    		
+    		//Necesitas una textureregiondrawable
+    		textureregiondrawablebotonarriba = new TextureRegionDrawable(textureregionbotonarriba);
+    		
+    		//Definir el estilo del label
+    		estilolabeldefault.font = skindelgui.getFont("arial-15");
+    		   		
+    		//Definir el estilo del botón
+    		estilobotondefault.up = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonarriba));
+    		
+    		//Añadir a la skin (Aunque creo que esto no es necesario)
+    		skindelgui.add("defaultlabel", estilolabeldefault);
+    		skindelgui.add("defaultboton", estilobotondefault);
+    		
+    	}    	
+	};
 	
 	public class Fuentes{
 		public final BitmapFont ComicNegra;
@@ -90,15 +150,6 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
 		}
 	}
 	
-	
-	public class Fondos{
-		public final AtlasRegion fondomenualmacen;
-		
-		public Fondos(TextureAtlas atlas){
-			fondomenualmacen = atlas.findRegion("fondomenualmacen");
-		}
-	}
-		
 	
 	public class TorreGrafica{
 		public final AtlasRegion base;
