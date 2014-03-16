@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
@@ -95,15 +96,18 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     	public LabelStyle estilolabeldefault;
     	
     	//Necesitas dos variables por cada estado de un widget, la texture region y la texture region drawable
-    	private TextureRegion textureregionbotonarriba;
+    	public TextureRegion textureregionbotonarriba;
     	private TextureRegionDrawable textureregiondrawablebotonarriba;
+    	
+    	//Las imágenes se emplean para los fondos de los menús
+    	public TextureRegion fondoMenuAlmacen;
     	
     	
     	public Estilosyactores(){
     		//Inicialización de variables
     		skindelgui = new Skin();
     		estilobotondefault = new TextButtonStyle();
-    		estilolabeldefault = new LabelStyle();    		
+    		estilolabeldefault = new LabelStyle();
     		
     		//Añadir todas las texturas que vayan a formar parte del gui
     		skindelgui.addRegions(Texturasysonidos.texturasysonidos.atlasdetexturasdelgui);
@@ -112,16 +116,21 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     		skindelgui.add("comicb", Texturasysonidos.texturasysonidos.fuentes.ComicBlanca);
     		skindelgui.add("comicn", Texturasysonidos.texturasysonidos.fuentes.ComicNegra);
     		
+    		//Para los fondos
+    		fondoMenuAlmacen = skindelgui.get("fondomenualmacen", TextureRegion.class);
+    		    		
+    		//Para los widget tipo botón
     		//Necesitas una textureregion
     		textureregionbotonarriba = skindelgui.get("botonpresionado",TextureRegion.class);
     		
     		//Necesitas una textureregiondrawable
     		textureregiondrawablebotonarriba = new TextureRegionDrawable(textureregionbotonarriba);
-    		
+    				
     		//Definir el estilo del label
     		estilolabeldefault.font = skindelgui.getFont("arial-15");
     		   		
     		//Definir el estilo del botón
+    		estilobotondefault.font = skindelgui.getFont("arial-15");
     		estilobotondefault.up = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonarriba));
     		
     		//Añadir a la skin (Aunque creo que esto no es necesario)
