@@ -35,7 +35,9 @@ public class Contenedorhud {
 	};
 	
 	public void render(SpriteBatch batch){
-		contenedordeactores.act();
 		contenedordeactores.draw();
 	};
+	public void act(float deltatime){
+		contenedordeactores.act(deltatime);
+	}
 }

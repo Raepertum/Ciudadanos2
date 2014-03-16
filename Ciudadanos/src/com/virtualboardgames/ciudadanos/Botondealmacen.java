@@ -12,6 +12,8 @@ public class Botondealmacen extends Actor{
 	private float posicionx = 750;
 	private float posiciony = 575;
 	private Stage stage;
+	private String menuabierto;
+	private MenuAlmacen menualmacen;
 	
 	private TextureRegion texturabotondealmacen;
 	
@@ -20,6 +22,13 @@ public class Botondealmacen extends Actor{
 		init();
 	};
 	private void init(){
+		
+		//Instanciamos los menús
+		menualmacen = new MenuAlmacen();
+				
+		//Para saber si hay algún menú abierto
+		menuabierto = "";
+		
 		texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacen;
 		this.setBounds(750, 575, 25, 25);
 		
@@ -44,8 +53,15 @@ public class Botondealmacen extends Actor{
 	};
 	
 	private void abrirmenualmacen() {
-		MenuAlmacen menualmacen = new MenuAlmacen();
+		
+		if (menuabierto==""){		
 		stage.addActor(menualmacen);
+		menuabierto = "menualmacen";
+		}
+		else if (menuabierto=="menualmacen"){
+		menualmacen.remove();
+		menuabierto = "";
+		}
 		
 	};
 	
@@ -53,6 +69,9 @@ public class Botondealmacen extends Actor{
 	public void draw(SpriteBatch batch, float alpha){
         batch.draw(texturabotondealmacen,posicionx,posiciony);
 }
+	public void act(float deltatime){
+		
+	}
 };
 
 

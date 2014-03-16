@@ -91,6 +91,11 @@ public class Logica extends InputAdapter implements InputProcessor{
 		tiempotranscurrido=(TimeUtils.millis()-tiempoinicial)/1000;
 		actualizarestaciones();
 		actualizarcamposdecultivo();
+		actualizarmenus(delta);
+	};
+	
+	public void actualizarmenus(float delta){
+		contenedorhud.act(delta);
 	};
 	
 	public void actualizarestaciones(){

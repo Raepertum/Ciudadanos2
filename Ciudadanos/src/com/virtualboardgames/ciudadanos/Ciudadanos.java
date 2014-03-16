@@ -15,8 +15,8 @@ public class Ciudadanos implements ApplicationListener {
 	private Logica logica;
 	private Renderizador renderizador;
 	private boolean pausa;
-	
-		
+	public Variablesdejuego variablesdejuego;
+			
 	
 	@Override
 	public void create() {
@@ -24,6 +24,8 @@ public class Ciudadanos implements ApplicationListener {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		//Cargar las texturas y los sonidos
 		Texturasysonidos.texturasysonidos.init(new AssetManager());
+		//Cargar las variables
+		Variablesdejuego.variablesdejuego.iniciar();
 		//Instanciar la lógica y el renderizador
 		logica = new Logica();
 		renderizador = new Renderizador(logica);
