@@ -39,7 +39,6 @@ public class Botondealmacen extends Actor{
 				abrirmenualmacen();
 				return true;
 			};
-			
 			public void enter(InputEvent event, float x, float y, int pointer, Actor actor){
 				texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacensobre;
 			};
@@ -70,7 +69,6 @@ public class Botondealmacen extends Actor{
         batch.draw(texturabotondealmacen,posicionx,posiciony);
 }
 	public void act(float deltatime){
-		
 	}
 };
 

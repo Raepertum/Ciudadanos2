@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -25,11 +27,15 @@ public class MenuAlmacen extends Stack{
 	Table tabledefondo;
 	Table tabledeinformacion;
 	Table tabledealmacenes;
+	//La table de dentro del scrollpane
+	Table tabledescrollpanealmacenes;
 	Table tabledebotones;
 	Table tabledeordenes;
 	
 	//Instancias de las imágenes (Una para el fondo, el resto para los iconos)	
 	Image fondomenualmacen;
+	Image iconoalmacen;
+	
 	
 	//Arrays de labels que contienen texto
 	Label[] arraydelabelsstring;
@@ -40,6 +46,7 @@ public class MenuAlmacen extends Stack{
 	//Estilos: Para no tener que estar escribiendo desde el principio
 	LabelStyle estilolabel;
 	TextButtonStyle estilobotontexto;
+	ScrollPaneStyle estiloscrollpane;
 	
 	//Botones de la table de botones
 	TextButton Informacion;
@@ -50,6 +57,9 @@ public class MenuAlmacen extends Stack{
 	TextButton Ordenesbasicas;
 	TextButton Ordenesavanzadas;
 	TextButton Ordenesmaestras;
+	
+	//Scrollpane de la tabla de almacenes
+	ScrollPane scrollpanealmacenes;
 	
 	//Ancho columnas
 	int anchocolumnas = 80;
@@ -62,6 +72,7 @@ public class MenuAlmacen extends Stack{
 	tabledealmacenes = new Table();
 	tabledebotones = new Table();
 	tabledeordenes = new Table();
+	tabledescrollpanealmacenes = new Table();
 	
 	//Posicionamos y definimos el tamaño del stack
 	this.setPosition(30,30);
@@ -76,12 +87,17 @@ public class MenuAlmacen extends Stack{
 	
 	//Vamos instanciando y añadiendo los objetos (Puede que más tarde, por razones de rendimiento
     //se pasen todos a la clase de texturasysonidos)
-	//El fondo
-    fondomenualmacen = new Image(Texturasysonidos.texturasysonidos.estilosyactores.fondoMenuAlmacen);
 	
+	//El fondo
+	fondomenualmacen = new Image(Texturasysonidos.texturasysonidos.estilosyactores.fondoMenuAlmacen);
+	
+    //Imágenes que se ponen dentro de los menús
+    iconoalmacen = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    
     //Los estilos
     estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;
     estilobotontexto = Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault;
+    estiloscrollpane = Texturasysonidos.texturasysonidos.estilosyactores.estiloscrollpanedefault;
     
     //Creamos los botones para la table de botones
   	Informacion = new TextButton("Información", estilobotontexto);
@@ -92,6 +108,9 @@ public class MenuAlmacen extends Stack{
   	Ordenesbasicas = new TextButton("Órdenes Básicas", estilobotontexto);
   	Ordenesavanzadas = new TextButton("Órdenes Avanzadas", estilobotontexto);
   	Ordenesmaestras = new TextButton("Órdenes Maestras", estilobotontexto);
+  	
+  	//Creamos el scroll pane para la tabla de almacenes
+  	scrollpanealmacenes = new ScrollPane(tabledescrollpanealmacenes, estiloscrollpane);
   	
     //El array de labels
     arraydelabelsstring = new Label[64];
@@ -273,12 +292,51 @@ public class MenuAlmacen extends Stack{
    
     //La tabla de almacenes
     
+   Image iconoalmacen2;
+    iconoalmacen2 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    Image iconoalmacen3;
+    iconoalmacen3 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    Image iconoalmacen4;
+    iconoalmacen4 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    Image iconoalmacen5;
+    iconoalmacen5 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    Image iconoalmacen6;
+    iconoalmacen6 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    Image iconoalmacen7;
+    iconoalmacen7 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    
+    tabledescrollpanealmacenes.add(iconoalmacen2);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen3);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen4);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen5);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen6);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen7);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen);
+    tabledescrollpanealmacenes.row();
+    tabledescrollpanealmacenes.add(iconoalmacen);
+   
+    scrollpanealmacenes.size(200, 300);
+    scrollpanealmacenes.setOverscroll(false, false);
+    tabledealmacenes.add(scrollpanealmacenes);
+    
+   
     
     //La tabla de órdenes
     
-    tabledeordenes.add(Ordenesbasicas).row().height(80).padTop(20);
-    tabledeordenes.add(Ordenesavanzadas).row().height(80).padTop(20);
-    tabledeordenes.add(Ordenesmaestras).row().height(80).padTop(20);
+    tabledeordenes.add(espacioenblanco).row().height(20).padTop(20).size(600,40);
+    tabledeordenes.add(Ordenesbasicas).row().height(20).padTop(20).size(600,40);
+    tabledeordenes.add(Ordenesavanzadas).row().height(20).padTop(20).size(600,40);
+    tabledeordenes.add(Ordenesmaestras).row().height(20).padTop(20).size(600,40);
     
     
     
@@ -286,7 +344,7 @@ public class MenuAlmacen extends Stack{
  }  
 
 public void act(float deltatime){
-	
+	scrollpanealmacenes.act(deltatime);
 }
 	
 }

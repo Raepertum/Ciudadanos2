@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -94,13 +95,17 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     	public Skin skindelgui;
     	public TextButtonStyle estilobotondefault;
     	public LabelStyle estilolabeldefault;
+    	public ScrollPaneStyle estiloscrollpanedefault;
     	
     	//Necesitas dos variables por cada estado de un widget, la texture region y la texture region drawable
     	public TextureRegion textureregionbotonarriba;
     	private TextureRegionDrawable textureregiondrawablebotonarriba;
     	
-    	//Las imágenes se emplean para los fondos de los menús
+    	//Las imágenes que se emplean para los fondos de los menús
     	public TextureRegion fondoMenuAlmacen;
+    	
+    	//Las imágenes que se emplean dentro de los menús
+    	public TextureRegion edificioalmacenmenu;
     	
     	
     	public Estilosyactores(){
@@ -108,6 +113,7 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     		skindelgui = new Skin();
     		estilobotondefault = new TextButtonStyle();
     		estilolabeldefault = new LabelStyle();
+    		estiloscrollpanedefault = new ScrollPaneStyle();
     		
     		//Añadir todas las texturas que vayan a formar parte del gui
     		skindelgui.addRegions(Texturasysonidos.texturasysonidos.atlasdetexturasdelgui);
@@ -118,7 +124,10 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     		
     		//Para los fondos
     		fondoMenuAlmacen = skindelgui.get("fondomenualmacen", TextureRegion.class);
-    		    		
+    		
+    		//Para las imágenes que se emplean dentro de los menús
+    		edificioalmacenmenu = skindelgui.get("EdificioAlmacen", TextureRegion.class);
+    		
     		//Para los widget tipo botón
     		//Necesitas una textureregion
     		textureregionbotonarriba = skindelgui.get("botonpresionado",TextureRegion.class);
@@ -133,9 +142,19 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     		estilobotondefault.font = skindelgui.getFont("arial-15");
     		estilobotondefault.up = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonarriba));
     		
+    		//Definir el estilo del scrollpane
+    		estiloscrollpanedefault.background = estilobotondefault.up;
+    		estiloscrollpanedefault.corner = estilobotondefault.up;
+    		estiloscrollpanedefault.hScroll = estilobotondefault.up;
+    		estiloscrollpanedefault.hScrollKnob = estilobotondefault.up;
+    		estiloscrollpanedefault.vScroll = estilobotondefault.up;
+    		estiloscrollpanedefault.vScrollKnob = estilobotondefault.up;
+    		
     		//Añadir a la skin (Aunque creo que esto no es necesario)
     		skindelgui.add("defaultlabel", estilolabeldefault);
     		skindelgui.add("defaultboton", estilobotondefault);
+    		
+    		//Las imágenes del menú
     		
     	}    	
 	};
