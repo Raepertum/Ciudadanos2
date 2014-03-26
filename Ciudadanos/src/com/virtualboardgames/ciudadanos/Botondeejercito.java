@@ -12,12 +12,13 @@ public class Botondeejercito extends Actor {
 
 private float posicionx = 775;
 private float posiciony = 550;
-		
+private Stage stage;		
 		
 		private TextureRegion texturabotonejercito;
 		
 		
 		public Botondeejercito(Stage stage){
+			this.stage = stage;
 			init();
 		};
 		private void init(){
@@ -26,8 +27,8 @@ private float posiciony = 550;
 			
 			this.addListener(new InputListener(){
 					public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
-						System.out.println("Dentrodelarea");
 						texturabotonejercito = Texturasysonidos.texturasysonidos.botones.botonejercitopulsado;
+						abrirmenuejercito();
 						return true;
 					};
 					public void enter(InputEvent event, float x, float y, int pointer, Actor actor){
@@ -40,6 +41,22 @@ private float posiciony = 550;
 				 		texturabotonejercito = Texturasysonidos.texturasysonidos.botones.botonejercito; 
 				 	};
 			});
+		};
+		
+		private void abrirmenuejercito() {
+			
+			if (Eventosymenu.eventosymenu.menuvisible!=Eventosymenu.eventosymenu.menuejercito){		
+			if(Eventosymenu.eventosymenu.menuvisible!=null){
+			Eventosymenu.eventosymenu.menuvisible.remove();
+			}
+			Eventosymenu.eventosymenu.SetMenu(Eventosymenu.eventosymenu.menuejercito);
+			stage.addActor(Eventosymenu.eventosymenu.menuejercito);
+			}
+			else if (Eventosymenu.eventosymenu.menuvisible==Eventosymenu.eventosymenu.menuejercito){
+			Eventosymenu.eventosymenu.menuvisible.remove();
+			Eventosymenu.eventosymenu.SetMenu(null);
+			}
+			
 		};
 		
 		public void draw(SpriteBatch batch, float alpha){

@@ -41,7 +41,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 	long tiempoinicial;
 	long tiempotranscurrido;
 	long ultimotiempo;
-	int tiempoentreestaciones = 10;
+	int tiempoentreestaciones = 100;
 	int agno=1;
 	
 	String estacion="primavera";

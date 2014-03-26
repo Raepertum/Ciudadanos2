@@ -12,8 +12,6 @@ public class Botondealmacen extends Actor{
 	private float posicionx = 750;
 	private float posiciony = 575;
 	private Stage stage;
-	private String menuabierto;
-	private MenuAlmacen menualmacen;
 	
 	private TextureRegion texturabotondealmacen;
 	
@@ -22,13 +20,7 @@ public class Botondealmacen extends Actor{
 		init();
 	};
 	private void init(){
-		
-		//Instanciamos los menús
-		menualmacen = new MenuAlmacen();
 				
-		//Para saber si hay algún menú abierto
-		menuabierto = "";
-		
 		texturabotondealmacen = Texturasysonidos.texturasysonidos.botones.botonalmacen;
 		this.setBounds(750, 575, 25, 25);
 		
@@ -53,15 +45,24 @@ public class Botondealmacen extends Actor{
 	
 	private void abrirmenualmacen() {
 		
-		if (menuabierto==""){		
-		stage.addActor(menualmacen);
-		menuabierto = "menualmacen";
-		}
-		else if (menuabierto=="menualmacen"){
-		menualmacen.remove();
-		menuabierto = "";
-		}
-		
+		if (Eventosymenu.eventosymenu.menuvisible!=Eventosymenu.eventosymenu.menualmacen){		
+			//Deja de verse el menú que hubiera
+			//Si no es nulo
+			if(Eventosymenu.eventosymenu.menuvisible!=null){
+			Eventosymenu.eventosymenu.menuvisible.remove();
+			}
+			//Se establece que el menú sea el del almacén
+			Eventosymenu.eventosymenu.SetMenu(Eventosymenu.eventosymenu.menualmacen);
+			//Se añade a la stage para que sea visible
+			stage.addActor(Eventosymenu.eventosymenu.menuvisible);
+			}
+		    //Si el menú almacén está abierto
+			else if (Eventosymenu.eventosymenu.menuvisible==Eventosymenu.eventosymenu.menualmacen){
+			//Lo quitamos
+			Eventosymenu.eventosymenu.menuvisible.remove();
+			//Establecemos que el menú sea nulo
+			Eventosymenu.eventosymenu.SetMenu(null);
+			}
 	};
 	
 	

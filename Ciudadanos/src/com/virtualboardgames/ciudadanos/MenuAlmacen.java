@@ -17,7 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.esotericsoftware.tablelayout.Cell;
 
-public class MenuAlmacen extends Stack{
+public class MenuAlmacen extends MenuAbstracto{
 	
 	//Tablas. La table de fondo sólo contiene la imagen de fondo.
 	//La table de texto contiene los nombres y la información
@@ -65,7 +65,8 @@ public class MenuAlmacen extends Stack{
 	int anchocolumnas = 80;
 		
 	public MenuAlmacen(){
-
+		
+	
 	//Creamos las nuevas tables	
 	tabledefondo = new Table();
 	tabledeinformacion = new Table();
