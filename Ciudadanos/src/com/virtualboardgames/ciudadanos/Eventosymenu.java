@@ -9,6 +9,9 @@ public static final Eventosymenu eventosymenu = new Eventosymenu();
 
 MenuAlmacen menualmacen = new MenuAlmacen();
 MenuEjercito menuejercito = new MenuEjercito();
+MenuComercio menucomercio = new MenuComercio();
+MenuEspionaje menuespionaje = new MenuEspionaje();
+MenuSocial menusocial = new MenuSocial();
 
 //También contiene la variable menúvisible, para controlar si existe algún menú abierto y cuál es
 MenuAbstracto menuvisible;

@@ -26,7 +26,6 @@ public class Botondeeventos extends Actor {
 		
 		this.addListener(new InputListener(){
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
-				System.out.println("Dentrodelarea");
 				texturabotondeeventos = Texturasysonidos.texturasysonidos.botones.botoneventospulsado;
 				return true;
 			};

@@ -11,10 +11,12 @@ public class Botondecomercio extends Actor{
 
 		private float posicionx = 775;
 		private float posiciony = 575;
+		private Stage stage;
 		
 		private TextureRegion texturabotondecomercio;
 		
 		public Botondecomercio(Stage stage){
+			this.stage = stage;
 			init();
 		};
 		private void init(){
@@ -23,8 +25,8 @@ public class Botondecomercio extends Actor{
 			
 			this.addListener(new InputListener(){
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
-					System.out.println("Dentrodelarea");
 					texturabotondecomercio = Texturasysonidos.texturasysonidos.botones.botoncomerciopulsado;
+					abrirmenucomercio();
 					return true;
 				};
 				public void enter(InputEvent event, float x, float y, int pointer, Actor actor){
@@ -37,6 +39,28 @@ public class Botondecomercio extends Actor{
 			 		texturabotondecomercio = Texturasysonidos.texturasysonidos.botones.botoncomercio; 
 			 	};
 			});
+		};
+		
+		private void abrirmenucomercio() {
+			
+			if (Eventosymenu.eventosymenu.menuvisible!=Eventosymenu.eventosymenu.menucomercio){		
+				//Deja de verse el menú que hubiera
+				//Si no es nulo
+				if(Eventosymenu.eventosymenu.menuvisible!=null){
+				Eventosymenu.eventosymenu.menuvisible.remove();
+				}
+				//Se establece que el menú sea el del almacén
+				Eventosymenu.eventosymenu.SetMenu(Eventosymenu.eventosymenu.menucomercio);
+				//Se añade a la stage para que sea visible
+				stage.addActor(Eventosymenu.eventosymenu.menuvisible);
+				}
+			    //Si el menú almacén está abierto
+				else if (Eventosymenu.eventosymenu.menuvisible==Eventosymenu.eventosymenu.menucomercio){
+				//Lo quitamos
+				Eventosymenu.eventosymenu.menuvisible.remove();
+				//Establecemos que el menú sea nulo
+				Eventosymenu.eventosymenu.SetMenu(null);
+				}
 		};
 		
 		public void draw(SpriteBatch batch, float alpha){
