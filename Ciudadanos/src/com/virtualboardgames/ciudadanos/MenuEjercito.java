@@ -5,19 +5,19 @@ package com.virtualboardgames.ciudadanos;
 	import java.util.List;
 
 	import com.badlogic.gdx.scenes.scene2d.Event;
-	import com.badlogic.gdx.scenes.scene2d.EventListener;
-	import com.badlogic.gdx.scenes.scene2d.InputEvent;
-	import com.badlogic.gdx.scenes.scene2d.ui.Image;
-	import com.badlogic.gdx.scenes.scene2d.ui.Label;
-	import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-	import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
-	import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
-	import com.badlogic.gdx.scenes.scene2d.ui.Stack;
-	import com.badlogic.gdx.scenes.scene2d.ui.Table;
-	import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-	import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-	import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-	import com.esotericsoftware.tablelayout.Cell;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Stack;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.esotericsoftware.tablelayout.Cell;
 
 	public class MenuEjercito extends MenuAbstracto{
 		
@@ -101,6 +101,14 @@ package com.virtualboardgames.ciudadanos;
 	    estilobotontexto = Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault;
 	    estiloscrollpane = Texturasysonidos.texturasysonidos.estilosyactores.estiloscrollpanedefault;
 	    
+	    //Para dejar espacios
+	   	Label espacioenblanco = new Label(Variablesdejuego.variablesdejuego.espacioenblanco,estilolabel);
+	   	
+	    //El título
+	   	Label titulo = new Label(Variablesdejuego.variablesdejuego.ejercito.titulo,estilolabel);
+	   	
+	    
+	    
 	    //Creamos los botones para la table de botones
 	  	Informacion = new TextButton("Información", estilobotontexto);
 	  	Almacenes = new TextButton("Almacenes", estilobotontexto);
@@ -153,11 +161,9 @@ package com.virtualboardgames.ciudadanos;
 	   	
 	   
 	    //La tabla de botones
-	    //El título   	
-	   	Label almacen = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[0],estilolabel);
 	    //Los botones
-	   	tabledebotones.add(almacen);
-	    tabledebotones.add(Informacion).padLeft(50);
+	   	tabledebotones.add(titulo);
+	   	tabledebotones.add(Informacion).padLeft(50);
 	    tabledebotones.add(Almacenes).padLeft(50);
 	    tabledebotones.add(Ordenes).padLeft(50);
 	    
@@ -193,51 +199,48 @@ package com.virtualboardgames.ciudadanos;
 	   	tabledeinformacion.left();
 	    
 	   	//Los strings y los ints se van alternando
-	   	Label espacioenblanco = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[1],estilolabel);
-	   	tabledeinformacion.add(espacioenblanco).height(80);
-		tabledeinformacion.row();
+	   	tabledeinformacion.row();
 	   	for(int i=1; i<10; i++){
-	    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[i],estilolabel);
+	    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[i],estilolabel);
 	    label.setAlignment(1);
 	    tabledeinformacion.add(label).width(anchocolumnas);
 	    }
 	    
 		//Trigo
 	    tabledeinformacion.row().height(60);
-	    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[10],estilolabel);
+	    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[10],estilolabel);
 	    label.setAlignment(1);
 	    tabledeinformacion.add(label).width(anchocolumnas);
 	    
 	    //Las ints del trigo
 	    for(int i=0; i<8; i++){
-	    
-	    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label2.setAlignment(1);
 	    tabledeinformacion.add(label2).width(anchocolumnas);
 	    }
 	    
 	    //Fruta
 	    tabledeinformacion.row().height(60);
-	    Label label3 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[11],estilolabel);
+	    Label label3 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[11],estilolabel);
 	    label3.setAlignment(1);
 	    tabledeinformacion.add(label3).width(anchocolumnas);
 	    
 	    //Las ints de la fruta
 	    for(int i=8; i<16; i++){
-	    Label label4 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label4 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label4.setAlignment(1);
 	    tabledeinformacion.add(label4).width(anchocolumnas);
 	    }
 	    
 	    //Carne
 	    tabledeinformacion.row().height(60);
-	    Label label5 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[12],estilolabel);
+	    Label label5 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[12],estilolabel);
 	    label5.setAlignment(1);
 	    tabledeinformacion.add(label5).width(anchocolumnas);
 	    
 	    //Las ints de la carne
 	    for(int i=16; i<24; i++){
-	    Label label6 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label6 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label6.setAlignment(1);
 	    tabledeinformacion.add(label6).width(anchocolumnas);
 	    }
@@ -245,7 +248,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Carne salada
 	    
 	    tabledeinformacion.row().height(60);
-	    Label label7 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[13],estilolabel);
+	    Label label7 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[13],estilolabel);
 	    label7.setAlignment(1);
 	    tabledeinformacion.add(label7).width(anchocolumnas);
 	   
@@ -253,7 +256,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Las ints de la carne salada
 	    
 	    for(int i=24; i<32; i++){
-	    Label label8 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label8 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label8.setAlignment(1);
 	    tabledeinformacion.add(label8).width(anchocolumnas);
 	    
@@ -262,7 +265,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Pescado
 	    
 	    tabledeinformacion.row().height(60);
-	    Label label9 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[14],estilolabel);
+	    Label label9 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[13],estilolabel);
 	    label9.setAlignment(1);
 	    tabledeinformacion.add(label9).width(anchocolumnas);
 	   
@@ -270,7 +273,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Las ints del pescado
 	    
 	    for(int i=32; i<40; i++){
-	    Label label10 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label10 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label10.setAlignment(1);
 	    tabledeinformacion.add(label10).width(anchocolumnas);
 	        }
@@ -278,7 +281,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Miel
 	    
 	    tabledeinformacion.row().height(60);
-	    Label label11 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[15],estilolabel);
+	    Label label11 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[13],estilolabel);
 	    label11.setAlignment(1);
 	    tabledeinformacion.add(label11).width(anchocolumnas);
 	   
@@ -286,7 +289,7 @@ package com.virtualboardgames.ciudadanos;
 	    //Las ints de la miel
 	    
 	    for(int i=40; i<48; i++){
-	    Label label12 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+	    Label label12 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
 	    label12.setAlignment(1);
 	    tabledeinformacion.add(label12).width(anchocolumnas);
 	    }

@@ -26,15 +26,15 @@ public class MenuComercio extends MenuAbstracto{
 	
 	Table tabledefondo;
 	Table tabledeinformacion;
-	Table tabledealmacenes;
+	Table tabledecomercio;
 	//La table de dentro del scrollpane
-	Table tabledescrollpanealmacenes;
+	Table tabledescrollpanecomercio;
 	Table tabledebotones;
 	Table tabledeordenes;
 	
 	//Instancias de las imágenes (Una para el fondo, el resto para los iconos)	
-	Image fondomenualmacen;
-	Image iconoalmacen;
+	Image fondomenucomercio;
+	Image iconocomercio;
 	
 	
 	//Arrays de labels que contienen texto
@@ -50,7 +50,7 @@ public class MenuComercio extends MenuAbstracto{
 	
 	//Botones de la table de botones
 	TextButton Informacion;
-	TextButton Almacenes;
+	TextButton Edificios;
 	TextButton Ordenes;
 	
 	//Botones de la table de órdenes
@@ -59,10 +59,10 @@ public class MenuComercio extends MenuAbstracto{
 	TextButton Ordenesmaestras;
 	
 	//Scrollpane de la tabla de almacenes
-	ScrollPane scrollpanealmacenes;
+	ScrollPane scrollpanecomercio;
 	
 	//Ancho columnas
-	int anchocolumnas = 80;
+	int anchocolumnas = 70;
 		
 	public MenuComercio(){
 		
@@ -70,10 +70,10 @@ public class MenuComercio extends MenuAbstracto{
 	//Creamos las nuevas tables	
 	tabledefondo = new Table();
 	tabledeinformacion = new Table();
-	tabledealmacenes = new Table();
+	tabledecomercio = new Table();
 	tabledebotones = new Table();
 	tabledeordenes = new Table();
-	tabledescrollpanealmacenes = new Table();
+	tabledescrollpanecomercio = new Table();
 	
 	//Posicionamos y definimos el tamaño del stack
 	this.setPosition(30,30);
@@ -82,7 +82,7 @@ public class MenuComercio extends MenuAbstracto{
 	//Añadimos las tables en el orden correcto
 	this.add(tabledefondo);
 	this.add(tabledeinformacion);
-	this.add(tabledealmacenes);
+	this.add(tabledecomercio);
 	this.add(tabledebotones);
 	this.add(tabledeordenes);
 	
@@ -90,19 +90,25 @@ public class MenuComercio extends MenuAbstracto{
     //se pasen todos a la clase de texturasysonidos)
 	
 	//El fondo
-	fondomenualmacen = new Image(Texturasysonidos.texturasysonidos.estilosyactores.fondoMenuAlmacen);
+	fondomenucomercio = new Image(Texturasysonidos.texturasysonidos.estilosyactores.fondoMenuAlmacen);
 	
     //Imágenes que se ponen dentro de los menús
-    iconoalmacen = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
+    iconocomercio = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
     
     //Los estilos
     estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;
     estilobotontexto = Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault;
     estiloscrollpane = Texturasysonidos.texturasysonidos.estilosyactores.estiloscrollpanedefault;
     
+    //Para dejar espacios
+   	Label espacioenblanco = new Label(Variablesdejuego.variablesdejuego.espacioenblanco,estilolabel);
+   	
+    //El título
+   	Label titulo = new Label(Variablesdejuego.variablesdejuego.comercio.titulo,estilolabel);
+   	
     //Creamos los botones para la table de botones
   	Informacion = new TextButton("Información", estilobotontexto);
-  	Almacenes = new TextButton("Almacenes", estilobotontexto);
+  	Edificios = new TextButton("Edificios", estilobotontexto);
   	Ordenes = new TextButton("Órdenes", estilobotontexto);
     
   	//Creamos los botones para la table de órdenes
@@ -111,7 +117,7 @@ public class MenuComercio extends MenuAbstracto{
   	Ordenesmaestras = new TextButton("Órdenes Maestras", estilobotontexto);
   	
   	//Creamos el scroll pane para la tabla de almacenes
-  	scrollpanealmacenes = new ScrollPane(tabledescrollpanealmacenes, estiloscrollpane);
+  	scrollpanecomercio = new ScrollPane(tabledescrollpanecomercio, estiloscrollpane);
   	
     //El array de labels
     arraydelabelsstring = new Label[64];
@@ -131,10 +137,10 @@ public class MenuComercio extends MenuAbstracto{
    	tabledeinformacion.padTop(20);
    	
    	//Tabla de almacenes
-   	tabledealmacenes.left().top();
-   	tabledealmacenes.padLeft(20);
-   	tabledealmacenes.padTop(20);
-   	tabledealmacenes.setVisible(false);
+   	tabledecomercio.left().top();
+   	tabledecomercio.padLeft(20);
+   	tabledecomercio.padTop(20);
+   	tabledecomercio.setVisible(false);
    	
    	//Tabla de órdenes
    	tabledeordenes.center();
@@ -148,37 +154,35 @@ public class MenuComercio extends MenuAbstracto{
    	tabledebotones.padTop(60);
    	
    	//Añadimos el fondo
-   	tabledefondo.add(fondomenualmacen);
+   	tabledefondo.add(fondomenucomercio);
    	
    
     //La tabla de botones
-    //El título   	
-   	Label almacen = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[0],estilolabel);
     //Los botones
-   	tabledebotones.add(almacen);
-    tabledebotones.add(Informacion).padLeft(50);
-    tabledebotones.add(Almacenes).padLeft(50);
+   	tabledebotones.add(titulo);
+   	tabledebotones.add(Informacion).padLeft(50);
+    tabledebotones.add(Edificios).padLeft(50);
     tabledebotones.add(Ordenes).padLeft(50);
     
     //Las funciones de los botones
     Informacion.addListener(new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
             tabledeinformacion.setVisible(true);     
-        	tabledealmacenes.setVisible(false);  
+        	tabledecomercio.setVisible(false);  
         	tabledeordenes.setVisible(false);
         };
   		});
-    Almacenes.addListener(new ClickListener(){
+    Edificios.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
     		tabledeinformacion.setVisible(false);
-    		tabledealmacenes.setVisible(true);
+    		tabledecomercio.setVisible(true);
     		tabledeordenes.setVisible(false);
     	}
     });
     Ordenes.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
     		tabledeinformacion.setVisible(false);
-    		tabledealmacenes.setVisible(false);
+    		tabledecomercio.setVisible(false);
     		tabledeordenes.setVisible(true);
     	}
     });
@@ -192,51 +196,49 @@ public class MenuComercio extends MenuAbstracto{
    	tabledeinformacion.left();
     
    	//Los strings y los ints se van alternando
-   	Label espacioenblanco = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[1],estilolabel);
-   	tabledeinformacion.add(espacioenblanco).height(80);
-	tabledeinformacion.row();
-   	for(int i=1; i<10; i++){
-    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[i],estilolabel);
+    tabledeinformacion.row();
+   	for(int i=1; i<11; i++){
+    Label label = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[i],estilolabel);
     label.setAlignment(1);
     tabledeinformacion.add(label).width(anchocolumnas);
     }
     
 	//Trigo
     tabledeinformacion.row().height(60);
-    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[10],estilolabel);
+    Label label = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[11],estilolabel);
     label.setAlignment(1);
     tabledeinformacion.add(label).width(anchocolumnas);
     
     //Las ints del trigo
-    for(int i=0; i<8; i++){
+    for(int i=0; i<9; i++){
     
-    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label2.setAlignment(1);
     tabledeinformacion.add(label2).width(anchocolumnas);
     }
     
     //Fruta
     tabledeinformacion.row().height(60);
-    Label label3 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[11],estilolabel);
+    Label label3 = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[12],estilolabel);
     label3.setAlignment(1);
     tabledeinformacion.add(label3).width(anchocolumnas);
     
     //Las ints de la fruta
-    for(int i=8; i<16; i++){
-    Label label4 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    for(int i=9; i<18; i++){
+    Label label4 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label4.setAlignment(1);
     tabledeinformacion.add(label4).width(anchocolumnas);
     }
     
     //Carne
     tabledeinformacion.row().height(60);
-    Label label5 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[12],estilolabel);
+    Label label5 = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[13],estilolabel);
     label5.setAlignment(1);
     tabledeinformacion.add(label5).width(anchocolumnas);
     
     //Las ints de la carne
-    for(int i=16; i<24; i++){
-    Label label6 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    for(int i=18; i<27; i++){
+    Label label6 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label6.setAlignment(1);
     tabledeinformacion.add(label6).width(anchocolumnas);
     }
@@ -244,15 +246,15 @@ public class MenuComercio extends MenuAbstracto{
     //Carne salada
     
     tabledeinformacion.row().height(60);
-    Label label7 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[13],estilolabel);
+    Label label7 = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[14],estilolabel);
     label7.setAlignment(1);
     tabledeinformacion.add(label7).width(anchocolumnas);
    
     
     //Las ints de la carne salada
     
-    for(int i=24; i<32; i++){
-    Label label8 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    for(int i=27; i<36; i++){
+    Label label8 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label8.setAlignment(1);
     tabledeinformacion.add(label8).width(anchocolumnas);
     
@@ -261,15 +263,15 @@ public class MenuComercio extends MenuAbstracto{
     //Pescado
     
     tabledeinformacion.row().height(60);
-    Label label9 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[14],estilolabel);
+    Label label9 = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[15],estilolabel);
     label9.setAlignment(1);
     tabledeinformacion.add(label9).width(anchocolumnas);
    
     
     //Las ints del pescado
     
-    for(int i=32; i<40; i++){
-    Label label10 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    for(int i=36; i<45; i++){
+    Label label10 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label10.setAlignment(1);
     tabledeinformacion.add(label10).width(anchocolumnas);
         }
@@ -277,15 +279,15 @@ public class MenuComercio extends MenuAbstracto{
     //Miel
     
     tabledeinformacion.row().height(60);
-    Label label11 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacen[15],estilolabel);
+    Label label11 = new Label(Variablesdejuego.variablesdejuego.comercio.stringsdecomercio[16],estilolabel);
     label11.setAlignment(1);
     tabledeinformacion.add(label11).width(anchocolumnas);
    
     
     //Las ints de la miel
     
-    for(int i=40; i<48; i++){
-    Label label12 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacen[i],estilolabel);
+    for(int i=45; i<54; i++){
+    Label label12 = new Label(""+Variablesdejuego.variablesdejuego.comercio.intsdecomercio[i],estilolabel);
     label12.setAlignment(1);
     tabledeinformacion.add(label12).width(anchocolumnas);
     }
@@ -306,29 +308,29 @@ public class MenuComercio extends MenuAbstracto{
     Image iconoalmacen7;
     iconoalmacen7 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
     
-    tabledescrollpanealmacenes.add(iconoalmacen2);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen3);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen4);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen5);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen6);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen7);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen);
-    tabledescrollpanealmacenes.row();
-    tabledescrollpanealmacenes.add(iconoalmacen);
+    tabledescrollpanecomercio.add(iconoalmacen2);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconoalmacen3);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconoalmacen4);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconoalmacen5);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconoalmacen6);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconoalmacen7);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconocomercio);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconocomercio);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconocomercio);
+    tabledescrollpanecomercio.row();
+    tabledescrollpanecomercio.add(iconocomercio);
    
-    scrollpanealmacenes.size(200, 300);
-    scrollpanealmacenes.setOverscroll(false, false);
-    tabledealmacenes.add(scrollpanealmacenes);
+    scrollpanecomercio.size(200, 300);
+    scrollpanecomercio.setOverscroll(false, false);
+    tabledecomercio.add(scrollpanecomercio);
     
    
     
@@ -345,7 +347,7 @@ public class MenuComercio extends MenuAbstracto{
  }  
 
 public void act(float deltatime){
-	scrollpanealmacenes.act(deltatime);
+	scrollpanecomercio.act(deltatime);
 }
 	
 }
