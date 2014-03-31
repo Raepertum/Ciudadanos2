@@ -189,7 +189,7 @@ public class MenuComercio extends MenuAbstracto{
   	
    
    	
-   	
+   	/*
     //Los labels de la tabla de información   
     
     //Empezamos por la izquierda
@@ -342,7 +342,7 @@ public class MenuComercio extends MenuAbstracto{
     tabledeordenes.add(Ordenesmaestras).row().height(20).padTop(20).size(600,40);
     
     
-    
+    */
     
  }  
 

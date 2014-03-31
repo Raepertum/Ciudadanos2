@@ -191,7 +191,7 @@ public class MenuSocial extends MenuAbstracto{
     });
   	
    
-   	
+   	/*
    	
     //Los labels de la tabla de información   
     
@@ -346,7 +346,7 @@ public class MenuSocial extends MenuAbstracto{
     
     
     
-    
+    */
  }  
 
 public void act(float deltatime){

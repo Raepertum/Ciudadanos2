@@ -190,7 +190,7 @@ public class MenuEspionaje extends MenuAbstracto{
     });
   	
    
-   	
+   /*	
    	
     //Los labels de la tabla de información   
     
@@ -345,7 +345,7 @@ public class MenuEspionaje extends MenuAbstracto{
     
     
     
-    
+    */
  }  
 
 public void act(float deltatime){

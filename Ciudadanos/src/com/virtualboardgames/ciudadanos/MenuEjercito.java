@@ -191,7 +191,7 @@ import com.esotericsoftware.tablelayout.Cell;
 	    });
 	  	
 	   
-	   	
+	   /*	
 	   	
 	    //Los labels de la tabla de información   
 	    
@@ -344,7 +344,7 @@ import com.esotericsoftware.tablelayout.Cell;
 	    tabledeordenes.add(Ordenesmaestras).row().height(20).padTop(20).size(600,40);
 	    
 	    
-	    
+	    */
 	    
 	 }  
 

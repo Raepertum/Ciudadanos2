@@ -83,8 +83,11 @@ public class MenuAlmacen extends MenuAbstracto{
 	//Scrollpane de la tabla de almacenes
 	ScrollPane scrollpanealmacenes;
 	
-	//Ancho columnas
-	int anchocolumnas = 80;
+	//Ancho columnas y espacio entre filas
+	int anchocolumnassubtabla1 = 80;
+	int anchocolumnassubtabla2 = 88;
+	int espacioentrefilastablainformacion1 = 60;
+	int espacioentrefilastablainformacion2 = 37;
 		
 	public MenuAlmacen(){
 		
@@ -311,287 +314,95 @@ public class MenuAlmacen extends MenuAbstracto{
     
     //La tabla de información 1(Alimentos)
     
-   	//Los strings y los ints se van alternando
-    //!!!!!!!!!!!!!!!
-    //¿Se puede crear una función para la creación de labels?
-    //!!!!!!!!!!!!!!!
-    
-   	tabledeinformacion1.row();
+    tabledeinformacion1.row();
    	tabledeinformacion1.add(espacioenblanco).height(40);
    	
-   	for(int i=0; i<8; i++){
-    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[i],estilolabel);
-    label.setAlignment(1);
-    tabledeinformacion1.add(label).width(anchocolumnas);
-    }
-    
-	//Trigo
-    tabledeinformacion1.row().height(60);
-    Label label = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[8],estilolabel);
-    label.setAlignment(1);
-    tabledeinformacion1.add(label).width(anchocolumnas);
-    
-    //Las ints del trigo
-    for(int i=0; i<8; i++){
-    
-    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label2.setAlignment(1);
-    tabledeinformacion1.add(label2).width(anchocolumnas);
-    }
-    
+   	//Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacen,
+   			0,5,null,0,0,null,anchocolumnassubtabla1, estilolabel, espacioentrefilastablainformacion1);
+   	   	
+    //Trigo
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,0,8,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
+   	  
     //Fruta
-    tabledeinformacion1.row().height(60);
-    Label label3 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[9],estilolabel);
-    label3.setAlignment(1);
-    tabledeinformacion1.add(label3).width(anchocolumnas);
-    
-    //Las ints de la fruta
-    for(int i=8; i<16; i++){
-    Label label4 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label4.setAlignment(1);
-    tabledeinformacion1.add(label4).width(anchocolumnas);
-    }
-    
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,8,16,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
+   	
     //Carne
-    tabledeinformacion1.row().height(60);
-    Label label5 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[10],estilolabel);
-    label5.setAlignment(1);
-    tabledeinformacion1.add(label5).width(anchocolumnas);
-    
-    //Las ints de la carne
-    for(int i=16; i<24; i++){
-    Label label6 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label6.setAlignment(1);
-    tabledeinformacion1.add(label6).width(anchocolumnas);
-    }
-    
-    //Carne salada
-    
-    tabledeinformacion1.row().height(60);
-    Label label7 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[11],estilolabel);
-    label7.setAlignment(1);
-    tabledeinformacion1.add(label7).width(anchocolumnas);
-   
-    
-    //Las ints de la carne salada
-    
-    for(int i=24; i<32; i++){
-    Label label8 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label8.setAlignment(1);
-    tabledeinformacion1.add(label8).width(anchocolumnas);
-    
-    }
-    
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,16,24,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
+   	
+   //Carne salada
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,24,32,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
+   	
     //Pescado
-    
-    tabledeinformacion1.row().height(60);
-    Label label9 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[12],estilolabel);
-    label9.setAlignment(1);
-    tabledeinformacion1.add(label9).width(anchocolumnas);
-   
-    
-    //Las ints del pescado
-    
-    for(int i=32; i<40; i++){
-    Label label10 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label10.setAlignment(1);
-    tabledeinformacion1.add(label10).width(anchocolumnas);
-        }
-    
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,32,40,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
+   	
     //Miel
-    
-    tabledeinformacion1.row().height(60);
-    Label label11 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[13],estilolabel);
-    label11.setAlignment(1);
-    tabledeinformacion1.add(label11).width(anchocolumnas);
+    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,40,48,null,anchocolumnassubtabla1,estilolabel,
+   			espacioentrefilastablainformacion1);
    
-    
-    //Las ints de la miel
-    
-    for(int i=40; i<48; i++){
-    Label label12 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos[i],estilolabel);
-    label12.setAlignment(1);
-    tabledeinformacion1.add(label12).width(anchocolumnas);
-    }
     
     //La tabla de información 2 (Materias Primas)
     
     tabledeinformacion2.row();
    	tabledeinformacion2.add(espacioenblanco).height(37);
    	
-   	for(int i=0; i<8; i++){
-   	Label label13 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos[i],estilolabel);
-   	label13.setAlignment(1);
-   	tabledeinformacion2.add(label13).width(anchocolumnas);
-   	}   
+   	//Nombres de las columnas
    	
-    //Sal
-    tabledeinformacion2.row().height(37);
-    Label label14 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[0],estilolabel);
-    label14.setAlignment(1);
-    tabledeinformacion2.add(label14).width(anchocolumnas);
-    
-    //Los ints de la sal
-    
-    for(int i=0; i<8; i++){
-    
-    Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-    label2.setAlignment(1);
-    tabledeinformacion2.add(label2).width(anchocolumnas);
-    }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacen,
+   			0,5,null,0,0,null,anchocolumnassubtabla1, estilolabel, espacioentrefilastablainformacion2);
+   	
+   	//Sal
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,0,7,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Madera
-    
-    tabledeinformacion2.row().height(37);
-    Label label16 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[1],estilolabel);
-    label16.setAlignment(1);
-    tabledeinformacion2.add(label16).width(anchocolumnas);
-    
-    
-    //Los ints de la madera
-    
-    for(int i=8; i<16; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+    escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,7,14,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Piedra
-    
-    tabledeinformacion2.row().height(37);
-    Label label18 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[2],estilolabel);
-    label18.setAlignment(1);
-    tabledeinformacion2.add(label18).width(anchocolumnas);
-    
-    
-    //Los ints de la piedra
-    
-    for(int i=16; i<24; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,14,21,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Hierro
-    
-    tabledeinformacion2.row().height(37);
-    Label label20 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[3],estilolabel);
-    label20.setAlignment(1);
-    tabledeinformacion2.add(label20).width(anchocolumnas);
-    
-    
-    //Los ints del hierro
-    
-    for(int i=24; i<32; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,21,28,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Cobre
-    
-    tabledeinformacion2.row().height(37);
-    Label label22 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[4],estilolabel);
-    label22.setAlignment(1);
-    tabledeinformacion2.add(label22).width(anchocolumnas);
-    
-    
-    //Los ints del cobre
-    
-    for(int i=32; i<40; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,28,35,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Estaño
-    
-    tabledeinformacion2.row().height(37);
-    Label label24 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[5],estilolabel);
-    label24.setAlignment(1);
-    tabledeinformacion2.add(label24).width(anchocolumnas);
-    
-    
-    //Los ints del estaño
-    
-    for(int i=40; i<48; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,35,42,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Plata
-    
-    tabledeinformacion2.row().height(37);
-    Label label26 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[6],estilolabel);
-    label26.setAlignment(1);
-    tabledeinformacion2.add(label26).width(anchocolumnas);
-    
-    
-    //Los ints de la plata
-    
-    for(int i=48; i<56; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,42,49,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Oro
-    
-    tabledeinformacion2.row().height(37);
-    Label label28 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[7],estilolabel);
-    label28.setAlignment(1);
-    tabledeinformacion2.add(label28).width(anchocolumnas);
-    
-    
-    //Los ints de oro
-    
-    for(int i=56; i<64; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,49,56,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Mercurio
-    
-    tabledeinformacion2.row().height(37);
-    Label label30 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[8],estilolabel);
-    label30.setAlignment(1);
-    tabledeinformacion2.add(label30).width(anchocolumnas);
-    
-    
-    //Los ints del mercurio
-    
-    for(int i=64; i<72; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
-    
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			8,9,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,56,63,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     //Azufre
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			9,10,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,63,70,null,anchocolumnassubtabla2,estilolabel,
+   			espacioentrefilastablainformacion2);
     
-    tabledeinformacion2.row().height(37);
-    Label label32 = new Label(Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas[9],estilolabel);
-    label32.setAlignment(1);
-    tabledeinformacion2.add(label32).width(anchocolumnas);
-    
-    
-    //Los ints del azufre
-    
-    for(int i=72; i<80; i++){
-        
-        Label label2 = new Label(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas[i],estilolabel);
-        label2.setAlignment(1);
-        tabledeinformacion2.add(label2).width(anchocolumnas);
-        }
     
     
     //La tabla de información 3 (Armas)

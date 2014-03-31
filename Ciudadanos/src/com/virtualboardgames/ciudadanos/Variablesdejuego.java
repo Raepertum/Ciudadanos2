@@ -29,7 +29,9 @@ public class Almacen{
 //ALMACÉN
 
 String titulo = "ALMACÉN";
-	
+
+String[] nombreslabelsalmacen;
+
 String [] stringsdealmacenalimentos;
 int[] intsdealmacenalimentos;
 String [] stringsdealmacenmatprimas;
@@ -51,28 +53,33 @@ int[] intsdealmacenbieneslujo;
 
 public Almacen(){
 	
+	
+	//Labels de almacén
+	nombreslabelsalmacen = new String[15];
+	nombreslabelsalmacen[0] = "Producción mes"; 
+	nombreslabelsalmacen[1] = "Gasto mes";
+	nombreslabelsalmacen[2] = "Caducidad mes";
+	nombreslabelsalmacen[3] = "Neto mes";
+	nombreslabelsalmacen[4] = "Reservas";
+	nombreslabelsalmacen[5] = "Producción año";
+	nombreslabelsalmacen[6] = "Gasto año";
+	nombreslabelsalmacen[7] = "Caducidad año";
+	nombreslabelsalmacen[8] = "Neto año";
+	nombreslabelsalmacen[9] = "Reservas";
+	nombreslabelsalmacen[10] = "Producción total";
+	nombreslabelsalmacen[11] = "Gasto total";
+	nombreslabelsalmacen[12] = "Caducidad total";
+	nombreslabelsalmacen[13] = "Neto total";
+	nombreslabelsalmacen[14] = "Reservas";
+	
 	//Alimentos
-	
-	//!!!!!!!!!!!!!!!!!!!
-	//Más que reorganizar: Saca esto de alimentos. Crea una array genérica para 
-	//Los nombres producción, consumo y demás...
-	//!!!!!!!!!!!!!!!!!!!
-	
-	stringsdealmacenalimentos = new String[14];
-	stringsdealmacenalimentos[0] = "Prod. mes";
-	stringsdealmacenalimentos[1] = "Gasto. mes";
-	stringsdealmacenalimentos[2] = "Neto mes";
-	stringsdealmacenalimentos[3] = "Prod. año";
-	stringsdealmacenalimentos[4] = "Gasto año";
-	stringsdealmacenalimentos[5] = "Neto año";
-	stringsdealmacenalimentos[6] = "Reservas";
-	stringsdealmacenalimentos[7] = "Prox. Caduc.";
-	stringsdealmacenalimentos[8] = "Trigo";
-	stringsdealmacenalimentos[9] = "Fruta";
-	stringsdealmacenalimentos[10] = "Carne";
-	stringsdealmacenalimentos[11] = "Carne sal.";
-	stringsdealmacenalimentos[12] = "Pescado";
-	stringsdealmacenalimentos[13] = "Miel";
+	stringsdealmacenalimentos = new String[6];
+	stringsdealmacenalimentos[0] = "Trigo";
+	stringsdealmacenalimentos[1] = "Fruta";
+	stringsdealmacenalimentos[2] = "Carne";
+	stringsdealmacenalimentos[3] = "Carne sal.";
+	stringsdealmacenalimentos[4] = "Pescado";
+	stringsdealmacenalimentos[5] = "Miel";
 	
 	intsdealmacenalimentos = new int[48];
 	for (int i=0; i<48; i++){
@@ -92,8 +99,8 @@ public Almacen(){
 	stringsdealmacenmatprimas[8] = "Mercurio";
 	stringsdealmacenmatprimas[9] = "Azufre";
 	
-	intsdealmacenmatprimas = new int[80];
-	for (int i=0; i<80; i++){
+	intsdealmacenmatprimas = new int[70];
+	for (int i=0; i<70; i++){
 		intsdealmacenmatprimas[i] = 0;
 	}
 	//Armas
