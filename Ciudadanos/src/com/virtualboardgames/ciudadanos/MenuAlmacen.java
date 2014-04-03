@@ -74,6 +74,7 @@ public class MenuAlmacen extends MenuAbstracto{
 	TextButton Armas;
 	TextButton Artesania;
 	TextButton BienesLujo;
+	TextButton BotonPlazo;	
 	
 	//Botones de la table de órdenes
 	TextButton Ordenesbasicas;
@@ -84,10 +85,11 @@ public class MenuAlmacen extends MenuAbstracto{
 	ScrollPane scrollpanealmacenes;
 	
 	//Ancho columnas y espacio entre filas
-	int anchocolumnassubtabla1 = 80;
-	int anchocolumnassubtabla2 = 88;
-	int espacioentrefilastablainformacion1 = 60;
+	int anchocolumnassubtabla1 = 120;
+	int anchocolumnassubtabla2 = 160;
+	int espacioentrefilastablainformacion1 = 65;
 	int espacioentrefilastablainformacion2 = 37;
+	int anchoprimeracolumna = 100;
 		
 	public MenuAlmacen(){
 		
@@ -96,8 +98,8 @@ public class MenuAlmacen extends MenuAbstracto{
 	tabledefondo = new Table();
 	tabledeinformacion = new Table();
 	tabledebotonesinformacion = new Table();
-	          //Y el Stack
-	          stacktabledeinformacion = new Stack();   
+	//Y el Stack
+	stacktabledeinformacion = new Stack();   
 	tabledeinformacion1 =  new Table();
 	tabledeinformacion2 = new Table();
 	tabledeinformacion3 = new Table();
@@ -120,7 +122,6 @@ public class MenuAlmacen extends MenuAbstracto{
 	this.add(tabledeordenes);
 	
 	//Añadimos las sub-tablas en el orden correcto
-	tabledeinformacion.row();
 	tabledeinformacion.add(stacktabledeinformacion);
    	stacktabledeinformacion.add(tabledeinformacion1);
     stacktabledeinformacion.add(tabledeinformacion2);
@@ -153,6 +154,9 @@ public class MenuAlmacen extends MenuAbstracto{
   	Informacion = new TextButton("Información", estilobotontexto);
   	Almacenes = new TextButton("Almacenes", estilobotontexto);
   	Ordenes = new TextButton("Órdenes", estilobotontexto);
+  	
+  	//Creamos el botón para alternar entre Mes\Año\Total
+  	BotonPlazo = new TextButton("Mes", estilobotontexto);
   	
   	//Creamos los botones para la table de informacion
   	Alimentos = new TextButton("Alimentos", estilobotontexto);
@@ -188,7 +192,6 @@ public class MenuAlmacen extends MenuAbstracto{
    	
    	//Table de botones información
     tabledebotonesinformacion.left().top();
-   	tabledebotonesinformacion.padLeft(80);
    	tabledebotonesinformacion.padTop(65);
    	
    	//Tabla de almacenes
@@ -255,11 +258,16 @@ public class MenuAlmacen extends MenuAbstracto{
    	tabledeinformacion.left();
    	
    	//Los botones de la table de Información
-   	tabledebotonesinformacion.add(Alimentos).padLeft(20);
+   	tabledebotonesinformacion.left();
+   	tabledebotonesinformacion.add(BotonPlazo).padLeft(20);
+   	tabledebotonesinformacion.add(Alimentos).padLeft(60);
    	tabledebotonesinformacion.add(MatPrimas).padLeft(20);
    	tabledebotonesinformacion.add(Armas).padLeft(20);
    	tabledebotonesinformacion.add(Artesania).padLeft(20);
    	tabledebotonesinformacion.add(BienesLujo).padLeft(20);
+   	tabledebotonesinformacion.row();
+   	
+   	
     
    	//Las funciones de los botones de la table de información
    	
@@ -313,44 +321,22 @@ public class MenuAlmacen extends MenuAbstracto{
     //Los labels de la tabla de información   
     
     //La tabla de información 1(Alimentos)
-    
     tabledeinformacion1.row();
-   	tabledeinformacion1.add(espacioenblanco).height(40);
-   	
-   	//Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacen,
-   			0,5,null,0,0,null,anchocolumnassubtabla1, estilolabel, espacioentrefilastablainformacion1);
+    tabledeinformacion1.add(espacioenblanco).height(37);
+    
    	   	
-    //Trigo
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,0,8,null,anchocolumnassubtabla1,estilolabel,
-   			espacioentrefilastablainformacion1);
-   	  
-    //Fruta
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,8,16,null,anchocolumnassubtabla1,estilolabel,
+   	//Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
+   			0,5,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion1);
    	
-    //Carne
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,16,24,null,anchocolumnassubtabla1,estilolabel,
-   			espacioentrefilastablainformacion1);
    	
-   //Carne salada
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,24,32,null,anchocolumnassubtabla1,estilolabel,
+    //Los alimentos
+   	crearTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
    			espacioentrefilastablainformacion1);
-   	
-    //Pescado
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,32,40,null,anchocolumnassubtabla1,estilolabel,
-   			espacioentrefilastablainformacion1);
-   	
-    //Miel
-    escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,40,48,null,anchocolumnassubtabla1,estilolabel,
-   			espacioentrefilastablainformacion1);
-   
+    
     
     //La tabla de información 2 (Materias Primas)
     
@@ -359,55 +345,116 @@ public class MenuAlmacen extends MenuAbstracto{
    	
    	//Nombres de las columnas
    	
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacen,
-   			0,5,null,0,0,null,anchocolumnassubtabla1, estilolabel, espacioentrefilastablainformacion2);
+   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion2);
    	
    	//Sal
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,0,7,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,0,7,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Madera
     escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,7,14,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,7,14,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Piedra
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,14,21,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,14,21,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Hierro
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,21,28,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,21,28,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Cobre
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,28,35,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,28,35,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Estaño
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,35,42,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,35,42,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Plata
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,42,49,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,42,49,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Oro
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,49,56,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,49,56,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Mercurio
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			8,9,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,56,63,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			8,9,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,56,63,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     //Azufre
    	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			9,10,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,63,70,null,anchocolumnassubtabla2,estilolabel,
-   			espacioentrefilastablainformacion2);
+   			9,10,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,63,70,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
     
-    
+   	
     
     //La tabla de información 3 (Armas)
+    tabledeinformacion3.row();
+   	tabledeinformacion3.add(espacioenblanco).height(37);
+   	
+   	//Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion2);
+   	
+    //Espadas
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,0,5,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Hachas
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,5,10,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Arcos
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,10,15,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+   
+    //Lanzas
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,15,20,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Mazos
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,20,25,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Cetros
+   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,25,30,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Armaduras cuero
+    escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,30,35,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+    //Armaduras hierro
+    escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
+   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,35,40,null,anchocolumnassubtabla2,
+   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
+   
+   	
+   	
     //La tabla de información 4 (Artesanía)
+    tabledeinformacion4.row();
+   	tabledeinformacion4.add(espacioenblanco).height(37);
+   	
+   	escribirFilaTabla(tabledeinformacion4, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion2);
+   	
+   	
     //La tabla de información 5 (Bienes de lujo)
+    tabledeinformacion5.row();
+   	tabledeinformacion5.add(espacioenblanco).height(37);
+   	
+   	escribirFilaTabla(tabledeinformacion5, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion2);
+   	
+   	
    
     //La tabla de almacenes
     

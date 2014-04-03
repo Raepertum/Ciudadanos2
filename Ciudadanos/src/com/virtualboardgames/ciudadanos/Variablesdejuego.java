@@ -30,7 +30,8 @@ public class Almacen{
 
 String titulo = "ALMACÉN";
 
-String[] nombreslabelsalmacen;
+String[] nombreslabelsalmacencaducables;
+String[] nombreslabelsalmacennocaducables;
 
 String [] stringsdealmacenalimentos;
 int[] intsdealmacenalimentos;
@@ -54,23 +55,38 @@ int[] intsdealmacenbieneslujo;
 public Almacen(){
 	
 	
-	//Labels de almacén
-	nombreslabelsalmacen = new String[15];
-	nombreslabelsalmacen[0] = "Producción mes"; 
-	nombreslabelsalmacen[1] = "Gasto mes";
-	nombreslabelsalmacen[2] = "Caducidad mes";
-	nombreslabelsalmacen[3] = "Neto mes";
-	nombreslabelsalmacen[4] = "Reservas";
-	nombreslabelsalmacen[5] = "Producción año";
-	nombreslabelsalmacen[6] = "Gasto año";
-	nombreslabelsalmacen[7] = "Caducidad año";
-	nombreslabelsalmacen[8] = "Neto año";
-	nombreslabelsalmacen[9] = "Reservas";
-	nombreslabelsalmacen[10] = "Producción total";
-	nombreslabelsalmacen[11] = "Gasto total";
-	nombreslabelsalmacen[12] = "Caducidad total";
-	nombreslabelsalmacen[13] = "Neto total";
-	nombreslabelsalmacen[14] = "Reservas";
+	//Labels de almacén de productos que pueden caducar
+	nombreslabelsalmacencaducables = new String[15];
+	nombreslabelsalmacencaducables[0] = "Producción mes"; 
+	nombreslabelsalmacencaducables[1] = "Gasto mes";
+	nombreslabelsalmacencaducables[2] = "Caducidad mes";
+	nombreslabelsalmacencaducables[3] = "Neto mes";
+	nombreslabelsalmacencaducables[4] = "Reservas";
+	nombreslabelsalmacencaducables[5] = "Producción año";
+	nombreslabelsalmacencaducables[6] = "Gasto año";
+	nombreslabelsalmacencaducables[7] = "Caducidad año";
+	nombreslabelsalmacencaducables[8] = "Neto año";
+	nombreslabelsalmacencaducables[9] = "Reservas";
+	nombreslabelsalmacencaducables[10] = "Producción total";
+	nombreslabelsalmacencaducables[11] = "Gasto total";
+	nombreslabelsalmacencaducables[12] = "Caducidad total";
+	nombreslabelsalmacencaducables[13] = "Neto total";
+	nombreslabelsalmacencaducables[14] = "Reservas";
+	
+	//Labels de almacén de productos que no caducan
+	nombreslabelsalmacennocaducables = new String[15];
+	nombreslabelsalmacennocaducables[0] = "Producción mes"; 
+	nombreslabelsalmacennocaducables[1] = "Gasto mes";
+	nombreslabelsalmacennocaducables[2] = "Neto mes";
+	nombreslabelsalmacennocaducables[3] = "Reservas";
+	nombreslabelsalmacennocaducables[4] = "Producción año";
+	nombreslabelsalmacennocaducables[5] = "Gasto año";
+	nombreslabelsalmacennocaducables[6] = "Neto año";
+	nombreslabelsalmacennocaducables[7] = "Reservas";
+	nombreslabelsalmacennocaducables[8] = "Producción total";
+	nombreslabelsalmacennocaducables[9] = "Gasto total";
+	nombreslabelsalmacennocaducables[10] = "Neto total";
+	nombreslabelsalmacennocaducables[11] = "Reservas";
 	
 	//Alimentos
 	stringsdealmacenalimentos = new String[6];
@@ -104,6 +120,20 @@ public Almacen(){
 		intsdealmacenmatprimas[i] = 0;
 	}
 	//Armas
+	stringsdealmacenarmas = new String[8];
+	stringsdealmacenarmas[0] = "Espadas";
+	stringsdealmacenarmas[1] = "Hachas";
+	stringsdealmacenarmas[2] = "Arcos";
+	stringsdealmacenarmas[3] = "Lanzas";
+	stringsdealmacenarmas[4] = "Mazos";
+	stringsdealmacenarmas[5] = "Cetros";
+	stringsdealmacenarmas[6] = "Armad. cuero";
+	stringsdealmacenarmas[7] = "Armad. hierro";
+	
+	intsdealmacenarmas = new int[64];
+	for (int i=0; i<64; i++){
+		intsdealmacenarmas[i] = 0;
+	}
 	
 	//Artesanía
 	
