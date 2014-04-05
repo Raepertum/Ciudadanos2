@@ -1,9 +1,5 @@
 package com.virtualboardgames.ciudadanos;
 
-import java.util.List;
-
-import com.badlogic.gdx.scenes.scene2d.Event;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -16,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.esotericsoftware.tablelayout.Cell;
 
 public class MenuAlmacen extends MenuAbstracto{
 	
@@ -57,20 +52,20 @@ public class MenuAlmacen extends MenuAbstracto{
 	Table tabledeinformacion5ano;
 	Table tabledeinformacion5total;
 	
-	//Y las arrays que contendrán las tablas de arriba, para la funcionalidad
-	//del botón mes/año/total
+	//Las arrays que clasifican la información por plazos
 	Table[] arraytabledeinformacion1;
 	Table[] arraytabledeinformacion2;
 	Table[] arraytabledeinformacion3;
-	Table[] arraytabledeinformacion4;
-	Table[] arraytabledeinformacion5;
-	
+		
 	Table tabledealmacenes;
 	Table tabledescrollpanealmacenes;
 	
 	Table tabledebotones;
 	
 	Table tabledeordenes;
+	
+	//Stack mostrado (Para alternar en el botón plazo)
+	Table[] tablemostrada;
 	
 	//Instancias de las imágenes (Una para el fondo, el resto para los iconos)	
 	Image fondomenualmacen;
@@ -115,36 +110,40 @@ public class MenuAlmacen extends MenuAbstracto{
 	int anchoprimeracolumna = 100;
 	
 	//La int para cambiar el plazo
-	int plazo;
+    //Plazo (0=mes, 1=año, 2=resto)
+  	int plazo;
 	
 	public MenuAlmacen(){
 		
-	
-	//Creamos las nuevas tables	
+    //Creamos las nuevas tables	
 	tabledefondo = new Table();
 	
 	tabledeinformacion = new Table();
 	
-	arraytabledeinformacion1 = new Table[3];
+	//La información del mes
+	arraytabledeinformacion1 = new Table[5];
 	arraytabledeinformacion1[0] = tabledeinformacion1mes =  new Table();
-	arraytabledeinformacion1[1] = tabledeinformacion1ano =  new Table();
-	arraytabledeinformacion1[2] = tabledeinformacion1total =  new Table();
-	arraytabledeinformacion2 = new Table[3];
-	arraytabledeinformacion2[0] = tabledeinformacion2mes =  new Table();
+	arraytabledeinformacion1[1] = tabledeinformacion2mes =  new Table();
+	arraytabledeinformacion1[2] = tabledeinformacion3mes =  new Table();
+	arraytabledeinformacion1[3] = tabledeinformacion4mes =  new Table();
+	arraytabledeinformacion1[4] = tabledeinformacion5mes =  new Table();
+	
+	//La información del año
+	arraytabledeinformacion2 = new Table[5];
+	arraytabledeinformacion2[0] = tabledeinformacion1ano=  new Table();
 	arraytabledeinformacion2[1] = tabledeinformacion2ano =  new Table();
-	arraytabledeinformacion2[2] = tabledeinformacion2total =  new Table();
-	arraytabledeinformacion3 = new Table[3];
-	arraytabledeinformacion3[0] = tabledeinformacion3mes =  new Table();
-	arraytabledeinformacion3[1] = tabledeinformacion3ano =  new Table();
+	arraytabledeinformacion2[2] = tabledeinformacion3ano =  new Table();
+	arraytabledeinformacion2[3] = tabledeinformacion4ano =  new Table();
+	arraytabledeinformacion2[4] = tabledeinformacion5ano =  new Table();
+	
+	//La información del total
+	arraytabledeinformacion3 = new Table[5];
+	arraytabledeinformacion3[0] = tabledeinformacion1total =  new Table();
+	arraytabledeinformacion3[1] = tabledeinformacion2total =  new Table();
 	arraytabledeinformacion3[2] = tabledeinformacion3total =  new Table();
-	arraytabledeinformacion4 = new Table[3];
-	arraytabledeinformacion4[0] = tabledeinformacion4mes =  new Table();
-	arraytabledeinformacion4[1] = tabledeinformacion4ano =  new Table();
-	arraytabledeinformacion4[2] = tabledeinformacion4total =  new Table();
-	arraytabledeinformacion5 = new Table[3];
-	arraytabledeinformacion5[0] = tabledeinformacion5mes =  new Table();
-	arraytabledeinformacion5[1] = tabledeinformacion5ano =  new Table();
-	arraytabledeinformacion5[2] = tabledeinformacion5total =  new Table();
+	arraytabledeinformacion3[3] = tabledeinformacion4total =  new Table();
+	arraytabledeinformacion3[4] = tabledeinformacion5total =  new Table();
+	
 	tabledebotonesinformacion = new Table();
 	
 	tabledealmacenes = new Table();
@@ -234,9 +233,6 @@ public class MenuAlmacen extends MenuAbstracto{
   	
   	//Creamos el botón para alternar entre Mes\Año\Total
   	BotonPlazo = new TextButton("Mes", estilobotontexto);
-  	
-  	//Plazo (0=mes, 1=año, 2=resto)
-  	int plazo = 0;
   	
   	//Creamos los botones para la table de informacion
   	Alimentos = new TextButton("Alimentos", estilobotontexto);
@@ -370,8 +366,8 @@ public class MenuAlmacen extends MenuAbstracto{
    	//Las subtablas de cada tabla de información
    	stacktabledeinformacion1.add(tabledeinformacion1mes);
    	stacktabledeinformacion1.add(tabledeinformacion1ano);
-   	stacktabledeinformacion1.add(tabledeinformacion1total);
-   	stacktabledeinformacion2.add(tabledeinformacion2mes);
+    stacktabledeinformacion1.add(tabledeinformacion1total);
+    stacktabledeinformacion2.add(tabledeinformacion2mes);
    	stacktabledeinformacion2.add(tabledeinformacion2ano);
    	stacktabledeinformacion2.add(tabledeinformacion2total);
    	stacktabledeinformacion3.add(tabledeinformacion3mes);
@@ -392,7 +388,7 @@ public class MenuAlmacen extends MenuAbstracto{
             stacktabledeinformacion2.setVisible(false); 
             stacktabledeinformacion3.setVisible(false); 
             stacktabledeinformacion4.setVisible(false); 
-            stacktabledeinformacion5.setVisible(false); 
+            stacktabledeinformacion5.setVisible(false);
         };
   		});
     MatPrimas.addListener(new ClickListener(){
@@ -401,8 +397,8 @@ public class MenuAlmacen extends MenuAbstracto{
             stacktabledeinformacion2.setVisible(true); 
             stacktabledeinformacion3.setVisible(false); 
             stacktabledeinformacion4.setVisible(false); 
-            stacktabledeinformacion5.setVisible(false); 
-    	}
+            stacktabledeinformacion5.setVisible(false);
+        }
     });
     Armas.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
@@ -411,7 +407,7 @@ public class MenuAlmacen extends MenuAbstracto{
             stacktabledeinformacion3.setVisible(true); 
             stacktabledeinformacion4.setVisible(false); 
             stacktabledeinformacion5.setVisible(false);  
-    	}
+       }
     });
     Artesania.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
@@ -420,7 +416,7 @@ public class MenuAlmacen extends MenuAbstracto{
             stacktabledeinformacion3.setVisible(false); 
             stacktabledeinformacion4.setVisible(true); 
             stacktabledeinformacion5.setVisible(false); 
-    	}
+        }
     });
     BienesLujo.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
@@ -429,7 +425,7 @@ public class MenuAlmacen extends MenuAbstracto{
             stacktabledeinformacion3.setVisible(false); 
             stacktabledeinformacion4.setVisible(false); 
             stacktabledeinformacion5.setVisible(true); 
-    	}
+        }
     });
     
    	
@@ -460,6 +456,7 @@ public class MenuAlmacen extends MenuAbstracto{
    			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
    			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
    			espacioentrefilastablainformacion);
+   	
    	//TOTAL
     tabledeinformacion1total.row();
     tabledeinformacion1total.add(espacioenblanco).height(37);
@@ -497,7 +494,7 @@ public class MenuAlmacen extends MenuAbstracto{
    	//Nombres de las columnas
    	
    	escribirFilaTabla(tabledeinformacion2ano, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			4,8,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
    			espacioentrefilastablainformacion);
    	
    	//Las materias primas
@@ -512,7 +509,7 @@ public class MenuAlmacen extends MenuAbstracto{
    	//Nombres de las columnas
    	
    	escribirFilaTabla(tabledeinformacion2total, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
+   			8,12,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
    			espacioentrefilastablainformacion);
    	
    	//Las materias primas
@@ -592,12 +589,33 @@ else{plazo++;
 };
 //Si el plazo es mensual
 if (plazo==0)
-{BotonPlazo.setText("Mes");}
-//Si el plazo es anual
-else if (plazo==1){BotonPlazo.setText("Año");}
-//Si el plazo es total
-else if (plazo==2){BotonPlazo.setText("Total");};
+{
+BotonPlazo.setText("Mes");
+for (int i = 0; i<5; i++){
+	arraytabledeinformacion1[i].setVisible(true);
+	arraytabledeinformacion2[i].setVisible(false);
+	arraytabledeinformacion3[i].setVisible(false);
+};
 }
+//Si el plazo es anual
+else if (plazo==1){
+BotonPlazo.setText("Año");
+for (int i = 0; i<5; i++){
+	arraytabledeinformacion1[i].setVisible(false);
+	arraytabledeinformacion2[i].setVisible(true);
+	arraytabledeinformacion3[i].setVisible(false);
+};
+}
+//Si el plazo es total
+else if (plazo==2){
+BotonPlazo.setText("Total");
+for (int i = 0; i<5; i++){
+	arraytabledeinformacion1[i].setVisible(false);
+	arraytabledeinformacion2[i].setVisible(false);
+	arraytabledeinformacion3[i].setVisible(true);
+};
+}
+};
 	
 
 public void act(float deltatime){
