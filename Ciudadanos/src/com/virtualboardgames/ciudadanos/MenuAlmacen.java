@@ -5,6 +5,7 @@ import java.util.List;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -29,28 +30,51 @@ public class MenuAlmacen extends MenuAbstracto{
 	//Para los botones de la table de informacion
 	Table tabledebotonesinformacion;
 	//Stack para añadir las sub-tablas
-	Stack stacktabledeinformacion;	
+	Stack stacktabledeinformacion;
+	Stack stacktabledeinformacion1;
+	Stack stacktabledeinformacion2;
+	Stack stacktabledeinformacion3;
+	Stack stacktabledeinformacion4;
+	Stack stacktabledeinformacion5;
 	//Alimentos
-	Table tabledeinformacion1;
+	Table tabledeinformacion1mes;
+	Table tabledeinformacion1ano;
+	Table tabledeinformacion1total;
 	//Materias primas
-	Table tabledeinformacion2;
+	Table tabledeinformacion2mes;
+	Table tabledeinformacion2ano;
+	Table tabledeinformacion2total;
 	//Armas
-	Table tabledeinformacion3;
+	Table tabledeinformacion3mes;
+	Table tabledeinformacion3ano;
+	Table tabledeinformacion3total;
 	//Artesanía
-	Table tabledeinformacion4;
+	Table tabledeinformacion4mes;
+	Table tabledeinformacion4ano;
+	Table tabledeinformacion4total;
 	//Bienes de lujo
-	Table tabledeinformacion5;
+	Table tabledeinformacion5mes;
+	Table tabledeinformacion5ano;
+	Table tabledeinformacion5total;
+	
+	//Y las arrays que contendrán las tablas de arriba, para la funcionalidad
+	//del botón mes/año/total
+	Table[] arraytabledeinformacion1;
+	Table[] arraytabledeinformacion2;
+	Table[] arraytabledeinformacion3;
+	Table[] arraytabledeinformacion4;
+	Table[] arraytabledeinformacion5;
 	
 	Table tabledealmacenes;
-	//La table de dentro del scrollpane
 	Table tabledescrollpanealmacenes;
+	
 	Table tabledebotones;
+	
 	Table tabledeordenes;
 	
 	//Instancias de las imágenes (Una para el fondo, el resto para los iconos)	
 	Image fondomenualmacen;
 	Image iconoalmacen;
-	
 	
 	//Arrays de labels que contienen texto
 	Label[] arraydelabelsstring;
@@ -87,28 +111,56 @@ public class MenuAlmacen extends MenuAbstracto{
 	//Ancho columnas y espacio entre filas
 	int anchocolumnassubtabla1 = 120;
 	int anchocolumnassubtabla2 = 160;
-	int espacioentrefilastablainformacion1 = 65;
-	int espacioentrefilastablainformacion2 = 37;
+	int espacioentrefilastablainformacion = 37;
 	int anchoprimeracolumna = 100;
-		
+	
+	//La int para cambiar el plazo
+	int plazo;
+	
 	public MenuAlmacen(){
 		
 	
 	//Creamos las nuevas tables	
 	tabledefondo = new Table();
+	
 	tabledeinformacion = new Table();
+	
+	arraytabledeinformacion1 = new Table[3];
+	arraytabledeinformacion1[0] = tabledeinformacion1mes =  new Table();
+	arraytabledeinformacion1[1] = tabledeinformacion1ano =  new Table();
+	arraytabledeinformacion1[2] = tabledeinformacion1total =  new Table();
+	arraytabledeinformacion2 = new Table[3];
+	arraytabledeinformacion2[0] = tabledeinformacion2mes =  new Table();
+	arraytabledeinformacion2[1] = tabledeinformacion2ano =  new Table();
+	arraytabledeinformacion2[2] = tabledeinformacion2total =  new Table();
+	arraytabledeinformacion3 = new Table[3];
+	arraytabledeinformacion3[0] = tabledeinformacion3mes =  new Table();
+	arraytabledeinformacion3[1] = tabledeinformacion3ano =  new Table();
+	arraytabledeinformacion3[2] = tabledeinformacion3total =  new Table();
+	arraytabledeinformacion4 = new Table[3];
+	arraytabledeinformacion4[0] = tabledeinformacion4mes =  new Table();
+	arraytabledeinformacion4[1] = tabledeinformacion4ano =  new Table();
+	arraytabledeinformacion4[2] = tabledeinformacion4total =  new Table();
+	arraytabledeinformacion5 = new Table[3];
+	arraytabledeinformacion5[0] = tabledeinformacion5mes =  new Table();
+	arraytabledeinformacion5[1] = tabledeinformacion5ano =  new Table();
+	arraytabledeinformacion5[2] = tabledeinformacion5total =  new Table();
 	tabledebotonesinformacion = new Table();
-	//Y el Stack
-	stacktabledeinformacion = new Stack();   
-	tabledeinformacion1 =  new Table();
-	tabledeinformacion2 = new Table();
-	tabledeinformacion3 = new Table();
-	tabledeinformacion4 = new Table();
-	tabledeinformacion5 = new Table();
+	
 	tabledealmacenes = new Table();
-	tabledebotones = new Table();
-	tabledeordenes = new Table();
 	tabledescrollpanealmacenes = new Table();
+	
+	tabledebotones = new Table();
+	
+	tabledeordenes = new Table();
+		
+	//Y los Stacks
+	stacktabledeinformacion = new Stack();
+	stacktabledeinformacion1 = new Stack();
+	stacktabledeinformacion2 = new Stack();
+	stacktabledeinformacion3 = new Stack();
+	stacktabledeinformacion4 = new Stack();
+	stacktabledeinformacion5 = new Stack();
 	
 	//Posicionamos y definimos el tamaño del stack primario
 	this.setPosition(30,30);
@@ -123,13 +175,38 @@ public class MenuAlmacen extends MenuAbstracto{
 	
 	//Añadimos las sub-tablas en el orden correcto
 	tabledeinformacion.add(stacktabledeinformacion);
-   	stacktabledeinformacion.add(tabledeinformacion1);
-    stacktabledeinformacion.add(tabledeinformacion2);
-    stacktabledeinformacion.add(tabledeinformacion3);
-    stacktabledeinformacion.add(tabledeinformacion4);
-    stacktabledeinformacion.add(tabledeinformacion5);
-    stacktabledeinformacion.add(tabledebotonesinformacion);
-	
+	stacktabledeinformacion.add(tabledebotonesinformacion);
+   	stacktabledeinformacion.add(stacktabledeinformacion1);
+    stacktabledeinformacion.add(stacktabledeinformacion2);
+    stacktabledeinformacion.add(stacktabledeinformacion3);
+    stacktabledeinformacion.add(stacktabledeinformacion4);
+    stacktabledeinformacion.add(stacktabledeinformacion5);
+    
+    //Ocultamos todas los stacks menos el primero
+    stacktabledeinformacion1.setVisible(true);
+    stacktabledeinformacion2.setVisible(false);
+    stacktabledeinformacion3.setVisible(false);
+    stacktabledeinformacion4.setVisible(false);
+    stacktabledeinformacion5.setVisible(false);
+    
+    //Ocultamos todas las tablas menos la primera
+    tabledeinformacion1mes.setVisible(true);
+    tabledeinformacion1ano.setVisible(false);
+    tabledeinformacion1total.setVisible(false);
+    tabledeinformacion2mes.setVisible(true);
+    tabledeinformacion2ano.setVisible(false);
+    tabledeinformacion2total.setVisible(false);
+    tabledeinformacion3mes.setVisible(true);
+    tabledeinformacion3ano.setVisible(false);
+    tabledeinformacion3total.setVisible(false);
+    tabledeinformacion4mes.setVisible(true);
+    tabledeinformacion4ano.setVisible(false);
+    tabledeinformacion4total.setVisible(false);
+    tabledeinformacion5mes.setVisible(true);
+    tabledeinformacion5ano.setVisible(false);
+    tabledeinformacion5total.setVisible(false);
+    
+    
 	//Vamos instanciando y añadiendo los objetos (Puede que más tarde, por razones de rendimiento
     //se pasen todos a la clase de texturasysonidos)
 	
@@ -157,6 +234,9 @@ public class MenuAlmacen extends MenuAbstracto{
   	
   	//Creamos el botón para alternar entre Mes\Año\Total
   	BotonPlazo = new TextButton("Mes", estilobotontexto);
+  	
+  	//Plazo (0=mes, 1=año, 2=resto)
+  	int plazo = 0;
   	
   	//Creamos los botones para la table de informacion
   	Alimentos = new TextButton("Alimentos", estilobotontexto);
@@ -212,12 +292,22 @@ public class MenuAlmacen extends MenuAbstracto{
    	tabledebotones.padTop(60);
    	
    	//Subtablas de información
-   	tabledeinformacion1.left().top().padLeft(0).padTop(90);
-   	tabledeinformacion2.left().top().padLeft(0).padTop(90).setVisible(false);
-   	tabledeinformacion3.left().top().padLeft(0).padTop(90).setVisible(false);
-   	tabledeinformacion4.left().top().padLeft(0).padTop(90).setVisible(false);
-   	tabledeinformacion5.left().top().padLeft(0).padTop(90).setVisible(false);
-   	
+   	tabledeinformacion1mes.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion1ano.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion1total.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion2mes.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion2ano.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion2total.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion3mes.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion3ano.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion3total.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion4mes.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion4ano.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion4total.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion5mes.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion5ano.left().top().padLeft(0).padTop(90);
+   	tabledeinformacion5total.left().top().padLeft(0).padTop(90);
+   	 	
    	//Añadimos el fondo
    	tabledefondo.add(fondomenualmacen);
    	
@@ -252,6 +342,16 @@ public class MenuAlmacen extends MenuAbstracto{
     	}
     });
     
+    //Las funciones del botón que cambia el plazo
+    BotonPlazo.addCaptureListener(new InputListener(){
+    	public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
+			cambiarplazo();
+			return true;
+		}
+    });
+    
+   
+    
     //La tabla de informacion
     
     //Empezamos por la izquierda
@@ -267,194 +367,166 @@ public class MenuAlmacen extends MenuAbstracto{
    	tabledebotonesinformacion.add(BienesLujo).padLeft(20);
    	tabledebotonesinformacion.row();
    	
+   	//Las subtablas de cada tabla de información
+   	stacktabledeinformacion1.add(tabledeinformacion1mes);
+   	stacktabledeinformacion1.add(tabledeinformacion1ano);
+   	stacktabledeinformacion1.add(tabledeinformacion1total);
+   	stacktabledeinformacion2.add(tabledeinformacion2mes);
+   	stacktabledeinformacion2.add(tabledeinformacion2ano);
+   	stacktabledeinformacion2.add(tabledeinformacion2total);
+   	stacktabledeinformacion3.add(tabledeinformacion3mes);
+   	stacktabledeinformacion3.add(tabledeinformacion3ano);
+   	stacktabledeinformacion3.add(tabledeinformacion3total);
+   	stacktabledeinformacion4.add(tabledeinformacion4mes);
+   	stacktabledeinformacion4.add(tabledeinformacion4ano);
+   	stacktabledeinformacion4.add(tabledeinformacion4total);
+   	stacktabledeinformacion5.add(tabledeinformacion5mes);
+   	stacktabledeinformacion5.add(tabledeinformacion5ano);
+   	stacktabledeinformacion5.add(tabledeinformacion5total);
    	
-    
    	//Las funciones de los botones de la table de información
    	
    	Alimentos.addListener(new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
-            tabledeinformacion1.setVisible(true);     
-            tabledeinformacion2.setVisible(false); 
-            tabledeinformacion3.setVisible(false); 
-            tabledeinformacion4.setVisible(false); 
-            tabledeinformacion5.setVisible(false); 
+            stacktabledeinformacion1.setVisible(true);
+            stacktabledeinformacion2.setVisible(false); 
+            stacktabledeinformacion3.setVisible(false); 
+            stacktabledeinformacion4.setVisible(false); 
+            stacktabledeinformacion5.setVisible(false); 
         };
   		});
     MatPrimas.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
-    		tabledeinformacion1.setVisible(false);     
-            tabledeinformacion2.setVisible(true); 
-            tabledeinformacion3.setVisible(false); 
-            tabledeinformacion4.setVisible(false); 
-            tabledeinformacion5.setVisible(false); 
+            stacktabledeinformacion1.setVisible(false);
+            stacktabledeinformacion2.setVisible(true); 
+            stacktabledeinformacion3.setVisible(false); 
+            stacktabledeinformacion4.setVisible(false); 
+            stacktabledeinformacion5.setVisible(false); 
     	}
     });
     Armas.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
-    		tabledeinformacion1.setVisible(false);     
-            tabledeinformacion2.setVisible(false); 
-            tabledeinformacion3.setVisible(true); 
-            tabledeinformacion4.setVisible(false); 
-            tabledeinformacion5.setVisible(false); 
+            stacktabledeinformacion1.setVisible(false);
+            stacktabledeinformacion2.setVisible(false); 
+            stacktabledeinformacion3.setVisible(true); 
+            stacktabledeinformacion4.setVisible(false); 
+            stacktabledeinformacion5.setVisible(false);  
     	}
     });
     Artesania.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
-    		tabledeinformacion1.setVisible(false);     
-            tabledeinformacion2.setVisible(false); 
-            tabledeinformacion3.setVisible(false); 
-            tabledeinformacion4.setVisible(true); 
-            tabledeinformacion5.setVisible(false); 
+            stacktabledeinformacion1.setVisible(false);
+            stacktabledeinformacion2.setVisible(false); 
+            stacktabledeinformacion3.setVisible(false); 
+            stacktabledeinformacion4.setVisible(true); 
+            stacktabledeinformacion5.setVisible(false); 
     	}
     });
     BienesLujo.addListener(new ClickListener(){
     	public void clicked(InputEvent event, float x, float y){
-    		tabledeinformacion1.setVisible(false);     
-            tabledeinformacion2.setVisible(false); 
-            tabledeinformacion3.setVisible(false); 
-            tabledeinformacion4.setVisible(false); 
-            tabledeinformacion5.setVisible(true); 
+            stacktabledeinformacion1.setVisible(false);
+            stacktabledeinformacion2.setVisible(false); 
+            stacktabledeinformacion3.setVisible(false); 
+            stacktabledeinformacion4.setVisible(false); 
+            stacktabledeinformacion5.setVisible(true); 
     	}
     });
     
    	
     //Los labels de la tabla de información   
     
-    //La tabla de información 1(Alimentos)
-    tabledeinformacion1.row();
-    tabledeinformacion1.add(espacioenblanco).height(37);
-    
-   	   	
-   	//Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
+    //Las tablas de información de Alimentos
+    //MES
+    tabledeinformacion1mes.row();
+    tabledeinformacion1mes.add(espacioenblanco).height(37);
+    //Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion1mes, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
    			0,5,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion1);
-   	
-   	
-    //Los alimentos
-   	crearTabla(tabledeinformacion1, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			espacioentrefilastablainformacion);
+   	//Los alimentos
+   	crearTabla(tabledeinformacion1mes, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
    			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
    			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion1);
+   			espacioentrefilastablainformacion);
+   	//AÑO
+    tabledeinformacion1ano.row();
+    tabledeinformacion1ano.add(espacioenblanco).height(37);
+    //Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion1ano, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
+   			5,10,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion);
+   	//Los alimentos
+   	crearTabla(tabledeinformacion1ano, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion);
+   	//TOTAL
+    tabledeinformacion1total.row();
+    tabledeinformacion1total.add(espacioenblanco).height(37);
+    //Nombres de las columnas
+   	escribirFilaTabla(tabledeinformacion1total, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
+   			10,15,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion);
+   	//Los alimentos
+   	crearTabla(tabledeinformacion1total, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion);
+   	
     
-    
-    //La tabla de información 2 (Materias Primas)
-    
-    tabledeinformacion2.row();
-   	tabledeinformacion2.add(espacioenblanco).height(37);
+    //Las tablas de información de Materias Primas
+    //MES
+    tabledeinformacion2mes.row();
+   	tabledeinformacion2mes.add(espacioenblanco).height(37);
    	
    	//Nombres de las columnas
    	
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   	escribirFilaTabla(tabledeinformacion2mes, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
    			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion2);
+   			espacioentrefilastablainformacion);
    	
-   	//Sal
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,0,7,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Madera
-    escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,7,14,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Piedra
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,14,21,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Hierro
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,21,28,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Cobre
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,28,35,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Estaño
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,35,42,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Plata
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,42,49,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Oro
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,49,56,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Mercurio
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			8,9,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,56,63,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Azufre
-   	escribirFilaTabla(tabledeinformacion2, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			9,10,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,63,70,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    
-   	
-    
-    //La tabla de información 3 (Armas)
-    tabledeinformacion3.row();
-   	tabledeinformacion3.add(espacioenblanco).height(37);
+   	//Las materias primas
+   	crearTabla(tabledeinformacion2mes, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion);
+    //AÑO
+   	tabledeinformacion2ano.row();
+   	tabledeinformacion2ano.add(espacioenblanco).height(37);
    	
    	//Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   	
+   	escribirFilaTabla(tabledeinformacion2ano, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
    			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion2);
+   			espacioentrefilastablainformacion);
    	
-    //Espadas
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			0,1,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,0,5,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Hachas
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			1,2,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,5,10,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Arcos
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			2,3,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,10,15,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-   
-    //Lanzas
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			3,4,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,15,20,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Mazos
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			4,5,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,20,25,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Cetros
-   	escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			5,6,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,25,30,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Armaduras cuero
-    escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			6,7,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,30,35,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-    //Armaduras hierro
-    escribirFilaTabla(tabledeinformacion3, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,
-   			7,8,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,35,40,null,anchocolumnassubtabla2,
-   			anchoprimeracolumna,estilolabel,espacioentrefilastablainformacion2);
-   
+   	//Las materias primas
+   	crearTabla(tabledeinformacion2ano, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion);
+   	//TOTAL
+   	tabledeinformacion2total.row();
+   	tabledeinformacion2total.add(espacioenblanco).height(37);
    	
+   	//Nombres de las columnas
    	
-    //La tabla de información 4 (Artesanía)
-    tabledeinformacion4.row();
-   	tabledeinformacion4.add(espacioenblanco).height(37);
-   	
-   	escribirFilaTabla(tabledeinformacion4, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+   	escribirFilaTabla(tabledeinformacion2total, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
    			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion2);
+   			espacioentrefilastablainformacion);
    	
+   	//Las materias primas
+   	crearTabla(tabledeinformacion2total, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
+   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
+   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
+   			espacioentrefilastablainformacion);
    	
-    //La tabla de información 5 (Bienes de lujo)
-    tabledeinformacion5.row();
-   	tabledeinformacion5.add(espacioenblanco).height(37);
-   	
-   	escribirFilaTabla(tabledeinformacion5, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion2);
-   	
-   	
+   	//Las tablas de información de Armas
+   	//MES
+    
+    //Las tablas de información de Artesanía
+    //Las tablas de información de Bienes de lujo
+    
    
     //La tabla de almacenes
     
@@ -508,6 +580,25 @@ public class MenuAlmacen extends MenuAbstracto{
     
     
  }  
+
+protected void cambiarplazo(){
+
+//Si el plazo es el total, cambiamos a plazo mensual	
+if (plazo==2){
+plazo=0;
+}
+//De otro modo, avanzamos el plazo, de mensual a anual, de anual a total
+else{plazo++;
+};
+//Si el plazo es mensual
+if (plazo==0)
+{BotonPlazo.setText("Mes");}
+//Si el plazo es anual
+else if (plazo==1){BotonPlazo.setText("Año");}
+//Si el plazo es total
+else if (plazo==2){BotonPlazo.setText("Total");};
+}
+	
 
 public void act(float deltatime){
 	scrollpanealmacenes.act(deltatime);
