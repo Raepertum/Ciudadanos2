@@ -89,6 +89,8 @@ public class Logica extends InputAdapter implements InputProcessor{
 		
 		recogereventosdeteclado();
 		tiempotranscurrido=(TimeUtils.millis()-tiempoinicial)/1000;
+		//Provisional
+		actualizarvariables(delta);
 		actualizarestaciones();
 		actualizarcamposdecultivo();
 		actualizarmenus(delta);
@@ -97,6 +99,9 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public void actualizarmenus(float delta){
 		contenedorhud.act(delta);
 	};
+	public void actualizarvariables(float delta){
+		Variablesdejuego.variablesdejuego.actualizar();
+	}
 	
 	public void actualizarestaciones(){
 		

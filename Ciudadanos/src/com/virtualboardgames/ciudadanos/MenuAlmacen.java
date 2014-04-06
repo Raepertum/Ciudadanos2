@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Array;
 
 public class MenuAlmacen extends MenuAbstracto{
 	
@@ -71,11 +72,9 @@ public class MenuAlmacen extends MenuAbstracto{
 	Image fondomenualmacen;
 	Image iconoalmacen;
 	
-	//Arrays de labels que contienen texto
-	Label[] arraydelabelsstring;
-	
 	//Array de labels que contienen variables
-	Label[] arraydelabelsvars;
+	//Label[] arraydelabelsintsalmacen;
+	Array <Label> arraydelabelsintsalmacen;
 		
 	//Estilos: Para no tener que estar escribiendo desde el principio
 	LabelStyle estilolabel;
@@ -115,6 +114,9 @@ public class MenuAlmacen extends MenuAbstracto{
   	int plazo;
 	
 	public MenuAlmacen(){
+		
+	//El array de labels
+	arraydelabelsintsalmacen = new Array<Label>(375);
 		
     //Creamos las nuevas tables	
 	tabledefondo = new Table();
@@ -250,9 +252,6 @@ public class MenuAlmacen extends MenuAbstracto{
   	//Creamos el scroll pane para la tabla de almacenes
   	scrollpanealmacenes = new ScrollPane(tabledescrollpanealmacenes, estiloscrollpane);
   	
-    //El array de labels
-    arraydelabelsstring = new Label[64];
-   
     //Las tablas
     
     //Empezamos por arriba a la izquierda, y establecemos los márgenes
@@ -429,7 +428,7 @@ public class MenuAlmacen extends MenuAbstracto{
         }
     });
     
-   	
+   
     //Los labels de la tabla de información   
     
     //Las tablas de información de Alimentos
@@ -437,41 +436,61 @@ public class MenuAlmacen extends MenuAbstracto{
     crearTablaMesAnoResto(tabledeinformacion1mes, tabledeinformacion1ano, 
     		tabledeinformacion1total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-    		0, 5, Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
-    		null,anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
+    		0, 5, Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal,
+    		arraydelabelsintsalmacen,anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
     		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos, 
-    		6, 6);
+    		5, 6);
+    
     		
     //Las tablas de información de Materias Primas
     
     crearTablaMesAnoResto(tabledeinformacion2mes, tabledeinformacion2ano, 
     		tabledeinformacion2total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
-    		null,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal,
+    		arraydelabelsintsalmacen,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
     		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas, 
-    		10, 6);
+    		8, 5);
     		
     //Las tablas de información de Armas
    	
     crearTablaMesAnoResto(tabledeinformacion3mes, tabledeinformacion3ano, 
     		tabledeinformacion3total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
-    		null,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal,
+    		arraydelabelsintsalmacen,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
     		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas, 
-    		8, 6);
+    		7, 5);
     
-   	
-    //Las tablas de información de Artesanía
+   	//Las tablas de información de Artesanía
+    
+    crearTablaMesAnoResto(tabledeinformacion4mes, tabledeinformacion4ano, 
+    		tabledeinformacion4total, espacioenblanco, alturaespacioenblanco, 
+    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal,
+    		arraydelabelsintsalmacen,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania, 
+    		5, 5);
    	
    	//Las tablas de información de Bienes de lujo
+    
+    crearTablaMesAnoResto(tabledeinformacion5mes, tabledeinformacion5ano, 
+    		tabledeinformacion5total, espacioenblanco, alturaespacioenblanco, 
+    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal,
+    		arraydelabelsintsalmacen,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo, 
+    		5, 5);
     
    
     //La tabla de almacenes
@@ -569,6 +588,31 @@ for (int i = 0; i<5; i++){
 
 public void act(float deltatime){
 	scrollpanealmacenes.act(deltatime);
+	for (int i = 0; i<25; i++){
+		arraydelabelsintsalmacen.get(i).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes[i]);
+		arraydelabelsintsalmacen.get(i+25).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano[i]);
+		arraydelabelsintsalmacen.get(i+50).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal[i]);
 }
+	for (int i = 0; i<32; i++){	
+		arraydelabelsintsalmacen.get(i+75).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes[i]);
+		arraydelabelsintsalmacen.get(i+107).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano[i]);
+		arraydelabelsintsalmacen.get(i+139).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal[i]);
+	}
+	for (int i = 0; i<28; i++){	
+		arraydelabelsintsalmacen.get(i+171).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes[i]);
+		arraydelabelsintsalmacen.get(i+199).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano[i]);
+		arraydelabelsintsalmacen.get(i+227).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal[i]);
+	}
+	for (int i = 0; i<20; i++){	
+		arraydelabelsintsalmacen.get(i+255).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames[i]);
+		arraydelabelsintsalmacen.get(i+275).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano[i]);
+		arraydelabelsintsalmacen.get(i+295).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal[i]);
+	}
+	for (int i = 0; i<20; i++){	
+		arraydelabelsintsalmacen.get(i+315).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes[i]);
+		arraydelabelsintsalmacen.get(i+335).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano[i]);
+		arraydelabelsintsalmacen.get(i+355).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal[i]);
+	}
 	
 }
+};

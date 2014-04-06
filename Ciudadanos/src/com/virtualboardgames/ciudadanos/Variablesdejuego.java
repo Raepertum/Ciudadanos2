@@ -34,15 +34,25 @@ String[] nombreslabelsalmacencaducables;
 String[] nombreslabelsalmacennocaducables;
 
 String [] stringsdealmacenalimentos;
-int[] intsdealmacenalimentos;
+int[] intsdealmacenalimentosmes;
+int[] intsdealmacenalimentosano;
+int[] intsdealmacenalimentostotal;
 String [] stringsdealmacenmatprimas;
-int[] intsdealmacenmatprimas;
+int[] intsdealmacenmatprimasmes;
+int[] intsdealmacenmatprimasano;
+int[] intsdealmacenmatprimastotal;
 String [] stringsdealmacenarmas;
-int[] intsdealmacenarmas;
+int[] intsdealmacenarmasmes;
+int[] intsdealmacenarmasano;
+int[] intsdealmacenarmastotal;
 String [] stringsdealmacenartesania;
-int[] intsdealmacenartesania;
+int[] intsdealmacenartesaniames;
+int[] intsdealmacenartesaniaano;
+int[] intsdealmacenartesaniatotal;
 String [] stringsdealmacenbieneslujo;
-int[] intsdealmacenbieneslujo;
+int[] intsdealmacenbieneslujomes;
+int[] intsdealmacenbieneslujoano;
+int[] intsdealmacenbieneslujototal;
 	
 
 //Trigo en almacén (8 cada una: PM, GM, NM, PA, GA, NA, RE, CP)
@@ -97,9 +107,17 @@ public Almacen(){
 	stringsdealmacenalimentos[4] = "Pescado";
 	stringsdealmacenalimentos[5] = "Miel";
 	
-	intsdealmacenalimentos = new int[48];
-	for (int i=0; i<48; i++){
-		intsdealmacenalimentos[i] = 0;
+	intsdealmacenalimentosmes = new int[25];
+	for (int i=0; i<25; i++){
+		intsdealmacenalimentosmes[i] = 0;
+	}
+	intsdealmacenalimentosano = new int[25];
+	for (int i=0; i<25; i++){
+		intsdealmacenalimentosano[i] = 1;
+	}
+	intsdealmacenalimentostotal = new int[25];
+	for (int i=0; i<25; i++){
+		intsdealmacenalimentostotal[i] = 2;
 	}
 	
 	//Materias Primas
@@ -115,9 +133,17 @@ public Almacen(){
 	stringsdealmacenmatprimas[8] = "Mercurio";
 	stringsdealmacenmatprimas[9] = "Azufre";
 	
-	intsdealmacenmatprimas = new int[70];
-	for (int i=0; i<70; i++){
-		intsdealmacenmatprimas[i] = 0;
+	intsdealmacenmatprimasmes = new int[32];
+	for (int i=0; i<32; i++){
+		intsdealmacenmatprimasmes[i] = 3;
+	}
+	intsdealmacenmatprimasano = new int[32];
+	for (int i=0; i<32; i++){
+		intsdealmacenmatprimasano[i] = 2;
+	}
+	intsdealmacenmatprimastotal = new int[32];
+	for (int i=0; i<32; i++){
+		intsdealmacenmatprimastotal[i] = 99;
 	}
 	//Armas
 	stringsdealmacenarmas = new String[8];
@@ -130,20 +156,67 @@ public Almacen(){
 	stringsdealmacenarmas[6] = "Armad. cuero";
 	stringsdealmacenarmas[7] = "Armad. hierro";
 	
-	intsdealmacenarmas = new int[64];
-	for (int i=0; i<64; i++){
-		intsdealmacenarmas[i] = 0;
+	intsdealmacenarmasmes = new int[28];
+	for (int i=0; i<28; i++){
+		intsdealmacenarmasmes[i] = 0;
+	}
+	intsdealmacenarmasano = new int[28];
+	for (int i=0; i<28; i++){
+		intsdealmacenarmasano[i] = 0;
+	}
+	intsdealmacenarmastotal = new int[28];
+	for (int i=0; i<28; i++){
+		intsdealmacenarmastotal[i] = 0;
 	}
 	
 	//Artesanía
+	stringsdealmacenartesania = new String[5];
+	stringsdealmacenartesania[0] = "Ropa";
+	stringsdealmacenartesania[1] = "Alfarería";
+	stringsdealmacenartesania[2] = "Cristalería";
+	stringsdealmacenartesania[3] = "Herramientas";
+	stringsdealmacenartesania[4] = "Instrumentos";
+    
+    intsdealmacenartesaniames = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenartesaniames[i] = 0;
+	}
+	intsdealmacenartesaniaano = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenartesaniaano[i] = 0;
+	}
+	intsdealmacenartesaniatotal = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenartesaniatotal[i] = 0;
+	}
+    
 	
 	//Bienes de lujo
-	
-	
-	
+	stringsdealmacenbieneslujo = new String[5];
+	stringsdealmacenbieneslujo[0] = "Joyería";
+	stringsdealmacenbieneslujo[1] = "Marfil";
+	stringsdealmacenbieneslujo[2] = "Seda";
+	stringsdealmacenbieneslujo[3] = "Especias";
+	stringsdealmacenbieneslujo[4] = "Armas expo.";
+    
+    intsdealmacenbieneslujomes = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenbieneslujomes[i] = 0;
+	}
+	intsdealmacenbieneslujoano = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenbieneslujoano[i] = 0;
+	}
+	intsdealmacenbieneslujototal = new int[20];
+	for (int i=0; i<20; i++){
+		intsdealmacenbieneslujototal[i] = 0;
+	}
+    
 }
 
-
+public void Actualizaralmacen(){
+//Debería servir para actualizar, aunque sólo se está usando para hacer pruebas	
+};
 
 }
 
@@ -157,6 +230,8 @@ public class Comercio{
 
 	public Comercio(){
 		
+		
+		//CAMBIARLO TOTALMENTE
 		stringsdecomercio = new String[17];
 		stringsdecomercio[0] = "Comercio";
 		stringsdecomercio[1] = "";
@@ -224,6 +299,10 @@ public void iniciar(){
 
 	
 };
+
+public void actualizar(){
+	this.almacen.Actualizaralmacen();
+}
 
 	
 	
