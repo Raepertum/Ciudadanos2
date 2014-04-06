@@ -112,8 +112,24 @@ public class MenuAlmacen extends MenuAbstracto{
 	//La int para cambiar el plazo
     //Plazo (0=mes, 1=año, 2=resto)
   	int plazo;
+  	
+  	//PRUEBA
+  	Opciones opciones;
+  	
 	
 	public MenuAlmacen(){
+		
+	//PRUEBA
+	String[] arraydetextosdeopciones = new String[3];
+	arraydetextosdeopciones[0]="1";
+	arraydetextosdeopciones[1]="2";
+	arraydetextosdeopciones[2]="3";
+	int[] codigodeefectos = new int[3];
+	codigodeefectos[0] = 1;
+	codigodeefectos[1] = 2;
+	codigodeefectos[2] = 3;
+	opciones = new Opciones(arraydetextosdeopciones, codigodeefectos, null);
+		
 		
 	//El array de labels
 	arraydelabelsintsalmacen = new Array<Label>(375);
@@ -314,6 +330,11 @@ public class MenuAlmacen extends MenuAbstracto{
    	tabledebotones.add(Informacion).padLeft(50);
     tabledebotones.add(Almacenes).padLeft(50);
     tabledebotones.add(Ordenes).padLeft(50);
+    
+    
+    //PRUEBA
+   	tabledebotones.add(opciones);
+   	
         
     //Las funciones de los botones de la table de botones
     Informacion.addListener(new ClickListener() {
@@ -353,9 +374,9 @@ public class MenuAlmacen extends MenuAbstracto{
     //Empezamos por la izquierda
    	tabledeinformacion.left();
    	
+   	
    	//Los botones de la table de Información
-   	tabledebotonesinformacion.left();
-   	tabledebotonesinformacion.add(BotonPlazo).padLeft(20);
+    tabledebotonesinformacion.add(BotonPlazo).padLeft(20);
    	tabledebotonesinformacion.add(Alimentos).padLeft(60);
    	tabledebotonesinformacion.add(MatPrimas).padLeft(20);
    	tabledebotonesinformacion.add(Armas).padLeft(20);

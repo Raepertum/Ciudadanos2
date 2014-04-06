@@ -39,7 +39,9 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	//Para crear el reloj
 	long tiempoinicial;
-	long tiempotranscurrido;
+	long tiempotranscurridoensegundos;
+	int tiempotranscurridoenminutos;
+	int tiempotranscurridoenhoras;
 	long ultimotiempo;
 	int tiempoentreestaciones = 100;
 	int agno=1;
@@ -74,7 +76,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 		
 		//El reloj
 		tiempoinicial=TimeUtils.millis();
-		ultimotiempo=tiempotranscurrido=(TimeUtils.millis()-tiempoinicial)/1000;
+		ultimotiempo=tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
 		
 		//Añadir tanto la stage como la propia lógica al marco de eventos
 		marcodeeventos.addProcessor(this);
@@ -88,7 +90,10 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public void actualizar(float delta){
 		
 		recogereventosdeteclado();
-		tiempotranscurrido=(TimeUtils.millis()-tiempoinicial)/1000;
+		tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
+		tiempotranscurridoenminutos=(int)Math.abs((float)tiempotranscurridoensegundos/60);
+		tiempotranscurridoenhoras=(int)tiempotranscurridoenminutos/60;
+		
 		//Provisional
 		actualizarvariables(delta);
 		actualizarestaciones();
@@ -97,6 +102,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 	};
 	
 	public void actualizarmenus(float delta){
+		contenedorhud.actualizartiempo((int)tiempotranscurridoensegundos,tiempotranscurridoenminutos,tiempotranscurridoenhoras);
 		contenedorhud.act(delta);
 	};
 	public void actualizarvariables(float delta){
@@ -105,20 +111,20 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	public void actualizarestaciones(){
 		
-		if((int)((tiempotranscurrido-ultimotiempo)/tiempoentreestaciones)==0){
+		if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==0){
 			estacion="primavera";
 		}
-		else if((int)((tiempotranscurrido-ultimotiempo)/tiempoentreestaciones)==1){
+		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==1){
 			estacion="verano";
 		}
-		else if((int)((tiempotranscurrido-ultimotiempo)/tiempoentreestaciones)==2){
+		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==2){
 			estacion="otoño";
 		}
-		else if((int)((tiempotranscurrido-ultimotiempo)/tiempoentreestaciones)==3){
+		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==3){
 			estacion="invierno";
 		}
-		else if((int)((tiempotranscurrido-ultimotiempo)/tiempoentreestaciones)>3){
-			ultimotiempo=tiempotranscurrido;
+		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)>3){
+			ultimotiempo=tiempotranscurridoensegundos;
 			agno+=1;
 		}
 		
