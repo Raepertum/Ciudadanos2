@@ -108,6 +108,7 @@ public class MenuAlmacen extends MenuAbstracto{
 	int anchocolumnassubtabla2 = 160;
 	int espacioentrefilastablainformacion = 37;
 	int anchoprimeracolumna = 100;
+	int alturaespacioenblanco = 37;
 	
 	//La int para cambiar el plazo
     //Plazo (0=mes, 1=año, 2=resto)
@@ -432,97 +433,45 @@ public class MenuAlmacen extends MenuAbstracto{
     //Los labels de la tabla de información   
     
     //Las tablas de información de Alimentos
-    //MES
-    tabledeinformacion1mes.row();
-    tabledeinformacion1mes.add(espacioenblanco).height(37);
-    //Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion1mes, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-   			0,5,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
-   	//Los alimentos
-   	crearTabla(tabledeinformacion1mes, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	//AÑO
-    tabledeinformacion1ano.row();
-    tabledeinformacion1ano.add(espacioenblanco).height(37);
-    //Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion1ano, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-   			5,10,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
-   	//Los alimentos
-   	crearTabla(tabledeinformacion1ano, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
-   	//TOTAL
-    tabledeinformacion1total.row();
-    tabledeinformacion1total.add(espacioenblanco).height(37);
-    //Nombres de las columnas
-   	escribirFilaTabla(tabledeinformacion1total, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-   			10,15,null,0,0,null,anchocolumnassubtabla1,anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
-   	//Los alimentos
-   	crearTabla(tabledeinformacion1total, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos, 6, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
     
+    crearTablaMesAnoResto(tabledeinformacion1mes, tabledeinformacion1ano, 
+    		tabledeinformacion1total, espacioenblanco, alturaespacioenblanco, 
+    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
+    		0, 5, Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentos,
+    		null,anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
+    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos, 
+    		6, 6);
+    		
     //Las tablas de información de Materias Primas
-    //MES
-    tabledeinformacion2mes.row();
-   	tabledeinformacion2mes.add(espacioenblanco).height(37);
-   	
-   	//Nombres de las columnas
-   	
-   	escribirFilaTabla(tabledeinformacion2mes, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			0,4,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
-   	//Las materias primas
-   	crearTabla(tabledeinformacion2mes, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-    //AÑO
-   	tabledeinformacion2ano.row();
-   	tabledeinformacion2ano.add(espacioenblanco).height(37);
-   	
-   	//Nombres de las columnas
-   	
-   	escribirFilaTabla(tabledeinformacion2ano, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			4,8,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
-   	//Las materias primas
-   	crearTabla(tabledeinformacion2ano, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	//TOTAL
-   	tabledeinformacion2total.row();
-   	tabledeinformacion2total.add(espacioenblanco).height(37);
-   	
-   	//Nombres de las columnas
-   	
-   	escribirFilaTabla(tabledeinformacion2total, Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-   			8,12,null,0,0,null,anchocolumnassubtabla2,anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
-   	//Las materias primas
-   	crearTabla(tabledeinformacion2total, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,
-   			Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas, 10, 6,
-   			null, anchocolumnassubtabla1, anchoprimeracolumna,estilolabel, 
-   			espacioentrefilastablainformacion);
-   	
-   	//Las tablas de información de Armas
-   	//MES
     
+    crearTablaMesAnoResto(tabledeinformacion2mes, tabledeinformacion2ano, 
+    		tabledeinformacion2total, espacioenblanco, alturaespacioenblanco, 
+    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimas,
+    		null,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas, 
+    		10, 6);
+    		
+    //Las tablas de información de Armas
+   	
+    crearTablaMesAnoResto(tabledeinformacion3mes, tabledeinformacion3ano, 
+    		tabledeinformacion3total, espacioenblanco, alturaespacioenblanco, 
+    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
+    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
+    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmas,
+    		null,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
+    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas, 
+    		8, 6);
+    
+   	
     //Las tablas de información de Artesanía
-    //Las tablas de información de Bienes de lujo
+   	
+   	//Las tablas de información de Bienes de lujo
     
    
     //La tabla de almacenes

@@ -57,6 +57,41 @@ public void crearTabla(Table tableenlaquepongolafila, String primeraarray[],
 };
 }
 
+public void crearTablaMesAnoResto(Table tablemes, Table tableano, Table tabletotal,
+		Label espacioenblanco, int alturaespacioenblanco, String[] nombrecolumnas,
+		int rangoinferiornom, int rangosuperiornom, int[] intsdelatablames,
+		int[]intsdelatablaano, int[] intsdelatablatotal, Label[] arraydealmacenamientodeints, int anchocolumnas,
+		int anchoprimeracolumna, LabelStyle estilolabel, int espacioentrefilas,
+		String[] nombredelasfilas, int numerodefilas, int numerodecolumnas)
+		{
+	//MES
+	tablemes.row();
+	tablemes.add(espacioenblanco).height(alturaespacioenblanco);
+	escribirFilaTabla(tablemes, nombrecolumnas, rangoinferiornom, rangosuperiornom,
+	    null,0,0, arraydealmacenamientodeints, anchocolumnas,anchoprimeracolumna, estilolabel,espacioentrefilas);
+	crearTabla(tablemes, nombredelasfilas, intsdelatablames, numerodefilas, numerodecolumnas,
+   			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
+   			estilolabel,espacioentrefilas);
+	//AÑO
+	tableano.row();
+	tableano.add(espacioenblanco).height(alturaespacioenblanco);
+	escribirFilaTabla(tableano, nombrecolumnas, rangoinferiornom+rangosuperiornom, 
+			rangosuperiornom*2, null,0,0, arraydealmacenamientodeints, anchocolumnas,
+			anchoprimeracolumna, estilolabel,espacioentrefilas);
+	crearTabla(tableano, nombredelasfilas, intsdelatablaano, numerodefilas, numerodecolumnas,
+   			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
+   			estilolabel,espacioentrefilas);
+	//TOTAL
+	tabletotal.row();
+	tabletotal.add(espacioenblanco).height(alturaespacioenblanco);
+	escribirFilaTabla(tabletotal, nombrecolumnas, rangoinferiornom+2*rangosuperiornom, 
+			rangosuperiornom*3, null,0,0, arraydealmacenamientodeints, anchocolumnas,
+			anchoprimeracolumna, estilolabel, espacioentrefilas);
+	crearTabla(tabletotal, nombredelasfilas, intsdelatablatotal, numerodefilas, numerodecolumnas,
+   			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
+   			estilolabel,espacioentrefilas);
+	}
+
 
 
 

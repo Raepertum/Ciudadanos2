@@ -74,7 +74,7 @@ public Almacen(){
 	nombreslabelsalmacencaducables[14] = "Reservas";
 	
 	//Labels de almacén de productos que no caducan
-	nombreslabelsalmacennocaducables = new String[15];
+	nombreslabelsalmacennocaducables = new String[12];
 	nombreslabelsalmacennocaducables[0] = "Producción mes"; 
 	nombreslabelsalmacennocaducables[1] = "Gasto mes";
 	nombreslabelsalmacennocaducables[2] = "Neto mes";
