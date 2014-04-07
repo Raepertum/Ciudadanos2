@@ -1,26 +1,41 @@
 package com.virtualboardgames.ciudadanos;
 
-//Aspecto Lógico
-//Lógicamente hay que atener a los tipos
-//¿Es de las que dan opciones o es sólo un aviso al que hay que darle "ok"?
-//Si es de las que dan opciones ¿Hay opciones que están condicionadas según cómo estén tus variables?
-//Se necesitan dos arrays por cada opción: La primera contiene las variables que se van a modificar
-//La segunda contiene los modificadores (-1,+1,3)
-//¿Puede ser opción una clase interna?
-
-
-//Aspecto Gráfico
-//Gráficamente es una tabla
-//Con un fondo
-//Una imagen
-//Un texto
-//Y las opciones
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 
 public class Evento {
 	
-	public Evento(Opciones arraydeopciones[]){
+	Table tabledeevento;
+	Stage contexto;
+	
+	public Evento(Opcion[] arraydeopciones, Stage contexto){
+		//Crear el evento
+		//El contexto
+		this.contexto = contexto;
+		//Table
+		tabledeevento = new Table();
+		//Dibujo
+		
+		//Opciones (Botones creados a partir de las opciones)
+		for(int i=0;i<arraydeopciones.length;i++){
+			tabledeevento.add(arraydeopciones[i]);
+		};
+				
 		
 	};
+	
+	public void ejecutarevento(){
+		
+		
+		System.out.println("Añadimos la tabla del evento");
+		
+		//Mostrar evento en pantalla, añadiéndolo a la stage
+		contexto.addActor(tabledeevento);
+		
+		//Subir el contador de eventos
+		
+		
+	}
 
 }

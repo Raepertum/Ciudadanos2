@@ -36,6 +36,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public Torre torre;
     public Array <Tierra> tierras;
 	public Contenedorhud contenedorhud;
+	public Generadordeeventos generadordeeventos;
 	
 	//Para crear el reloj
 	long tiempoinicial;
@@ -78,6 +79,25 @@ public class Logica extends InputAdapter implements InputProcessor{
 		tiempoinicial=TimeUtils.millis();
 		ultimotiempo=tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
 		
+		//El generador de eventos (Esta vez lo instanciamos con códigos
+		//predefinidos, más adelante los eventos posibles dependerán del nivel
+		//Se cargaría el Generador de eventos con una array, extraída de la clase
+		//"Colección" de eventos
+		
+		Evento[] arraydepruebadeeventos = new Evento[2];
+		Opcion[] arraydeopciones = new Opcion[3];
+		Opcion opcion1 = new Opcion("Opcion 1", 1);
+		Opcion opcion2 = new Opcion("Opcion 2", 10);
+		Opcion opcion3 = new Opcion("Opcion 3", 100);
+		arraydeopciones[0] = opcion1;
+		arraydeopciones[1] = opcion2;
+		arraydeopciones[2] = opcion3;
+		
+		Evento evento = new Evento(arraydeopciones, contenedorhud.contenedordeactores);
+		arraydepruebadeeventos[1] = evento;
+				
+		generadordeeventos = new Generadordeeventos(contenedorhud, arraydepruebadeeventos);
+		
 		//Añadir tanto la stage como la propia lógica al marco de eventos
 		marcodeeventos.addProcessor(this);
 		marcodeeventos.addProcessor(contenedorhud.contenedordeactores);
@@ -99,6 +119,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 		actualizarestaciones();
 		actualizarcamposdecultivo();
 		actualizarmenus(delta);
+		actualizargeneradordeeventos();
 	};
 	
 	public void actualizarmenus(float delta){
@@ -129,6 +150,12 @@ public class Logica extends InputAdapter implements InputProcessor{
 		}
 		
 	};
+	
+	public void actualizargeneradordeeventos(){
+		
+		generadordeeventos.actualizar(tiempotranscurridoenminutos);
+		
+	}
 	
 	public void actualizarcamposdecultivo(){
 		for(Tierra tierra:tierras){

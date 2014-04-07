@@ -113,11 +113,7 @@ public class MenuAlmacen extends MenuAbstracto{
     //Plazo (0=mes, 1=año, 2=resto)
   	int plazo;
   	
-  	//PRUEBA
-  	Opciones opciones;
-  	
-	
-	public MenuAlmacen(){
+  	public MenuAlmacen(){
 		
 	//PRUEBA
 	String[] arraydetextosdeopciones = new String[3];
@@ -128,7 +124,6 @@ public class MenuAlmacen extends MenuAbstracto{
 	codigodeefectos[0] = 1;
 	codigodeefectos[1] = 2;
 	codigodeefectos[2] = 3;
-	opciones = new Opciones(arraydetextosdeopciones, codigodeefectos, null);
 		
 		
 	//El array de labels
@@ -331,11 +326,6 @@ public class MenuAlmacen extends MenuAbstracto{
     tabledebotones.add(Almacenes).padLeft(50);
     tabledebotones.add(Ordenes).padLeft(50);
     
-    
-    //PRUEBA
-   	tabledebotones.add(opciones);
-   	
-        
     //Las funciones de los botones de la table de botones
     Informacion.addListener(new ClickListener() {
         public void clicked(InputEvent event, float x, float y) {
