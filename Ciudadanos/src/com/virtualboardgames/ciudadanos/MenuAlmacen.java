@@ -115,17 +115,6 @@ public class MenuAlmacen extends MenuAbstracto{
   	
   	public MenuAlmacen(){
 		
-	//PRUEBA
-	String[] arraydetextosdeopciones = new String[3];
-	arraydetextosdeopciones[0]="1";
-	arraydetextosdeopciones[1]="2";
-	arraydetextosdeopciones[2]="3";
-	int[] codigodeefectos = new int[3];
-	codigodeefectos[0] = 1;
-	codigodeefectos[1] = 2;
-	codigodeefectos[2] = 3;
-		
-		
 	//El array de labels
 	arraydelabelsintsalmacen = new Array<Label>(375);
 		
@@ -269,13 +258,12 @@ public class MenuAlmacen extends MenuAbstracto{
    	
     //Table de fondo
     tabledefondo.left().top();
-    tabledefondo.padLeft(20);
     tabledefondo.padTop(20);
     
     //Table de información
     tabledeinformacion.left().top();
-   	tabledeinformacion.padLeft(20);
-   	tabledeinformacion.padTop(20);
+   	tabledeinformacion.padLeft(30);
+   	tabledeinformacion.padTop(60);
    	
    	//Table de botones información
     tabledebotonesinformacion.left().top();
@@ -294,9 +282,7 @@ public class MenuAlmacen extends MenuAbstracto{
    	tabledeordenes.setVisible(false);
    	
    	//Tabla de título y botones
-   	tabledebotones.left().top();
-   	tabledebotones.padLeft(60);
-   	tabledebotones.padTop(60);
+   	tabledebotones.padTop(20);
    	
    	//Subtablas de información
    	tabledeinformacion1mes.left().top().padLeft(0).padTop(90);
@@ -321,8 +307,12 @@ public class MenuAlmacen extends MenuAbstracto{
    
     //La tabla de botones
     //Los botones de la table de botones
+   	tabledebotones.center().top();
+   	tabledebotones.add(espacioenblanco);
    	tabledebotones.add(titulo);
-   	tabledebotones.add(Informacion).padLeft(50);
+   	tabledebotones.add(espacioenblanco);
+   	tabledebotones.row();
+   	tabledebotones.add(Informacion);
     tabledebotones.add(Almacenes).padLeft(50);
     tabledebotones.add(Ordenes).padLeft(50);
     

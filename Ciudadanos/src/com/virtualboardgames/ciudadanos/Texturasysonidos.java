@@ -99,10 +99,16 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     	
     	//Necesitas dos variables por cada estado de un widget, la texture region y la texture region drawable
     	public TextureRegion textureregionbotonarriba;
+    	public TextureRegion textureregionbotonsobre;
+    	public TextureRegion textureregionbotonabajo;
     	private TextureRegionDrawable textureregiondrawablebotonarriba;
+    	private TextureRegionDrawable textureregiondrawablebotonsobre;
+    	private TextureRegionDrawable textureregiondrawablebotonabajo;
+    	
     	
     	//Las imágenes que se emplean para los fondos de los menús
     	public TextureRegion fondoMenuAlmacen;
+    	public TextureRegion fondoEvento;
     	
     	//Las imágenes que se emplean dentro de los menús
     	public TextureRegion edificioalmacenmenu;
@@ -124,23 +130,30 @@ public class Texturasysonidos implements Disposable, AssetErrorListener{
     		
     		//Para los fondos
     		fondoMenuAlmacen = skindelgui.get("fondomenualmacen", TextureRegion.class);
+    		fondoEvento = skindelgui.get("fondoevento", TextureRegion.class);
     		
     		//Para las imágenes que se emplean dentro de los menús
     		edificioalmacenmenu = skindelgui.get("EdificioAlmacen", TextureRegion.class);
     		
     		//Para los widget tipo botón
     		//Necesitas una textureregion
-    		textureregionbotonarriba = skindelgui.get("botonpresionado",TextureRegion.class);
+    		textureregionbotonarriba = skindelgui.get("botonnopresionado",TextureRegion.class);
+    		textureregionbotonsobre = skindelgui.get("botonsobre",TextureRegion.class);
+    		textureregionbotonabajo = skindelgui.get("botonpresionado",TextureRegion.class);
     		
     		//Necesitas una textureregiondrawable
     		textureregiondrawablebotonarriba = new TextureRegionDrawable(textureregionbotonarriba);
-    				
+    		textureregiondrawablebotonsobre = new TextureRegionDrawable(textureregionbotonsobre);    		
+    		textureregiondrawablebotonabajo = new TextureRegionDrawable(textureregionbotonabajo);
+    		    		
     		//Definir el estilo del label
     		estilolabeldefault.font = skindelgui.getFont("arial-15");
     		   		
     		//Definir el estilo del botón
     		estilobotondefault.font = skindelgui.getFont("arial-15");
     		estilobotondefault.up = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonarriba));
+    		estilobotondefault.over = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonsobre));
+    		estilobotondefault.down = skindelgui.newDrawable(skindelgui.newDrawable(textureregiondrawablebotonabajo));
     		
     		//Definir el estilo del scrollpane
     		estiloscrollpanedefault.background = estilobotondefault.up;

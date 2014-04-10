@@ -26,6 +26,7 @@ public class Contenedorhud {
 		contenedordeactores = new Stage(800,600,true);
 		
 		reloj = new Label(""+horas+":"+minutos+":"+segundos,Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault);
+		reloj.setY(40);
 		contenedordeactores.addActor(reloj);
 		
 		botondeeventos = new Botondeeventos(contenedordeactores);

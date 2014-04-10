@@ -88,7 +88,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 		Opcion[] arraydeopciones = new Opcion[3];
 		Opcion opcion1 = new Opcion("Opcion 1", 1);
 		Opcion opcion2 = new Opcion("Opcion 2", 10);
-		Opcion opcion3 = new Opcion("Opcion 3", 100);
+		Opcion opcion3 = new Opcion("Opcion 3", 20);
 		arraydeopciones[0] = opcion1;
 		arraydeopciones[1] = opcion2;
 		arraydeopciones[2] = opcion3;
