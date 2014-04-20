@@ -84,16 +84,33 @@ public class Logica extends InputAdapter implements InputProcessor{
 		//Se cargaría el Generador de eventos con una array, extraída de la clase
 		//"Colección" de eventos
 		
+		//PRUEBA
+		String textoEvento = "Unos campesinos quieren ocupar uno de tus campos y cultivarlo" +
+				". A cambio se comprometen a ofrecerte la mitad de sus cosechas.";
 		Evento[] arraydepruebadeeventos = new Evento[2];
-		Opcion[] arraydeopciones = new Opcion[3];
-		Opcion opcion1 = new Opcion("Opcion 1", 1);
-		Opcion opcion2 = new Opcion("Opcion 2", 10);
-		Opcion opcion3 = new Opcion("Opcion 3", 20);
+		Opcion[] arraydeopciones = new Opcion[5];
+		Opcion opcion1 = new Opcion("a) En un acto de infinita gracia, les concedes lo que piden sin" +
+				"exigirles nada a cambio.", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,0,100,50);
+		Opcion opcion2 = new Opcion("b) Con la cuarta parte bastará, pero que no olviden tu magnanimidad.", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,10,100,50); 
+		Opcion opcion3 =new Opcion("c) Accedes a que se instalen en tus tierras a cambio de la mitad de sus" +
+				" cosechas, tal y como proponen.", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,20,100,50);
+		Opcion opcion4 =new Opcion("d) La mitad no es suficiente. Exiges las tres cuartas partes de lo que" +
+				"produzcan.", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,30,100,50);
+		Opcion opcion5 = new Opcion("e) Junto con las tres cuartas partes de la cosecha, te ofrecerán una" +
+				"vez al año el sacrificio de un niño pequeño o sufrirán las consecuencias.", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,40,100,50);
+				
 		arraydeopciones[0] = opcion1;
 		arraydeopciones[1] = opcion2;
 		arraydeopciones[2] = opcion3;
+		arraydeopciones[3] = opcion4;
+		arraydeopciones[4] = opcion5;
 		
-		Evento evento = new Evento(arraydeopciones, contenedorhud.contenedordeactores);
+		Evento evento = new Evento(textoEvento, arraydeopciones, contenedorhud.contenedordeactores);
 		arraydepruebadeeventos[1] = evento;
 				
 		generadordeeventos = new Generadordeeventos(contenedorhud, arraydepruebadeeventos);
@@ -110,7 +127,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public void actualizar(float delta){
 		
 		recogereventosdeteclado();
-		tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
+		tiempotranscurridoensegundos=(int)(TimeUtils.millis()-tiempoinicial)/1000;
 		tiempotranscurridoenminutos=(int)Math.abs((float)tiempotranscurridoensegundos/60);
 		tiempotranscurridoenhoras=(int)tiempotranscurridoenminutos/60;
 		

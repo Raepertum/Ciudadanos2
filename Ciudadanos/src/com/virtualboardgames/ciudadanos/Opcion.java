@@ -10,16 +10,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 
 //Es una table que añadimos debajo de la imagen y el texto del evento
-public class Opcion extends Actor{
+public class Opcion extends TextButton{
 	
 	String textodeopcion;
 	int codigodeefecto;
+  
 	
-	public Opcion(String textodeopcion, int codigodeefecto){
+	public Opcion(String textodeopcion, TextButtonStyle estilobotontexto,
+		int codigodeefecto, int posicionX, int posicionY){
 		
+		super(textodeopcion,estilobotontexto);
+				
 		this.textodeopcion = textodeopcion;
 		this.codigodeefecto = codigodeefecto;
-		this.setBounds(0, 0, 25, 25);
+			
 		
 		this.addListener(new InputListener(){
 			
@@ -47,9 +51,6 @@ public class Opcion extends Actor{
 	};
 	
 	
-	public void draw(SpriteBatch batch, float alpha){
-        batch.draw(Texturasysonidos.texturasysonidos.botones.botonalmacen,0+codigodeefecto*10,0);
-    }
 	
 	
 }
