@@ -90,18 +90,20 @@ public class Logica extends InputAdapter implements InputProcessor{
 		Evento[] arraydepruebadeeventos = new Evento[2];
 		Opcion[] arraydeopciones = new Opcion[5];
 		Opcion opcion1 = new Opcion("a) En un acto de infinita gracia, les concedes lo que piden sin" +
-				" exigirles nada a cambio.", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,0,100,50);
-		Opcion opcion2 = new Opcion("b) Con la cuarta parte bastará, pero que no olviden tu magnanimidad.", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,10,100,50); 
+				" exigirles nada a cambio.", "Has pulsado la opción A", 
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,0,100,50,contenedorhud.contenedordeactores);
+		Opcion opcion2 = new Opcion("b) Con la cuarta parte bastará, pero que no olviden tu magnanimidad.",
+		"Has pulsado la opción B",
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,10,100,50,contenedorhud.contenedordeactores); 
 		Opcion opcion3 =new Opcion("c) La mitad de las cosechas te parece justo, les dejas pasar.", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,20,100,50);
+		"Has pulsado la opción C",
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,20,100,50,contenedorhud.contenedordeactores);
 		Opcion opcion4 =new Opcion("d) La mitad no basta. Exiges las tres cuartas partes de lo que" +
-				"produzcan.", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,30,100,50);
+				"produzcan.", "Has pulsado la opción D",
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,30,100,50,contenedorhud.contenedordeactores);
 		Opcion opcion5 = new Opcion("e) Tres cuartas partes de la cosecha y el sacrificio anual de un niño " +
-				"o lo pagarán caro.", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,40,100,50);
+				"o lo pagarán caro.", "Has pulsado la opción E",
+		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,40,100,50,contenedorhud.contenedordeactores);
 				
 		arraydeopciones[0] = opcion1;
 		arraydeopciones[1] = opcion2;
