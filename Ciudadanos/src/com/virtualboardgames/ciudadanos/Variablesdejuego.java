@@ -279,15 +279,76 @@ public class Espionaje{
 	}
 }
 
+//SOCIAL
+
 public class Social{
 	
 	String titulo = "SOCIAL";
+	//Los nombres de las clases, dispuestos en la primera columna, son lo que no cambian
+	String nombresclasessociales[];
+	
+	//Los nombres de la primera fila varían dependiendo del botón que se pulse: 
+	//Media, Edad\Sexo, Lealtad\Miedo, Nivel
+	
+	String nombresvaloresmedios[];
+	String nombresedadsexo[];
+	String nombreslealtadmiedo[];
+	String nombresnivel[];
 	
 	public Social(){
 		
+	//La primera columna, con las clases sociales, nunca varía	
+	nombresclasessociales = new String[7];	
+	nombresclasessociales[0] = "Campesinos";
+	nombresclasessociales[1] = "Soldados";
+	nombresclasessociales[2] = "Espías";
+	nombresclasessociales[3] = "Magos";
+	nombresclasessociales[4] = "Nigromantes";
+	nombresclasessociales[5] = "Nobleza";
+	nombresclasessociales[6] = "TOTAL";
+	
+	//Los valores medios, calculados convirtiendo en int la media de cada vector que representa
+	//a un ciudadano
+	nombresvaloresmedios = new String[5];
+	nombresvaloresmedios[0] = "Edad";
+	nombresvaloresmedios[1] = "Sexo";
+	nombresvaloresmedios[2] = "Lealtad";
+	nombresvaloresmedios[3] = "Miedo";
+	nombresvaloresmedios[4] = "Nivel";
+		
+	//Los valores que representan las variables edad\sexo, medidos en número de individuos
+	nombresedadsexo = new String[6];
+	nombresedadsexo[0] = "Niños";
+	nombresedadsexo[1] = "Niñas";
+	nombresedadsexo[2] = "Hombres";
+	nombresedadsexo[3] = "Mujeres";
+	nombresedadsexo[4] = "Ancianos";
+	nombresedadsexo[5] = "Ancianas";
+	
+	//Los valores que representan las variables Lealtad\Miedo
+	nombreslealtadmiedo = new String[4];
+	nombreslealtadmiedo[0] = "Leales";
+	nombreslealtadmiedo[1] = "Poco leales";
+	nombreslealtadmiedo[2] = "Desleales";
+	nombreslealtadmiedo[3] = "Sensación de terror";
+	
+	//El nivel o experiencia
+	nombresnivel = new String[5];
+	nombresnivel[0] = "0-10";
+	nombresnivel[1] = "11-20";
+	nombresnivel[2] = "21-30";
+	nombresnivel[3] = "31-40";
+	nombresnivel[4] = "41-50";
+	
 	}
+
+	
+//HAY QUE CREAR UN REGISTRO DE PRODUCCIONES Y UN CONTROL DE INDIVIDUOS	
+	
 	
 }
+
+
 
 
 
