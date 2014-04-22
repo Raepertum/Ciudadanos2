@@ -35,8 +35,13 @@ public class Logica extends InputAdapter implements InputProcessor{
 	//Objetos
 	public Torre torre;
     public Array <Tierra> tierras;
+    
+    //Interfaz
 	public Contenedorhud contenedorhud;
+	
+	//Los relacionados con objetos abstractos, como el generador de eventos
 	public Generadordeeventos generadordeeventos;
+	public Registrodeeventos registrodeeventos;
 	
 	//Para crear el reloj
 	long tiempoinicial;
@@ -79,42 +84,17 @@ public class Logica extends InputAdapter implements InputProcessor{
 		tiempoinicial=TimeUtils.millis();
 		ultimotiempo=tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
 		
-		//El generador de eventos (Esta vez lo instanciamos con códigos
-		//predefinidos, más adelante los eventos posibles dependerán del nivel
-		//Se cargaría el Generador de eventos con una array, extraída de la clase
-		//"Colección" de eventos
+		//El registro de eventos
+		registrodeeventos = new Registrodeeventos();
 		
-		//PRUEBA
-		String textoEvento = "Unos campesinos quieren ocupar uno de tus campos y cultivarlo" +
-				". A cambio se comprometen a ofrecerte la mitad de sus cosechas.";
-		Evento[] arraydepruebadeeventos = new Evento[2];
-		Opcion[] arraydeopciones = new Opcion[5];
-		Opcion opcion1 = new Opcion("a) En un acto de infinita gracia, les concedes lo que piden sin" +
-				" exigirles nada a cambio.", "Has pulsado la opción A", 
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,0,100,50,contenedorhud.contenedordeactores);
-		Opcion opcion2 = new Opcion("b) Con la cuarta parte bastará, pero que no olviden tu magnanimidad.",
-		"Has pulsado la opción B",
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,10,100,50,contenedorhud.contenedordeactores); 
-		Opcion opcion3 =new Opcion("c) La mitad de las cosechas te parece justo, les dejas pasar.", 
-		"Has pulsado la opción C",
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,20,100,50,contenedorhud.contenedordeactores);
-		Opcion opcion4 =new Opcion("d) La mitad no basta. Exiges las tres cuartas partes de lo que" +
-				"produzcan.", "Has pulsado la opción D",
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,30,100,50,contenedorhud.contenedordeactores);
-		Opcion opcion5 = new Opcion("e) Tres cuartas partes de la cosecha y el sacrificio anual de un niño " +
-				"o lo pagarán caro.", "Has pulsado la opción E",
-		Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault,40,100,50,contenedorhud.contenedordeactores);
-				
-		arraydeopciones[0] = opcion1;
-		arraydeopciones[1] = opcion2;
-		arraydeopciones[2] = opcion3;
-		arraydeopciones[3] = opcion4;
-		arraydeopciones[4] = opcion5;
+		//El nivel (Todas las pruebas las haremos con el nivel 1, pero más adelante habrá que hacer una
+		//función que permita cambiarlo)
+		Nivel1 nivel1 = new Nivel1(this);
 		
-		Evento evento = new Evento(textoEvento, arraydeopciones, contenedorhud.contenedordeactores);
-		arraydepruebadeeventos[1] = evento;
-				
-		generadordeeventos = new Generadordeeventos(contenedorhud, arraydepruebadeeventos);
+		//El generador de eventos
+		generadordeeventos = new Generadordeeventos(nivel1.solicitareventosdelnivel());
+		
+		
 		
 		//Añadir tanto la stage como la propia lógica al marco de eventos
 		marcodeeventos.addProcessor(this);
@@ -191,9 +171,15 @@ public class Logica extends InputAdapter implements InputProcessor{
 		pulsandoA=Gdx.input.isKeyPressed(Keys.A);
 		pulsandoD=Gdx.input.isKeyPressed(Keys.D);
 }
+	
 	public boolean scrolled(int scroll){
 		zoomcamara=scroll;
 		return false;
+	}
+	
+	public Evento solicitaralregistrodeventos(int numerodeevento){
+	
+		return registrodeeventos.solicitarevento(numerodeevento);
 	}
 	
 

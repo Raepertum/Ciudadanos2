@@ -22,7 +22,7 @@ public class Evento extends Stack {
 	//Espacio en blanco
 	Label espacioenblanco;
 	
-	public Evento(String textoEvento, Opcion[] arraydeopciones, Stage contexto){
+	public Evento(String textoEvento, Opcion[] arraydeopciones, Aviso[] arraydeavisos, Stage contexto){
 		
 		//El estilo del label (Para el espacio en blanco)
 		estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;

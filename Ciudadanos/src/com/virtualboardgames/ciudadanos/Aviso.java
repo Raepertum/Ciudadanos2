@@ -23,7 +23,7 @@ Table tabledebotonesylabel;
 int altodellabel;
 int altodelboton;
 
-public Aviso(String textodeconfirmacion, Stage contexto){
+public Aviso(String textodeconfirmacion){
 
 	//Inicialización de la tabla
 	tabledefondo = new Table();

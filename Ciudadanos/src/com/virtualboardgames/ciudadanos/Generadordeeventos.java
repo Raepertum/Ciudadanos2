@@ -4,8 +4,9 @@ public class Generadordeeventos {
 
 	Evento[] arraydeeventos;
 	
-	public Generadordeeventos(Contenedorhud contenedorhud, Evento[] arraydeeventos){
+	public Generadordeeventos(Evento[] arraydeeventos){
 	this.arraydeeventos = arraydeeventos;
+	
 	
 	//PRUEBA
 	arraydeeventos[1].ejecutarevento();
