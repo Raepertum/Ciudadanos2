@@ -87,9 +87,11 @@ public class Logica extends InputAdapter implements InputProcessor{
 		//El registro de eventos
 		registrodeeventos = new Registrodeeventos();
 		
+
 		//El nivel (Todas las pruebas las haremos con el nivel 1, pero más adelante habrá que hacer una
 		//función que permita cambiarlo)
 		Nivel1 nivel1 = new Nivel1(this);
+
 		
 		//El generador de eventos
 		generadordeeventos = new Generadordeeventos(nivel1.solicitareventosdelnivel());

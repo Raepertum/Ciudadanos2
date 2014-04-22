@@ -32,6 +32,7 @@ public Aviso(String textodeconfirmacion){
 	this.setPosition(30,30);
 	this.setSize(740, 540);
 	
+	//
 	stackdefondolabelybotones = new Stack();
 	this.add(stackdefondolabelybotones);
 	stackdefondolabelybotones.add(tabledefondo);
