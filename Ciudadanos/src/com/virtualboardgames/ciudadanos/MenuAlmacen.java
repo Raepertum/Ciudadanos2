@@ -60,13 +60,8 @@ public class MenuAlmacen extends MenuAbstracto{
 		
 	Table tabledealmacenes;
 	Table tabledescrollpanealmacenes;
-	
 	Table tabledebotones;
-	
 	Table tabledeordenes;
-	
-	//Stack mostrado (Para alternar en el botón plazo)
-	Table[] tablemostrada;
 	
 	//Instancias de las imágenes (Una para el fondo, el resto para los iconos)	
 	Image fondomenualmacen;
