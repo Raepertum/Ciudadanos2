@@ -85,7 +85,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 		ultimotiempo=tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
 		
 		//El registro de eventos
-		registrodeeventos = new Registrodeeventos();
+		//registrodeeventos = new Registrodeeventos();
 		
 
 		//El nivel (Todas las pruebas las haremos con el nivel 1, pero más adelante habrá que hacer una
@@ -94,7 +94,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 
 		
 		//El generador de eventos
-		generadordeeventos = new Generadordeeventos(nivel1.solicitareventosdelnivel());
+		generadordeeventos = new Generadordeeventos(nivel1.solicitareventosdelnivel(),contenedorhud.contenedordeactores);
 		
 		
 		
@@ -179,9 +179,10 @@ public class Logica extends InputAdapter implements InputProcessor{
 		return false;
 	}
 	
+	
 	public Evento solicitaralregistrodeventos(int numerodeevento){
 	
-		return registrodeeventos.solicitarevento(numerodeevento);
+		return Registrodeeventos.registrodeeventos.solicitarevento(numerodeevento);
 	}
 	
 

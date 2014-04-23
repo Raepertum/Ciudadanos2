@@ -1,15 +1,17 @@
 package com.virtualboardgames.ciudadanos;
 
+import com.badlogic.gdx.scenes.scene2d.Stage;
+
 public class Generadordeeventos {
 
 	Evento[] arraydeeventos;
 	
-	public Generadordeeventos(Evento[] arraydeeventos){
+	public Generadordeeventos(Evento[] arraydeeventos, Stage contexto){
 	this.arraydeeventos = arraydeeventos;
 	
 	
 	//PRUEBA
-	arraydeeventos[1].ejecutarevento();
+	arraydeeventos[1].ejecutarevento(contexto);
 	
 	
 	}

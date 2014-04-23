@@ -13,7 +13,6 @@ public class Evento extends Stack {
 	Table tabledebase;
 	Table tabledetexto;
 	Table tabledebotones;
-	Stage contexto;
 	//El fondo para el evento
 	Image fondoevento;
 	//El texto del evento
@@ -22,7 +21,7 @@ public class Evento extends Stack {
 	//Espacio en blanco
 	Label espacioenblanco;
 	
-	public Evento(String textoEvento, Opcion[] arraydeopciones, Aviso[] arraydeavisos, Stage contexto){
+	public Evento(String textoEvento, int codigo){
 		
 		//El estilo del label (Para el espacio en blanco)
 		estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;
@@ -33,9 +32,6 @@ public class Evento extends Stack {
 		//Las propiedades del stack (this=
 		this.setSize(740, 540);
 		this.setPosition(30, 30);
-		
-		//El contexto
-		this.contexto = contexto;
 		
 		//Espacio en blanco
 		espacioenblanco = new Label("", estilolabel);		
@@ -74,7 +70,10 @@ public class Evento extends Stack {
 		tabledebotones.setClip(true);
 		tabledebotones.add(espacioenblanco).height(250);
 		
-		//Opciones (Botones creados a partir de las opciones)
+		
+		//Recogemos las opciones del registro
+		Opcion[] arraydeopciones = Registrodeopciones.registrodeopciones.devolverarraydeopcionesporcodigo(codigo);	
+		
 		for(int i=0;i<arraydeopciones.length;i++){
 			tabledebotones.row().width(600).padTop(20);
 			tabledebotones.add(arraydeopciones[i]);
@@ -84,7 +83,7 @@ public class Evento extends Stack {
 		
 	};
 	
-	public void ejecutarevento(){
+	public void ejecutarevento(Stage contexto){
 		
 		//Mostrar evento en pantalla, añadiéndolo a la stage
 		contexto.addActor(this);

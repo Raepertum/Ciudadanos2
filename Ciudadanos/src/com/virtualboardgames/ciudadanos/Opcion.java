@@ -36,7 +36,6 @@ public class Opcion extends TextButton{
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
 			    System.out.println("Pulsando");
 				imprimirtextoenconsola();
-				generaraviso();
 				suprimirevento();
 				return true;
 		}
@@ -62,10 +61,6 @@ public class Opcion extends TextButton{
 
 	
 
-	private void generaraviso(){
-		Aviso aviso = new Aviso(textodeconfirmacion, contexto);
-		System.out.println("Generando aviso");
-	};
 	private void suprimirevento(){
 		//Habrá que rehacerlo cuando todo se cree en el generador de eventos y se modifique la manera de crearlos
 		this.getParent().getParent().remove();
