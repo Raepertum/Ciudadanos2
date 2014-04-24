@@ -15,7 +15,6 @@ public class Aviso extends Table {
 Label textomensajeconfirmacion;
 TextButton botonok;
 Image fondo;
-Stage contexto;
 Stack stackdefondolabelybotones;
 Table tabledefondo;
 Table tabledebotonesylabel;
@@ -63,12 +62,17 @@ public Aviso(String textodeconfirmacion){
 	tabledefondo.row().height(tabledebotonesylabel.getPrefHeight()+5).width(tabledebotonesylabel.getPrefWidth()+5);
 	tabledefondo.add(fondo);
 	
-    contexto.addActor(this);
 }
 
 private void suprimiraviso(){
 	this.remove();	
 }
+
+public void mostraraviso(Stage contexto){
+	contexto.addActor(this);
+}
+
+
 
 
 }

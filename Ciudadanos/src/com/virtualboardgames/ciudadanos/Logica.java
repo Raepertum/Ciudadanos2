@@ -39,10 +39,7 @@ public class Logica extends InputAdapter implements InputProcessor{
     //Interfaz
 	public Contenedorhud contenedorhud;
 	
-	//Los relacionados con objetos abstractos, como el generador de eventos
-	public Generadordeeventos generadordeeventos;
-	public Registrodeeventos registrodeeventos;
-	
+		
 	//Para crear el reloj
 	long tiempoinicial;
 	long tiempotranscurridoensegundos;
@@ -54,6 +51,14 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	String estacion="primavera";
 	
+	//Los registros
+	Registrodeavisos registrodeavisos;
+	Registrodeopciones registrodeopciones;
+	Registrodeeventos registrodeeventos;
+	Generadordeeventos generadordeeventos;
+	
+	//Los niveles
+	Nivel1 nivel1;
 	
 	public Logica(){
 		iniciarclase();
@@ -84,18 +89,18 @@ public class Logica extends InputAdapter implements InputProcessor{
 		tiempoinicial=TimeUtils.millis();
 		ultimotiempo=tiempotranscurridoensegundos=(TimeUtils.millis()-tiempoinicial)/1000;
 		
-		//El registro de eventos
-		//registrodeeventos = new Registrodeeventos();
+		//Los registros
+		registrodeavisos = new Registrodeavisos();
+		registrodeopciones = new Registrodeopciones(registrodeavisos, contenedorhud.contenedordeactores);
+		registrodeeventos = new Registrodeeventos(registrodeopciones);
 		
-
+		
 		//El nivel (Todas las pruebas las haremos con el nivel 1, pero más adelante habrá que hacer una
 		//función que permita cambiarlo)
-		Nivel1 nivel1 = new Nivel1(this);
-
+		nivel1 = new Nivel1(registrodeeventos);
 		
 		//El generador de eventos
-		generadordeeventos = new Generadordeeventos(nivel1.solicitareventosdelnivel(),contenedorhud.contenedordeactores);
-		
+		generadordeeventos = new Generadordeeventos(nivel1,contenedorhud.contenedordeactores);
 		
 		
 		//Añadir tanto la stage como la propia lógica al marco de eventos
@@ -179,11 +184,6 @@ public class Logica extends InputAdapter implements InputProcessor{
 		return false;
 	}
 	
-	
-	public Evento solicitaralregistrodeventos(int numerodeevento){
-	
-		return Registrodeeventos.registrodeeventos.solicitarevento(numerodeevento);
-	}
-	
+
 
 }

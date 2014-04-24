@@ -21,7 +21,7 @@ public class Evento extends Stack {
 	//Espacio en blanco
 	Label espacioenblanco;
 	
-	public Evento(String textoEvento, int codigo){
+	public Evento(String textoEvento, Opcion[] opciones){
 		
 		//El estilo del label (Para el espacio en blanco)
 		estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;
@@ -71,12 +71,10 @@ public class Evento extends Stack {
 		tabledebotones.add(espacioenblanco).height(250);
 		
 		
-		//Recogemos las opciones del registro
-		Opcion[] arraydeopciones = Registrodeopciones.registrodeopciones.devolverarraydeopcionesporcodigo(codigo);	
 		
-		for(int i=0;i<arraydeopciones.length;i++){
+		for(int i=0;i<opciones.length;i++){
 			tabledebotones.row().width(600).padTop(20);
-			tabledebotones.add(arraydeopciones[i]);
+			tabledebotones.add(opciones[i]);
 		
 		};
 				
@@ -91,6 +89,10 @@ public class Evento extends Stack {
 		//Subir el contador de eventos
 		
 		
+	}
+	
+	public Evento comprobarsiesnull(){
+		return this;
 	}
 
 }

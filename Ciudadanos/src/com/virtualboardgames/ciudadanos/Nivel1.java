@@ -8,12 +8,12 @@ public class Nivel1 {
 	
 	Evento[] arrayDeEventos;
 	
-	public Nivel1(Logica contexto){
+	public Nivel1(Registrodeeventos registrodeeventos){
 	
-		
 	arrayDeEventos = new Evento[2];
 	
-	arrayDeEventos[1] = contexto.solicitaralregistrodeventos(1);
+	arrayDeEventos[0] = registrodeeventos.devolverevento(0);
+	
 	
 	
 	}

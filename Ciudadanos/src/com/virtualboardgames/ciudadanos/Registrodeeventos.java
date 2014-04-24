@@ -1,34 +1,33 @@
 package com.virtualboardgames.ciudadanos;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Registrodeeventos {
 
-	public static final Registrodeeventos registrodeeventos = new Registrodeeventos();
-	
+	Evento evento1;	
 	Evento[] todosloseventos;
-	Evento evento1;
 	
-	public Registrodeeventos(){
 	
-	//Preparamos el primer evento
+	public Registrodeeventos(Registrodeopciones registrodeopciones){
 	
-	evento1 =new Evento("Unos campesinos quieren ocupar uno de tus campos y cultivarlo" +
-			". A cambio se comprometen a ofrecerte la mitad de sus cosechas.", 100);
+	todosloseventos = new Evento[2];
+		
+	//Creamos cada evento
+	evento1 = new Evento("Éste es el texto del primer evento", registrodeopciones.devolverarrayopciones(100));
 	
-	todosloseventos[1] = evento1;
+	todosloseventos[0] = evento1;
 	
 	};
 	
-	//Fin del primer evento
-	
-	Evento solicitarevento(int numerodeevento){
-		return todosloseventos[numerodeevento];
-	};
-	
+
+
+public Evento devolverevento(int codigo){
+
+return todosloseventos[codigo];
 	
 }
 
+
+};
 
 
 

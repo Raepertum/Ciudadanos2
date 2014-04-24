@@ -6,12 +6,12 @@ public class Generadordeeventos {
 
 	Evento[] arraydeeventos;
 	
-	public Generadordeeventos(Evento[] arraydeeventos, Stage contexto){
-	this.arraydeeventos = arraydeeventos;
+	public Generadordeeventos(Nivel1 nivel1, Stage contexto){
 	
+	arraydeeventos = nivel1.solicitareventosdelnivel();
 	
 	//PRUEBA
-	arraydeeventos[1].ejecutarevento(contexto);
+	arraydeeventos[0].ejecutarevento(contexto);
 	
 	
 	}

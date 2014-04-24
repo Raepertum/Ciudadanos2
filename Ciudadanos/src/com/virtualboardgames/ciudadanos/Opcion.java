@@ -15,28 +15,26 @@ public class Opcion extends TextButton{
 	
 	String textodeopcion;
 	String textodeconfirmacion;
-	Stage contexto;
 	int codigodeefecto;
+	Aviso avisodelaopcion;
+	Stage contexto;
   
 	
 
-	public Opcion(String textodeopcion, String textodeconfirmacion, TextButtonStyle estilobotontexto,
-		int codigodeefecto, int posicionX, int posicionY, Stage contexto){
+	public Opcion(String textodeopcion, Aviso aviso, Stage contexto){
 
-		super(textodeopcion,estilobotontexto);
-				
+		super(textodeopcion,Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault);
+		
+		this.avisodelaopcion = aviso;
 		this.textodeopcion = textodeopcion;
-		this.codigodeefecto = codigodeefecto;
-		this.textodeconfirmacion = textodeconfirmacion;
 		this.contexto = contexto;
-			
 		
 		this.addListener(new InputListener(){
 			
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int actor){
-			    System.out.println("Pulsando");
-				imprimirtextoenconsola();
-				suprimirevento();
+			    imprimirtextoenconsola();
+				ejecutaraviso();
+			    suprimirevento();
 				return true;
 		}
 
@@ -56,9 +54,14 @@ public class Opcion extends TextButton{
 	public void imprimirtextoenconsola(){
 		System.out.println(this.codigodeefecto);
 	};
-
-
-
+	
+	
+	
+	private void ejecutaraviso(){
+		
+		avisodelaopcion.mostraraviso(contexto);
+		
+	};
 	
 
 	private void suprimirevento(){
