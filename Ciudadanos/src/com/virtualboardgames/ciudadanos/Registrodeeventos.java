@@ -12,7 +12,8 @@ public class Registrodeeventos {
 	todosloseventos = new Evento[2];
 		
 	//Creamos cada evento
-	evento1 = new Evento("Éste es el texto del primer evento", registrodeopciones.devolverarrayopciones(100));
+	evento1 = new Evento("Unos campesinos quieren ocupar uno de tus campos y cultivarlo." +
+			" A cambio se comprometen a ofrecerte la mitad de sus cosechas.", registrodeopciones.devolverarrayopciones(100));
 	
 	todosloseventos[0] = evento1;
 	

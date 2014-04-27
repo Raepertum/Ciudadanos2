@@ -31,13 +31,15 @@ public Aviso(String textodeconfirmacion){
 	this.setPosition(30,30);
 	this.setSize(740, 540);
 	
-	//
+	
 	stackdefondolabelybotones = new Stack();
 	this.add(stackdefondolabelybotones);
 	stackdefondolabelybotones.add(tabledefondo);
     stackdefondolabelybotones.add(tabledebotonesylabel);
 	
+    this.pad(20, 20, 20, 20);
 	textomensajeconfirmacion = new Label(textodeconfirmacion, Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault);
+	textomensajeconfirmacion.setAlignment(1);
 	
 	//El botón
 	botonok = new TextButton("OK", Texturasysonidos.texturasysonidos.estilosyactores.estilobotondefault);

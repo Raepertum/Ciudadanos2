@@ -7,11 +7,14 @@ Aviso[] avisosevento1;
 
 public Registrodeavisos(){
 	
-	aviso1evento1 = new Aviso("Has pulsado la opcion A");
-	aviso2evento1 = new Aviso("Has pulsado la opcion B");
-	aviso3evento1 = new Aviso("Has pulsado la opcion C");
-	aviso4evento1 = new Aviso("Has pulsado la opcion D");
-	aviso5evento1 = new Aviso("Has pulsado la opcion E");
+	aviso1evento1 = new Aviso("Los campesinos están tremendamente agradecidos y eso se nota en su lealtad.\n Sin embargo, algunos" +
+			" interpretan tu generosidad como un signo de debilidad.\n Se instalarán en tus dominios lo antes posible.");
+	aviso2evento1 = new Aviso("Los campesinos agradecen tu oferta. Se mostrarán leales\n a tu causa y cumplirán con lo acordado.");
+	aviso3evento1 = new Aviso("Los campesinos se comprometen a respetar vuestro pacto.");
+	aviso4evento1 = new Aviso("Algunos de los campesinos encuentran la oferta abusiva. Meditarán si les interesan tus condiciones\n " +
+			"y te comunicarán su decisión lo antes posible. En todo caso, esto no afectará positivamente a su lealtad.");
+	aviso5evento1 = new Aviso("Sólo la desesperación podría llevarles a aceptar tu oferta. Se reunirán y te comunicarán su resolución.\n " +
+			"Algunos te odian y a otros les pareces temible. No es lo mejor para mantener la lealtad de tus aldeanos.");
 	
 	avisosevento1 = new Aviso[]{aviso1evento1,aviso2evento1,aviso3evento1,aviso4evento1,aviso5evento1};
 	
