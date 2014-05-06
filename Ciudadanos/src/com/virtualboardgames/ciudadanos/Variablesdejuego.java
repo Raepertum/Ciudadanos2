@@ -66,46 +66,18 @@ public Almacen(){
 	
 	
 	//Labels de almacén de productos que pueden caducar
-	nombreslabelsalmacencaducables = new String[15];
-	nombreslabelsalmacencaducables[0] = "Producción mes"; 
-	nombreslabelsalmacencaducables[1] = "Gasto mes";
-	nombreslabelsalmacencaducables[2] = "Caducidad mes";
-	nombreslabelsalmacencaducables[3] = "Neto mes";
-	nombreslabelsalmacencaducables[4] = "Reservas";
-	nombreslabelsalmacencaducables[5] = "Producción año";
-	nombreslabelsalmacencaducables[6] = "Gasto año";
-	nombreslabelsalmacencaducables[7] = "Caducidad año";
-	nombreslabelsalmacencaducables[8] = "Neto año";
-	nombreslabelsalmacencaducables[9] = "Reservas";
-	nombreslabelsalmacencaducables[10] = "Producción total";
-	nombreslabelsalmacencaducables[11] = "Gasto total";
-	nombreslabelsalmacencaducables[12] = "Caducidad total";
-	nombreslabelsalmacencaducables[13] = "Neto total";
-	nombreslabelsalmacencaducables[14] = "Reservas";
+	nombreslabelsalmacencaducables = new String[]{"Producción mes", "Gasto mes", "Caducidad mes", "Neto mes",
+		"Reservas","Producción año", "Gasto año", "Caducidad año", "Neto año", "Reservas", "Producción total",
+		"Gasti total", "Caducidad total", "Neto total", "Reservas"};
 	
 	//Labels de almacén de productos que no caducan
-	nombreslabelsalmacennocaducables = new String[12];
-	nombreslabelsalmacennocaducables[0] = "Producción mes"; 
-	nombreslabelsalmacennocaducables[1] = "Gasto mes";
-	nombreslabelsalmacennocaducables[2] = "Neto mes";
-	nombreslabelsalmacennocaducables[3] = "Reservas";
-	nombreslabelsalmacennocaducables[4] = "Producción año";
-	nombreslabelsalmacennocaducables[5] = "Gasto año";
-	nombreslabelsalmacennocaducables[6] = "Neto año";
-	nombreslabelsalmacennocaducables[7] = "Reservas";
-	nombreslabelsalmacennocaducables[8] = "Producción total";
-	nombreslabelsalmacennocaducables[9] = "Gasto total";
-	nombreslabelsalmacennocaducables[10] = "Neto total";
-	nombreslabelsalmacennocaducables[11] = "Reservas";
+	nombreslabelsalmacennocaducables = new String[]{"Producción mes", "Gasto mes", "Neto mes", "Reservas",
+		"Producción año", "Gasto año", "Neto año", "Reservas", "Producción total", "Gasto total", "Neto total",
+		"Reservas"};
 	
-	//Alimentos
-	stringsdealmacenalimentos = new String[6];
-	stringsdealmacenalimentos[0] = "Trigo";
-	stringsdealmacenalimentos[1] = "Fruta";
-	stringsdealmacenalimentos[2] = "Carne";
-	stringsdealmacenalimentos[3] = "Carne sal.";
-	stringsdealmacenalimentos[4] = "Pescado";
-	stringsdealmacenalimentos[5] = "Miel";
+    //Alimentos
+	stringsdealmacenalimentos = new String[]{"Trigo", "Fruta", "Carne", "Carne sal.", "Pescado", "Miel"};
+	
 	
 	intsdealmacenalimentosmes = new int[25];
 	for (int i=0; i<25; i++){
@@ -113,48 +85,32 @@ public Almacen(){
 	}
 	intsdealmacenalimentosano = new int[25];
 	for (int i=0; i<25; i++){
-		intsdealmacenalimentosano[i] = 1;
+		intsdealmacenalimentosano[i] = 0;
 	}
 	intsdealmacenalimentostotal = new int[25];
 	for (int i=0; i<25; i++){
-		intsdealmacenalimentostotal[i] = 2;
+		intsdealmacenalimentostotal[i] = 0;
 	}
 	
 	//Materias Primas
-	stringsdealmacenmatprimas = new String[10];
-	stringsdealmacenmatprimas[0] = "Sal";
-    stringsdealmacenmatprimas[1] = "Madera";
-    stringsdealmacenmatprimas[2] = "Piedra";
-    stringsdealmacenmatprimas[3] = "Hierro";
-    stringsdealmacenmatprimas[4] = "Cobre";
-    stringsdealmacenmatprimas[5] = "Estaño";
-	stringsdealmacenmatprimas[6] = "Plata";
-	stringsdealmacenmatprimas[7] = "Oro";
-	stringsdealmacenmatprimas[8] = "Mercurio";
-	stringsdealmacenmatprimas[9] = "Azufre";
+	stringsdealmacenmatprimas = new String[]{"Sal", "Madera", "Piedra", "Hierro", "Cobre", "Estaño", "Plata",
+			"Oro", "Mercurio", "Azufre"};
 	
 	intsdealmacenmatprimasmes = new int[32];
 	for (int i=0; i<32; i++){
-		intsdealmacenmatprimasmes[i] = 3;
+		intsdealmacenmatprimasmes[i] = 0;
 	}
 	intsdealmacenmatprimasano = new int[32];
 	for (int i=0; i<32; i++){
-		intsdealmacenmatprimasano[i] = 2;
+		intsdealmacenmatprimasano[i] = 0;
 	}
 	intsdealmacenmatprimastotal = new int[32];
 	for (int i=0; i<32; i++){
-		intsdealmacenmatprimastotal[i] = 99;
+		intsdealmacenmatprimastotal[i] = 0;
 	}
 	//Armas
-	stringsdealmacenarmas = new String[8];
-	stringsdealmacenarmas[0] = "Espadas";
-	stringsdealmacenarmas[1] = "Hachas";
-	stringsdealmacenarmas[2] = "Arcos";
-	stringsdealmacenarmas[3] = "Lanzas";
-	stringsdealmacenarmas[4] = "Mazos";
-	stringsdealmacenarmas[5] = "Cetros";
-	stringsdealmacenarmas[6] = "Armad. cuero";
-	stringsdealmacenarmas[7] = "Armad. hierro";
+	stringsdealmacenarmas = new String[]{"Espadas", "Hachas", "Arcos", "Lanzas", "Mazos", "Cetros",
+			"Armad. cuero", "Armad. hierro"};
 	
 	intsdealmacenarmasmes = new int[28];
 	for (int i=0; i<28; i++){
@@ -170,13 +126,8 @@ public Almacen(){
 	}
 	
 	//Artesanía
-	stringsdealmacenartesania = new String[5];
-	stringsdealmacenartesania[0] = "Ropa";
-	stringsdealmacenartesania[1] = "Alfarería";
-	stringsdealmacenartesania[2] = "Cristalería";
-	stringsdealmacenartesania[3] = "Herramientas";
-	stringsdealmacenartesania[4] = "Instrumentos";
-    
+	stringsdealmacenartesania = new String[]{"Ropa", "Alfarería", "Cristalería", "Herramientas", "Instrumentos"};
+	
     intsdealmacenartesaniames = new int[20];
 	for (int i=0; i<20; i++){
 		intsdealmacenartesaniames[i] = 0;
@@ -192,13 +143,8 @@ public Almacen(){
     
 	
 	//Bienes de lujo
-	stringsdealmacenbieneslujo = new String[5];
-	stringsdealmacenbieneslujo[0] = "Joyería";
-	stringsdealmacenbieneslujo[1] = "Marfil";
-	stringsdealmacenbieneslujo[2] = "Seda";
-	stringsdealmacenbieneslujo[3] = "Especias";
-	stringsdealmacenbieneslujo[4] = "Armas expo.";
-    
+	stringsdealmacenbieneslujo = new String[]{"Joyería", "Marfil", "Seda", "Especias", "Armas expo."};
+	    
     intsdealmacenbieneslujomes = new int[20];
 	for (int i=0; i<20; i++){
 		intsdealmacenbieneslujomes[i] = 0;
@@ -232,26 +178,10 @@ public class Comercio{
 		
 		
 		//CAMBIARLO TOTALMENTE
-		stringsdecomercio = new String[17];
-		stringsdecomercio[0] = "Comercio";
-		stringsdecomercio[1] = "";
-		stringsdecomercio[2] = "Consumo";
-		stringsdecomercio[3] = "Venta";
-		stringsdecomercio[4] = "P. nom.";
-		stringsdecomercio[5] = "P. real";
-		stringsdecomercio[6] = "Ingresos";
-		stringsdecomercio[7] = "G. prod.";
-		stringsdecomercio[8] = "G. trans";
-		stringsdecomercio[9] = "G. total";
-		stringsdecomercio[10] = "Beneficio";
-		stringsdecomercio[11] = "Trigo";
-		stringsdecomercio[12] = "Fruta";
-		stringsdecomercio[13] = "Carne";
-		stringsdecomercio[14] = "Carne sal.";
-		stringsdecomercio[15] = "Pescado";
-		stringsdecomercio[16] = "Miel";
-		
-		
+		stringsdecomercio = new String[]{"Comercio", "", "Consumo", "Venta", "P.nom", "P.real", "Ingresos",
+		"G. prod", "G. trans", "G. total", "Beneficio", "Trigo", "Fruta", "Carne", "Carne sal.", "Pescado",
+		"Miel"};
+				
 		intsdecomercio = new int[54];
 		for (int i=0; i<54; i++){
 			intsdecomercio[i] = 0;
@@ -298,48 +228,21 @@ public class Social{
 	public Social(){
 		
 	//La primera columna, con las clases sociales, nunca varía	
-	nombresclasessociales = new String[7];	
-	nombresclasessociales[0] = "Campesinos";
-	nombresclasessociales[1] = "Soldados";
-	nombresclasessociales[2] = "Espías";
-	nombresclasessociales[3] = "Magos";
-	nombresclasessociales[4] = "Nigromantes";
-	nombresclasessociales[5] = "Nobleza";
-	nombresclasessociales[6] = "TOTAL";
+	nombresclasessociales = new String[]{"Campesinos", "Soldados", "Espías", "Magos" , "Nigromantes", "Nobleza",
+		"TOTAL"};
 	
 	//Los valores medios, calculados convirtiendo en int la media de cada vector que representa
 	//a un ciudadano
-	nombresvaloresmedios = new String[5];
-	nombresvaloresmedios[0] = "Edad";
-	nombresvaloresmedios[1] = "Sexo";
-	nombresvaloresmedios[2] = "Lealtad";
-	nombresvaloresmedios[3] = "Miedo";
-	nombresvaloresmedios[4] = "Nivel";
-		
+	nombresvaloresmedios = new String[]{"Edad", "Sexo", "Lealtad", "Miedo", "Nivel"};
+			
 	//Los valores que representan las variables edad\sexo, medidos en número de individuos
-	nombresedadsexo = new String[6];
-	nombresedadsexo[0] = "Niños";
-	nombresedadsexo[1] = "Niñas";
-	nombresedadsexo[2] = "Hombres";
-	nombresedadsexo[3] = "Mujeres";
-	nombresedadsexo[4] = "Ancianos";
-	nombresedadsexo[5] = "Ancianas";
+	nombresedadsexo = new String[]{"Niños", "Niñas", "Hombres", "Mujeres", "Ancianos", "Ancianas"};
 	
 	//Los valores que representan las variables Lealtad\Miedo
-	nombreslealtadmiedo = new String[4];
-	nombreslealtadmiedo[0] = "Leales";
-	nombreslealtadmiedo[1] = "Poco leales";
-	nombreslealtadmiedo[2] = "Desleales";
-	nombreslealtadmiedo[3] = "Sensación de terror";
+	nombreslealtadmiedo = new String[]{"Leales", "Poco leales", "Desleales", "Sensación de terror"};
 	
 	//El nivel o experiencia
-	nombresnivel = new String[5];
-	nombresnivel[0] = "0-10";
-	nombresnivel[1] = "11-20";
-	nombresnivel[2] = "21-30";
-	nombresnivel[3] = "31-40";
-	nombresnivel[4] = "41-50";
-	
+	nombresnivel = new String[]{"0-10", "11-20", "21-30", "31-40", "41-50"};
 	}
 
 	
