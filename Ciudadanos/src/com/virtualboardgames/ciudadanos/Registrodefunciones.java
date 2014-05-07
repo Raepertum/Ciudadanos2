@@ -6,6 +6,10 @@ public class Registrodefunciones {
 	
 	private Registrodefunciones(){
 		
+	//Registro de funciones usa clases accesibles desde cualquier sitio:
+	//Variablesdejuego, registro de individuos, registro de granjas...
+		
+		
 	}
 	
 	public void distribuidordefunciones(int codigo, int numerodeopcion){
@@ -33,7 +37,28 @@ public class Registrodefunciones {
 	
 	private void instalaciondenuevosciudadanos(String tipodeciudadanos, int numerodeadultosh, int numerodeadultosm, int numerodeancianos,
 			int numerodeancianas, int numerodeninos, int numerodeninas, int lealtad, int miedo, int habilidad){
+		for(int i=0;i<numerodeadultosh;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(true, 16, lealtad, miedo, tipodeciudadanos, 0);
+		}
+		for(int i=0;i<numerodeadultosm;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(false, 16, lealtad, miedo, tipodeciudadanos, 0);
+		}
+		for(int i=0;i<numerodeancianos;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(true, 45, lealtad, miedo, tipodeciudadanos, 0);
+		}
+		for(int i=0;i<numerodeancianas;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(false, 45, lealtad, miedo, tipodeciudadanos, 0);
+		}
+		for(int i=0;i<numerodeninos;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(true, 0, lealtad, miedo, tipodeciudadanos, 0);
+		}
+		for(int i=0;i<numerodeninas;i++){
+			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(false, 0, lealtad, miedo,tipodeciudadanos, 0);
+		}
+		
+		
 	};
+	
 	private void anadiralaproducciondetrigo(int produccion){
 		
 	};
