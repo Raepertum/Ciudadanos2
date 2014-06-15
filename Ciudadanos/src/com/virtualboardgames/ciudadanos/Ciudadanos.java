@@ -16,7 +16,6 @@ public class Ciudadanos implements ApplicationListener {
 	private Renderizador renderizador;
 	private boolean pausa;
 	public Variablesdejuego variablesdejuego;
-	public Eventosymenu eventosymenu;
 			
 	
 	@Override

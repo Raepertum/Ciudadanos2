@@ -429,7 +429,7 @@ public class MenuAlmacen extends MenuAbstracto{
     
     //Las tablas de información de Alimentos
     
-    crearTablaMesAnoResto(tabledeinformacion1mes, tabledeinformacion1ano, 
+    crearTablaMesAnoTotal(tabledeinformacion1mes, tabledeinformacion1ano, 
     		tabledeinformacion1total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
     		0, 5, Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes,
@@ -442,7 +442,7 @@ public class MenuAlmacen extends MenuAbstracto{
     		
     //Las tablas de información de Materias Primas
     
-    crearTablaMesAnoResto(tabledeinformacion2mes, tabledeinformacion2ano, 
+    crearTablaMesAnoTotal(tabledeinformacion2mes, tabledeinformacion2ano, 
     		tabledeinformacion2total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
     		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes,
@@ -454,7 +454,7 @@ public class MenuAlmacen extends MenuAbstracto{
     		
     //Las tablas de información de Armas
    	
-    crearTablaMesAnoResto(tabledeinformacion3mes, tabledeinformacion3ano, 
+    crearTablaMesAnoTotal(tabledeinformacion3mes, tabledeinformacion3ano, 
     		tabledeinformacion3total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
     		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes,
@@ -466,7 +466,7 @@ public class MenuAlmacen extends MenuAbstracto{
     
    	//Las tablas de información de Artesanía
     
-    crearTablaMesAnoResto(tabledeinformacion4mes, tabledeinformacion4ano, 
+    crearTablaMesAnoTotal(tabledeinformacion4mes, tabledeinformacion4ano, 
     		tabledeinformacion4total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
     		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames,
@@ -478,7 +478,7 @@ public class MenuAlmacen extends MenuAbstracto{
    	
    	//Las tablas de información de Bienes de lujo
     
-    crearTablaMesAnoResto(tabledeinformacion5mes, tabledeinformacion5ano, 
+    crearTablaMesAnoTotal(tabledeinformacion5mes, tabledeinformacion5ano, 
     		tabledeinformacion5total, espacioenblanco, alturaespacioenblanco, 
     		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
     		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes,

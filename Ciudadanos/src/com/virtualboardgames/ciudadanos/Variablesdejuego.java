@@ -221,9 +221,14 @@ public class Social{
 	//Media, Edad\Sexo, Lealtad\Miedo, Nivel
 	
 	String nombresvaloresmedios[];
+	int intsvaloresmedios[];
 	String nombresedadsexo[];
+	int intsvaloresedadsexo[];
 	String nombreslealtadmiedo[];
+	int intsvaloreslealtadmiedo[];
 	String nombresnivel[];
+	int intsvaloresnombrenivel[];
+	
 	
 	public Social(){
 		
@@ -243,6 +248,37 @@ public class Social{
 	
 	//El nivel o experiencia
 	nombresnivel = new String[]{"0-10", "11-20", "21-30", "31-40", "41-50"};
+	
+	//Inicialización de valores
+	intsvaloresmedios = new int[35];
+	intsvaloresedadsexo = new int[42];
+	intsvaloreslealtadmiedo = new int[28];
+	intsvaloresnombrenivel = new int[35];
+	
+	}
+	
+	public void anadiraloscontadores(Individuo individuo){
+	
+	if(individuo.profesion=="aldeanos"){
+		if(individuo.edad<10){
+			intsvaloresedadsexo[0]++;
+		}
+		else if((individuo.edad>=10)&&(individuo.edad<20)){
+			intsvaloresedadsexo[1]++;
+		}
+        else if((individuo.edad>=20)&&(individuo.edad<30)){
+        	intsvaloresedadsexo[2]++;
+		}
+        else if((individuo.edad>=30)&&(individuo.edad<40)){
+        	intsvaloresedadsexo[3]++;
+		}
+        else if((individuo.edad>=40)&&(individuo.edad<=50)){
+        	intsvaloresedadsexo[4]++;
+		}
+	}
+ 
+		
+	
 	}
 
 	

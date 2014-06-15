@@ -56,7 +56,6 @@ public class Registrodefunciones {
 			Registrodeindividuos.registrodeindividuos.crearnuevoindividuo(false, 0, lealtad, miedo,tipodeciudadanos, 0);
 		}
 		
-		
 	};
 	
 	private void anadiralaproducciondetrigo(int produccion){

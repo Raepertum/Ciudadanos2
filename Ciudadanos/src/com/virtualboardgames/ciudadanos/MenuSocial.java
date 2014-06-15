@@ -80,6 +80,9 @@ public class MenuSocial extends MenuAbstracto{
   	int tipodeinformacion;
   	
   	public MenuSocial(){
+  		
+  	//El array de labels
+  	arraydelabelsintssocial = new Array<Label>(140);	
 		
 	//Creamos las nuevas tables	
   		
@@ -271,6 +274,16 @@ public class MenuSocial extends MenuAbstracto{
     escribirFilaTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
    			0,5,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion);
+    
+    crearTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
+    		Variablesdejuego.variablesdejuego.social.intsvaloresmedios, 7, 5, arraydelabelsintssocial,
+    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+    
+    /*crearTabla(Table tableenlaquepongolafila, String primeraarray[],
+		int segundaarray[],	int numerodefilas, int numerodecolumnas,
+		Array<Label> arraydeints, int anchocolumnas, int anchoprimeracolumna, LabelStyle estilolabel, 
+		int espacioentrefilas){
+		*/
    	
     escribirFilaTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresedadsexo,
    			0,6,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
