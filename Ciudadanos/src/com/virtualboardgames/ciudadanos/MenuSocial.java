@@ -123,6 +123,7 @@ public class MenuSocial extends MenuAbstracto{
 	
 	//Añadimos las sub-tablas en el orden correcto
 	tabledeinformacion.add(tabledebotonesinformacion);
+	tabledeinformacion.row();
 	tabledeinformacion.add(stacktabledeinformacion);
 	stacktabledeinformacion.add(tablemedia);
 	stacktabledeinformacion.add(tableedadsexo);
@@ -271,6 +272,8 @@ public class MenuSocial extends MenuAbstracto{
    	//Hay que crear la primera fila con los nombres de las columnas 
    	//Y después hay que crear las tablas con los nombres de los tipos de aldeanos
    	
+   	tablemedia.add(espacioenblanco);
+   	
     escribirFilaTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
    			0,5,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion);
@@ -279,86 +282,34 @@ public class MenuSocial extends MenuAbstracto{
     		Variablesdejuego.variablesdejuego.social.intsvaloresmedios, 7, 5, arraydelabelsintssocial,
     		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
     
-    /*crearTabla(Table tableenlaquepongolafila, String primeraarray[],
-		int segundaarray[],	int numerodefilas, int numerodecolumnas,
-		Array<Label> arraydeints, int anchocolumnas, int anchoprimeracolumna, LabelStyle estilolabel, 
-		int espacioentrefilas){
-		*/
-   	
-    escribirFilaTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresedadsexo,
+   	escribirFilaTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresedadsexo,
    			0,6,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion);
+   	
+   	crearTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
+    		Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo, 7, 6, arraydelabelsintssocial,
+    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+   
     
     escribirFilaTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombreslealtadmiedo,
    			0,4,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion);
     
+    crearTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
+    		Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo, 7, 4, arraydelabelsintssocial,
+    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+   
     escribirFilaTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresnivel,
    			0,5,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
    			espacioentrefilastablainformacion);
     
-    /*
-    crearTablaMesAnoResto(tabledeinformacion1mes, tabledeinformacion1ano, 
-    		tabledeinformacion1total, espacioenblanco, alturaespacioenblanco, 
-    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-    		0, 5, Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal,
-    		arraydelabelsintssocial,anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
-    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos, 
-    		5, 6);
-    
-    		
-    //Las tablas de información de Materias Primas
-    
-    crearTablaMesAnoResto(tabledeinformacion2mes, tabledeinformacion2ano, 
-    		tabledeinformacion2total, espacioenblanco, alturaespacioenblanco, 
-    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal,
-    		arraydelabelsintssocial,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
-    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas, 
-    		8, 5);
-    		
-    //Las tablas de información de Armas
-   	
-    crearTablaMesAnoResto(tabledeinformacion3mes, tabledeinformacion3ano, 
-    		tabledeinformacion3total, espacioenblanco, alturaespacioenblanco, 
-    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal,
-    		arraydelabelsintssocial,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
-    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas, 
-    		7, 5);
-    
-   	//Las tablas de información de Artesanía
-    
-    crearTablaMesAnoResto(tabledeinformacion4mes, tabledeinformacion4ano, 
-    		tabledeinformacion4total, espacioenblanco, alturaespacioenblanco, 
-    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal,
-    		arraydelabelsintssocial,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
-    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania, 
-    		5, 5);
-   	
-   	//Las tablas de información de Bienes de lujo
-    
-    crearTablaMesAnoResto(tabledeinformacion5mes, tabledeinformacion5ano, 
-    		tabledeinformacion5total, espacioenblanco, alturaespacioenblanco, 
-    		Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-    		0,4, Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano,
-    		Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal,
-    		arraydelabelsintssocial,anchocolumnassubtabla2, anchoprimeracolumna, estilolabel, 
-    		espacioentrefilastablainformacion, Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo, 
-    		5, 5);
-    */
+    crearTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
+    		Variablesdejuego.variablesdejuego.social.intsvaloresnombrenivel, 7, 5, arraydelabelsintssocial,
+    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
    
-    //La tabla de almacenes
+    
+   
+   //La tabla de almacenes
     
     Image iconoalmacen2;
     iconoalmacen2 = new Image(Texturasysonidos.texturasysonidos.estilosyactores.edificioalmacenmenu);
