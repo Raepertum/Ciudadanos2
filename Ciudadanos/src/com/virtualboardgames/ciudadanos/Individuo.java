@@ -10,13 +10,13 @@ int miedo;
 int habilidad;
 String profesion;
 int nivel;
+boolean cansado = false;
 	
 public Individuo(boolean sexo, int edad, int lealtad, int miedo, String profesion, int nivel){
 	this.sexo = sexo;
 	this.edad = edad;
 	this.lealtad = lealtad;
 	this.miedo = miedo;
-	this.habilidad = habilidad;
 	this.profesion = profesion;
 	this.nivel = nivel;
 }
@@ -30,6 +30,12 @@ public void cambiardeprofesion(String nuevaprofesion){
 }
 public void subirdenivel(){
 	this.nivel++;
+}
+public void cansarindividuo(){
+	cansado=true;
+}
+public void descansarindividuo(){
+	cansado=false;
 }
 
 

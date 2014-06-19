@@ -1,6 +1,6 @@
 package com.virtualboardgames.ciudadanos;
 
-public class Registrodegranjas {
+public class Registrodeedificiosproductores {
 
 	
 	
