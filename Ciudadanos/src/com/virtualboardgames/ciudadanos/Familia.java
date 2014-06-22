@@ -6,6 +6,7 @@ public class Familia {
 	
 	String nombredelafamilia; 
 	Array<Individuo> miembrosdelafamilia;
+	boolean habitaunedificio = false;
 	
 	public Familia(String nombredelafamilia){
 		
