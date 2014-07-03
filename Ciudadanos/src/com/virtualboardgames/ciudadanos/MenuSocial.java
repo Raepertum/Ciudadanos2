@@ -25,15 +25,15 @@ public class MenuSocial extends MenuAbstracto{
 	//(Que permite seleccionar si mostramos información, almacenes u órdenes)
 	Table tabledefondo;
 	Table tabledeinformacion;
-	 Table tabledebotonesinformacion;
-	 Table tabledetablassocial;
-	  Stack stacktabledeinformacion;
-	   Table tablemedia;
-	   Table tableedadsexo;
-	   Table tablelealtadmiedo;
-	   Table tablenivel;
+	Table tabledebotonesinformacion;
+	Table tabledetablassocial;
+	Stack stacktabledeinformacion;
+	Table tablemedia;
+	Table tableedadsexo;
+	Table tablelealtadmiedo;
+	Table tablenivel;
 	Table tabledealmacenes;
-	 Table tabledescrollpanealmacenes;
+	Table tabledescrollpanealmacenes;
 	Table tabledeordenes;
 	Table tabledebotones;
 	
@@ -69,8 +69,9 @@ public class MenuSocial extends MenuAbstracto{
 	ScrollPane scrollpanealmacenes;
 	
 	//Ancho columnas y espacio entre filas
-	int anchocolumnassubtabla1 = 120;
-	int anchocolumnassubtabla2 = 160;
+	int anchocolumnasseiscolumnas = 100;
+	int anchocolumnascincocolumnas = 120;
+	int anchocolumnascuatrocolumnas = 160;
 	int espacioentrefilastablainformacion = 37;
 	int anchoprimeracolumna = 100;
 	int alturaespacioenblanco = 37;
@@ -122,7 +123,7 @@ public class MenuSocial extends MenuAbstracto{
 	this.add(tabledeordenes);
 	
 	//Añadimos las sub-tablas en el orden correcto
-	tabledeinformacion.add(tabledebotonesinformacion);
+	stacktabledeinformacion.add(tabledebotonesinformacion);
 	tabledeinformacion.row();
 	tabledeinformacion.add(stacktabledeinformacion);
 	stacktabledeinformacion.add(tablemedia);
@@ -219,7 +220,6 @@ public class MenuSocial extends MenuAbstracto{
    	tabledebotones.center().top();
    	tabledebotones.add(espacioenblanco);
    	tabledebotones.add(titulo);
-   	tabledebotones.add(espacioenblanco);
    	tabledebotones.row();
    	tabledebotones.add(Informacion);
     tabledebotones.add(Almacenes).padLeft(50);
@@ -272,40 +272,38 @@ public class MenuSocial extends MenuAbstracto{
    	//Hay que crear la primera fila con los nombres de las columnas 
    	//Y después hay que crear las tablas con los nombres de los tipos de aldeanos
    	
-   	tablemedia.add(espacioenblanco);
    	
-    escribirFilaTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
-   			0,5,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
+   	escribirFilaTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
+   			0,5,null,0,0,null, anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion, espacioenblanco);
     
     crearTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresmedios, 7, 5, arraydelabelsintssocial,
-    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+    		Variablesdejuego.variablesdejuego.social.intsvaloresmedios, 7, 6, arraydelabelsintssocial,
+    		anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
     
    	escribirFilaTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresedadsexo,
-   			0,6,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
+   			0,6,null,0,0,null, anchocolumnasseiscolumnas, anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion, espacioenblanco);
    	
    	crearTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo, 7, 6, arraydelabelsintssocial,
-    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+    		Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo, 7, 7, arraydelabelsintssocial,
+    		anchocolumnasseiscolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
    
-    
     escribirFilaTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombreslealtadmiedo,
-   			0,4,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
+   			0,4,null,0,0,null, anchocolumnascuatrocolumnas, anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion, espacioenblanco);
     
     crearTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo, 7, 4, arraydelabelsintssocial,
-    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+    		Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo, 7, 5, arraydelabelsintssocial,
+    		anchocolumnascuatrocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
    
     escribirFilaTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresnivel,
-   			0,5,null,0,0,null, anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion);
+   			0,5,null,0,0,null, anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, 
+   			espacioentrefilastablainformacion, espacioenblanco);
     
     crearTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresnombrenivel, 7, 5, arraydelabelsintssocial,
-    		anchocolumnassubtabla1, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
+    		Variablesdejuego.variablesdejuego.social.intsvaloresnombrenivel, 7, 6, arraydelabelsintssocial,
+    		anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
    
     
    

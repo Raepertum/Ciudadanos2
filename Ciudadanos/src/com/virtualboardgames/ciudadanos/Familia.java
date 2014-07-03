@@ -11,6 +11,7 @@ public class Familia {
 	public Familia(String nombredelafamilia){
 		
 		this.nombredelafamilia = nombredelafamilia;
+		miembrosdelafamilia = new Array<Individuo>();
 		
 	}
 	

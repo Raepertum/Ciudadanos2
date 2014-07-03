@@ -244,7 +244,7 @@ public class Social{
 	nombresedadsexo = new String[]{"Niños", "Niñas", "Hombres", "Mujeres", "Ancianos", "Ancianas"};
 	
 	//Los valores que representan las variables Lealtad\Miedo
-	nombreslealtadmiedo = new String[]{"Leales", "Poco leales", "Desleales", "Sensación de terror"};
+	nombreslealtadmiedo = new String[]{"Leales", "Poco leales", "Desleales", "Miedo"};
 	
 	//El nivel o experiencia
 	nombresnivel = new String[]{"0-10", "11-20", "21-30", "31-40", "41-50"};

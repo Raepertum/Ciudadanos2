@@ -14,10 +14,14 @@ public void escribirFilaTabla(Table tableenlaquepongolafila, String[] primeraArr
 		int rangoinferiorprimeraarray, int rangosuperiorprimerarray, 
 		int[] segundaArray, int rangoinferiorsegundaarray, 
 		int rangosuperiorsegundaarray, Array<Label> arraydelabelsints, int anchocolumnas,
-		int anchoprimeracolumna, LabelStyle estilolabel, int espacioentrefilas){
+		int anchoprimeracolumna, LabelStyle estilolabel, int espacioentrefilas, Label espacioenblanco){
    boolean simple = true;
-	//Los labels de texto (Las strings)
-	if(primeraArray!=null){
+	//Los labels de texto (Las strings) Añadiremos un espacio en blanco al principio de la fila siempre que no usemos 
+    //alguna de las otras funciones, en ese caso, espacioenblanco será null
+   if(espacioenblanco!=null){
+	   tableenlaquepongolafila.add(espacioenblanco);
+   }
+   if(primeraArray!=null){
 		simple=false;
 		//La primera
 		Label label = new Label(primeraArray[rangoinferiorprimeraarray], estilolabel);
@@ -54,7 +58,7 @@ public void crearTabla(Table tableenlaquepongolafila, String primeraarray[],
 	for(int n=0;n<numerodefilas;n++){
 	escribirFilaTabla(tableenlaquepongolafila, primeraarray, n,  
 			n+1, segundaarray, 0, numerodecolumnas, arraydeints, anchocolumnas,anchoprimeracolumna, 
-			estilolabel, espacioentrefilas);
+			estilolabel, espacioentrefilas, null);
 	
 };
 }
@@ -70,7 +74,7 @@ public void crearTablaMesAnoTotal(Table tablemes, Table tableano, Table tabletot
 	tablemes.row();
 	tablemes.add(espacioenblanco).height(alturaespacioenblanco);
 	escribirFilaTabla(tablemes, nombrecolumnas, rangoinferiornom, rangosuperiornom,
-	null,0,0, arraydealmacenamientodeints, anchocolumnas,anchoprimeracolumna, estilolabel,espacioentrefilas);
+	null,0,0, arraydealmacenamientodeints, anchocolumnas,anchoprimeracolumna, estilolabel,espacioentrefilas, null);
 	
 	crearTabla(tablemes, nombredelasfilas, intsdelatablames, numerodefilas, numerodecolumnas,
    			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
@@ -80,7 +84,7 @@ public void crearTablaMesAnoTotal(Table tablemes, Table tableano, Table tabletot
 	tableano.add(espacioenblanco).height(alturaespacioenblanco);
 	escribirFilaTabla(tableano, nombrecolumnas, rangoinferiornom+rangosuperiornom, 
 			rangosuperiornom*2, null,0,0, arraydealmacenamientodeints, anchocolumnas,
-			anchoprimeracolumna, estilolabel,espacioentrefilas);
+			anchoprimeracolumna, estilolabel,espacioentrefilas, null);
 	crearTabla(tableano, nombredelasfilas, intsdelatablaano, numerodefilas, numerodecolumnas,
    			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
    			estilolabel,espacioentrefilas);
@@ -89,7 +93,7 @@ public void crearTablaMesAnoTotal(Table tablemes, Table tableano, Table tabletot
 	tabletotal.add(espacioenblanco).height(alturaespacioenblanco);
 	escribirFilaTabla(tabletotal, nombrecolumnas, rangoinferiornom+2*rangosuperiornom, 
 			rangosuperiornom*3, null,0,0, arraydealmacenamientodeints, anchocolumnas,
-			anchoprimeracolumna, estilolabel, espacioentrefilas);
+			anchoprimeracolumna, estilolabel, espacioentrefilas, null);
 	crearTabla(tabletotal, nombredelasfilas, intsdelatablatotal, numerodefilas, numerodecolumnas,
    			arraydealmacenamientodeints, anchocolumnas, anchoprimeracolumna,
    			estilolabel,espacioentrefilas);
