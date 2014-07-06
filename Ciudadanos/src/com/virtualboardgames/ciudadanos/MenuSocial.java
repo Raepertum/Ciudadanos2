@@ -302,7 +302,7 @@ public class MenuSocial extends MenuAbstracto{
    			espacioentrefilastablainformacion, espacioenblanco);
     
     crearTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresnombrenivel, 7, 6, arraydelabelsintssocial,
+    		Variablesdejuego.variablesdejuego.social.intsvaloresnivel, 7, 6, arraydelabelsintssocial,
     		anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
    
     
@@ -408,31 +408,21 @@ arraytabledeinformacion[3].setVisible(true);
 
 public void act(float deltatime){
 	scrollpanealmacenes.act(deltatime);
-	for (int i = 0; i<25; i++){
-		arraydelabelsintssocial.get(i).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes[i]);
-		arraydelabelsintssocial.get(i+25).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano[i]);
-		arraydelabelsintssocial.get(i+50).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal[i]);
+	for (int i = 0; i<35; i++){
+		//Las primeras 35 son la media
+		arraydelabelsintssocial.get(i).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresmedios[i]);
 }
-	for (int i = 0; i<32; i++){	
-		arraydelabelsintssocial.get(i+75).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes[i]);
-		arraydelabelsintssocial.get(i+107).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano[i]);
-		arraydelabelsintssocial.get(i+139).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal[i]);
+	for (int i = 0; i<42; i++){	
+		//Las siguientes 42 son edad/sexo
+		arraydelabelsintssocial.get(i+35).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo[i]);
 	}
-	for (int i = 0; i<28; i++){	
-		arraydelabelsintssocial.get(i+171).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes[i]);
-		arraydelabelsintssocial.get(i+199).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano[i]);
-		arraydelabelsintssocial.get(i+227).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal[i]);
+	for (int i = 0; i<28; i++){
+		//Las siguientes 28 son lealtad/miedo
+		arraydelabelsintssocial.get(i+77).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo[i]);
 	}
-	for (int i = 0; i<20; i++){	
-		arraydelabelsintssocial.get(i+255).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames[i]);
-		arraydelabelsintssocial.get(i+275).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano[i]);
-		arraydelabelsintssocial.get(i+295).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal[i]);
+	for (int i = 0; i<35; i++){	
+		//Por último, el nivel
+		arraydelabelsintssocial.get(i+105).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresnivel);
 	}
-	for (int i = 0; i<20; i++){	
-		arraydelabelsintssocial.get(i+315).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes[i]);
-		arraydelabelsintssocial.get(i+335).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano[i]);
-		arraydelabelsintssocial.get(i+355).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal[i]);
-	}
-	
 }
 };

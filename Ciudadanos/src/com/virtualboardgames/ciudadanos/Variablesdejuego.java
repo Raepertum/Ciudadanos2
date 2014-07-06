@@ -227,7 +227,7 @@ public class Social{
 	String nombreslealtadmiedo[];
 	int intsvaloreslealtadmiedo[];
 	String nombresnivel[];
-	int intsvaloresnombrenivel[];
+	int intsvaloresnivel[];
 	
 	
 	public Social(){
@@ -253,13 +253,13 @@ public class Social{
 	intsvaloresmedios = new int[35];
 	intsvaloresedadsexo = new int[42];
 	intsvaloreslealtadmiedo = new int[28];
-	intsvaloresnombrenivel = new int[35];
+	intsvaloresnivel = new int[35];
 	
 	}
 	
 	public void anadiraloscontadores(Individuo individuo){
 	
-	if(individuo.profesion=="aldeanos"){
+	if(individuo.profesion=="campesinos"){
 		if(individuo.edad<10){
 			intsvaloresedadsexo[0]++;
 		}
