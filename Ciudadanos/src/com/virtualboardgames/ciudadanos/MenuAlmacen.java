@@ -108,6 +108,25 @@ public class MenuAlmacen extends MenuAbstracto{
     //Plazo (0=mes, 1=año, 2=resto)
   	int plazo;
   	
+  	//Los labels para la actualización
+  	Label[] labelsinformacion1mesact;
+  	Label[] labelsinformacion2mesact;
+  	Label[] labelsinformacion3mesact;
+  	Label[] labelsinformacion4mesact;
+  	Label[] labelsinformacion5mesact;
+  	
+  	Label[] labelsinformacion1anoact;
+  	Label[] labelsinformacion2anoact;
+  	Label[] labelsinformacion3anoact;
+  	Label[] labelsinformacion4anoact;
+  	Label[] labelsinformacion5anoact;
+  	
+  	Label[] labelsinformacion1totalact;
+  	Label[] labelsinformacion2totalact;
+  	Label[] labelsinformacion3totalact;
+  	Label[] labelsinformacion4totalact;
+  	Label[] labelsinformacion5totalact;
+  	
   	public MenuAlmacen(){
 		
 	//El array de labels
@@ -121,59 +140,89 @@ public class MenuAlmacen extends MenuAbstracto{
 	//La información del mes
 	arraytabledeinformacion1 = new Table[5];
 	
-	arraytabledeinformacion1[0] = tabledeinformacion1mes =  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion1[1] = tabledeinformacion2mes =  crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion1[2] = tabledeinformacion3mes =  crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion1[3] = tabledeinformacion4mes =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion1[4] = tabledeinformacion5mes =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes).devolverTable()
-			.left().top().padLeft(0).padTop(90);
+	TableActualizable tabledeinformacion1mesact =  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducablesmes,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes);
+	arraytabledeinformacion1[0] = tabledeinformacion1mes = tabledeinformacion1mesact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion1mesact = tabledeinformacion1mesact.devolverarraydelabels();
 	
+	TableActualizable tabledeinformacion2mesact =  crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesmes,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes);
+	arraytabledeinformacion1[1] = tabledeinformacion2mes = tabledeinformacion2mesact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion2mesact = tabledeinformacion2mesact.devolverarraydelabels();
+			
+	TableActualizable tabledeinformacion3mesact =  crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesmes,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes);
+	arraytabledeinformacion1[2] = tabledeinformacion3mes = tabledeinformacion3mesact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion3mesact = tabledeinformacion3mesact.devolverarraydelabels();
+			
+	TableActualizable tabledeinformacion4mesact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesmes,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames);
+	arraytabledeinformacion1[3] = tabledeinformacion4mes = tabledeinformacion4mesact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion4mesact = tabledeinformacion4mesact.devolverarraydelabels();
+					
+	TableActualizable tabledeinformacion5mesact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesmes,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes);
+	arraytabledeinformacion1[4] = tabledeinformacion5mes = tabledeinformacion5mesact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion5mesact = tabledeinformacion5mesact.devolverarraydelabels();
+							
 	//La información del año
 	arraytabledeinformacion2 = new Table[5];
-	arraytabledeinformacion2[0] = tabledeinformacion1ano=  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion2[1] = tabledeinformacion2ano =   crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion2[2] = tabledeinformacion3ano =   crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion2[3] = tabledeinformacion4ano =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion2[4] = tabledeinformacion5ano =   crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano).devolverTable()
-			.left().top().padLeft(0).padTop(90);
+	
+	TableActualizable tabledeinformacion1anoact =  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducablesano,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano);
+	arraytabledeinformacion2[0] = tabledeinformacion1ano = tabledeinformacion1anoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion1anoact = tabledeinformacion1anoact.devolverarraydelabels();
+			
+	TableActualizable tabledeinformacion2anoact =  crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesano,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano);
+	arraytabledeinformacion2[1] = tabledeinformacion2ano = tabledeinformacion2anoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion2anoact = tabledeinformacion2anoact.devolverarraydelabels();
+					
+	TableActualizable tabledeinformacion3anoact =  crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesano,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano);
+	arraytabledeinformacion2[2] = tabledeinformacion3ano = tabledeinformacion3anoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion3anoact = tabledeinformacion3anoact.devolverarraydelabels();
+					
+	TableActualizable tabledeinformacion4anoact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesano,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano);
+	arraytabledeinformacion2[3] = tabledeinformacion4ano = tabledeinformacion4anoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion4anoact = tabledeinformacion4anoact.devolverarraydelabels();
+							
+	TableActualizable tabledeinformacion5anoact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablesano,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano);
+	arraytabledeinformacion2[4] = tabledeinformacion5ano = tabledeinformacion5anoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion5anoact = tabledeinformacion5anoact.devolverarraydelabels();
+	
 	
 	//La información del total
 	arraytabledeinformacion3 = new Table[5];
-	arraytabledeinformacion3[0] = tabledeinformacion1total =  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion3[1] = tabledeinformacion2total =  crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion3[2] = tabledeinformacion3total = crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion3[3] = tabledeinformacion4total =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal).devolverTable()
-			.left().top().padLeft(0).padTop(90);
-	arraytabledeinformacion3[4] = tabledeinformacion5total =   crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducables,
-			Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal).devolverTable()
-			.left().top().padLeft(0).padTop(90);
 	
+	TableActualizable tabledeinformacion1totalact =  crearTabla2(6,6,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacencaducablestotal,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenalimentos,Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal);
+	arraytabledeinformacion3[0] = tabledeinformacion1total = tabledeinformacion1totalact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion1totalact = tabledeinformacion1totalact.devolverarraydelabels();
+					
+	TableActualizable tabledeinformacion2totalact =  crearTabla2(9,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablestotal,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenmatprimas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal);
+	arraytabledeinformacion3[1] = tabledeinformacion2total = tabledeinformacion2totalact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion2totalact = tabledeinformacion2totalact.devolverarraydelabels();
+							
+	TableActualizable tabledeinformacion3totalact =  crearTabla2(8,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablestotal,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenarmas,Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal);
+	arraytabledeinformacion3[2] = tabledeinformacion3total = tabledeinformacion3totalact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion3totalact = tabledeinformacion3totalact.devolverarraydelabels();
+							
+	TableActualizable tabledeinformacion4totalact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablestotal,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenartesania,Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal);
+	arraytabledeinformacion3[3] = tabledeinformacion4total = tabledeinformacion4totalact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion4totalact = tabledeinformacion4totalact.devolverarraydelabels();
+									
+	TableActualizable tabledeinformacion5totalact =  crearTabla2(6,5,Variablesdejuego.variablesdejuego.almacen.nombreslabelsalmacennocaducablestotal,
+	Variablesdejuego.variablesdejuego.almacen.stringsdealmacenbieneslujo,Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal);
+	arraytabledeinformacion3[4] = tabledeinformacion5total = tabledeinformacion5totalact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsinformacion5totalact = tabledeinformacion5totalact.devolverarraydelabels();
 	
+
 	tabledebotonesinformacion = new Table();
 	
 	tabledealmacenes = new Table();
@@ -202,6 +251,10 @@ public class MenuAlmacen extends MenuAbstracto{
 	this.add(tabledebotones);
 	this.add(tabledeordenes);
 	
+
+   
+	
+	
 	//Añadimos las sub-tablas en el orden correcto
 	tabledeinformacion.add(stacktabledeinformacion);
 	stacktabledeinformacion.add(tabledebotonesinformacion);
@@ -217,6 +270,8 @@ public class MenuAlmacen extends MenuAbstracto{
     stacktabledeinformacion3.setVisible(false);
     stacktabledeinformacion4.setVisible(false);
     stacktabledeinformacion5.setVisible(false);
+    
+    
     
     //Ocultamos todas las tablas menos la primera
     tabledeinformacion1mes.setVisible(true);
@@ -234,6 +289,7 @@ public class MenuAlmacen extends MenuAbstracto{
     tabledeinformacion5mes.setVisible(true);
     tabledeinformacion5ano.setVisible(false);
     tabledeinformacion5total.setVisible(false);
+   
     
     
 	//Vamos instanciando y añadiendo los objetos (Puede que más tarde, por razones de rendimiento
@@ -537,35 +593,58 @@ public void act(float deltatime){
 	
 	scrollpanealmacenes.act(deltatime);
 	
-	/*
-	
-	for (int i = 0; i<25; i++){
-		arraydelabelsintsalmacen.get(i).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes[i]);
-		arraydelabelsintsalmacen.get(i+25).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano[i]);
-		arraydelabelsintsalmacen.get(i+50).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal[i]);
-}
-	for (int i = 0; i<32; i++){	
-		arraydelabelsintsalmacen.get(i+75).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes[i]);
-		arraydelabelsintsalmacen.get(i+107).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano[i]);
-		arraydelabelsintsalmacen.get(i+139).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal[i]);
+	for(int i = 0; i<labelsinformacion1mesact.length;i++){
+		labelsinformacion1mesact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosmes[i]);
 	}
-	for (int i = 0; i<28; i++){	
-		arraydelabelsintsalmacen.get(i+171).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes[i]);
-		arraydelabelsintsalmacen.get(i+199).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano[i]);
-		arraydelabelsintsalmacen.get(i+227).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal[i]);
+	for(int i = 0; i<labelsinformacion2mesact.length;i++){
+		labelsinformacion2mesact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasmes[i]);
 	}
-	for (int i = 0; i<20; i++){	
-		arraydelabelsintsalmacen.get(i+255).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames[i]);
-		arraydelabelsintsalmacen.get(i+275).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano[i]);
-		arraydelabelsintsalmacen.get(i+295).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal[i]);
+	for(int i = 0; i<labelsinformacion3mesact.length;i++){
+		labelsinformacion3mesact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasmes[i]);
 	}
-	for (int i = 0; i<20; i++){	
-		arraydelabelsintsalmacen.get(i+315).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes[i]);
-		arraydelabelsintsalmacen.get(i+335).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano[i]);
-		arraydelabelsintsalmacen.get(i+355).setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal[i]);
+	for(int i = 0; i<labelsinformacion4mesact.length;i++){
+		labelsinformacion4mesact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniames[i]);
+	}
+	for(int i = 0; i<labelsinformacion5mesact.length;i++){
+		labelsinformacion5mesact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujomes[i]);
 	}
 	
-	*/
+	for(int i = 0; i<labelsinformacion1anoact.length;i++){
+		labelsinformacion1anoact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentosano[i]);
+	}
+	for(int i = 0; i<labelsinformacion2anoact.length;i++){
+		labelsinformacion2anoact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimasano[i]);
+	}
+	for(int i = 0; i<labelsinformacion3anoact.length;i++){
+		labelsinformacion3anoact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmasano[i]);
+	}
+	for(int i = 0; i<labelsinformacion4anoact.length;i++){
+		labelsinformacion4anoact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniaano[i]);
+	}
+	for(int i = 0; i<labelsinformacion5anoact.length;i++){
+		labelsinformacion5anoact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujoano[i]);
+	}
+	
+	for(int i = 0; i<labelsinformacion1totalact.length;i++){
+		labelsinformacion1totalact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenalimentostotal[i]);
+	}
+	for(int i = 0; i<labelsinformacion2totalact.length;i++){
+		labelsinformacion2totalact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenmatprimastotal[i]);
+	}
+	for(int i = 0; i<labelsinformacion3totalact.length;i++){
+		labelsinformacion3totalact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenarmastotal[i]);
+	}
+	for(int i = 0; i<labelsinformacion4totalact.length;i++){
+		labelsinformacion4totalact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenartesaniatotal[i]);
+	}
+	for(int i = 0; i<labelsinformacion5totalact.length;i++){
+		labelsinformacion5totalact[i].setText(""+Variablesdejuego.variablesdejuego.almacen.intsdealmacenbieneslujototal[i]);
+	}
+	
+	
+	
+	
+	
 	
 }
 };

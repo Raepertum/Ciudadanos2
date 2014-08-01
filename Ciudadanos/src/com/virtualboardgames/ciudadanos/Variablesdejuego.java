@@ -30,8 +30,12 @@ public class Almacen{
 
 String titulo = "ALMACÉN";
 
-String[] nombreslabelsalmacencaducables;
-String[] nombreslabelsalmacennocaducables;
+String[] nombreslabelsalmacencaducablesmes;
+String[] nombreslabelsalmacencaducablesano;
+String[] nombreslabelsalmacencaducablestotal;
+String[] nombreslabelsalmacennocaducablesmes;
+String[] nombreslabelsalmacennocaducablesano;
+String[] nombreslabelsalmacennocaducablestotal;
 
 String [] stringsdealmacenalimentos;
 int[] intsdealmacenalimentosmes;
@@ -66,14 +70,14 @@ public Almacen(){
 	
 	
 	//Labels de almacén de productos que pueden caducar
-	nombreslabelsalmacencaducables = new String[]{"Producción mes", "Gasto mes", "Caducidad mes", "Neto mes",
-		"Reservas","Producción año", "Gasto año", "Caducidad año", "Neto año", "Reservas", "Producción total",
-		"Gasto total", "Caducidad total", "Neto total", "Reservas"};
+	nombreslabelsalmacencaducablesmes = new String[]{"Producción mes", "Gasto mes", "Caducidad mes", "Neto mes","Reservas"};
+	nombreslabelsalmacencaducablesano = new String[]{"Producción año", "Gasto año", "Caducidad año", "Neto año", "Reservas"};
+	nombreslabelsalmacencaducablestotal = new String[]{"Producción total","Gasto total", "Caducidad total", "Neto total", "Reservas"};
 	
 	//Labels de almacén de productos que no caducan
-	nombreslabelsalmacennocaducables = new String[]{"Producción mes", "Gasto mes", "Neto mes", "Reservas",
-		"Producción año", "Gasto año", "Neto año", "Reservas", "Producción total", "Gasto total", "Neto total",
-		"Reservas"};
+	nombreslabelsalmacennocaducablesmes = new String[]{"Producción mes", "Gasto mes", "Neto mes", "Reservas"};
+	nombreslabelsalmacennocaducablesano = new String[]{"Producción año", "Gasto año", "Neto año", "Reservas"};
+	nombreslabelsalmacennocaducablestotal = new String[]{"Producción total", "Gasto total", "Neto total","Reservas"};
 	
     //Alimentos
 	stringsdealmacenalimentos = new String[]{"Trigo", "Fruta", "Carne", "Carne sal.", "Pescado", "Miel"};
