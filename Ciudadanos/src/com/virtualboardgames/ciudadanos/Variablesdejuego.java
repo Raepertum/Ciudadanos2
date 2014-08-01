@@ -277,9 +277,7 @@ public class Social{
 		}
 	}
  
-		
-	
-	}
+}
 
 	
 //HAY QUE CREAR UN REGISTRO DE PRODUCCIONES Y UN CONTROL DE INDIVIDUOS	

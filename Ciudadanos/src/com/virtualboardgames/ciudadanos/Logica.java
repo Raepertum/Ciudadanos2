@@ -130,6 +130,13 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public void actualizarmenus(float delta){
 		contenedorhud.actualizartiempo((int)tiempotranscurridoensegundos,tiempotranscurridoenminutos,tiempotranscurridoenhoras);
 		contenedorhud.act(delta);
+		
+		Eventosymenu.eventosymenu.menualmacen.act(delta);
+		Eventosymenu.eventosymenu.menuejercito.act(delta);
+		Eventosymenu.eventosymenu.menucomercio.act(delta);
+		Eventosymenu.eventosymenu.menuespionaje.act(delta);
+		Eventosymenu.eventosymenu.menusocial.act(delta);
+		
 	};
 	public void actualizarvariables(float delta){
 		Variablesdejuego.variablesdejuego.actualizar();

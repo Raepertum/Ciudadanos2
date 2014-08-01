@@ -19,7 +19,6 @@ private Registrodefamilias(){
 
 public void crearfamiliadealdeanos(int lealtadbase, int miedobase, int nivelbase){
 	
-	System.out.println("Creada una familia");
 	
 	//Le preguntamos a la función que devuelve los nombres. Creamos una familia con ese nombre.
 	Familia familia = new Familia(devolvernombreparaelregistro());

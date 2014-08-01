@@ -28,6 +28,7 @@ public class MenuSocial extends MenuAbstracto{
 	Table tabledebotonesinformacion;
 	Table tabledetablassocial;
 	Stack stacktabledeinformacion;
+	
 	Table tablemedia;
 	Table tableedadsexo;
 	Table tablelealtadmiedo;
@@ -80,21 +81,27 @@ public class MenuSocial extends MenuAbstracto{
     //Plazo (0=Media, 1=Edad\Sexo, 2=Lealtad\Miedo, 3=Nivel)
   	int tipodeinformacion;
   	
+  	//Los labels para la actualizacion
+  	Label[] labelsmedia;
+  	Label[] labelsedadsexo;
+  	Label[] labelslealtadmiedo;
+  	Label[] labelsnivel;
+  	
   	public MenuSocial(){
   		
-  	//El array de labels
-  	arraydelabelsintssocial = new Array<Label>(140);	
-		
-	//Creamos las nuevas tables	
+  	//Creamos las nuevas tables	
   		
   	tabledefondo = new Table();
 	tabledeinformacion = new Table();
 	tabledebotonesinformacion = new Table();
 	tabledetablassocial = new Table();
-	tablemedia = new Table();
-	tableedadsexo = new Table();
-	tablelealtadmiedo = new Table();
-	tablenivel = new Table();
+	
+	
+	// public TableActualizable crearTabla2(int numerodefilas, int numerodecolumnas, String[] nombresdelascolumnas, String[]nombredelasfilas,
+	// int[]valoresdelasfilas){
+	
+	//tablemedia = new Table();
+	
 	tabledealmacenes = new Table();
 	tabledescrollpanealmacenes = new Table();
 	tabledebotones = new Table();
@@ -103,10 +110,26 @@ public class MenuSocial extends MenuAbstracto{
 	//Tables de información
 	
 	arraytabledeinformacion = new Table[4];
-	arraytabledeinformacion[0] = tablemedia =  new Table();
-	arraytabledeinformacion[1] = tableedadsexo =  new Table();
-	arraytabledeinformacion[2] = tablelealtadmiedo =  new Table();
-	arraytabledeinformacion[3] = tablenivel =  new Table();
+	
+	TableActualizable tablemediaact = crearTabla2(8,6,Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
+			Variablesdejuego.variablesdejuego.social.nombresclasessociales,Variablesdejuego.variablesdejuego.social.intsvaloresmedios);
+	arraytabledeinformacion[0] = tablemedia = tablemediaact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsmedia = tablemediaact.devolverarraydelabels(); 
+			
+	TableActualizable tableedadsexoact = crearTabla2(8,7,Variablesdejuego.variablesdejuego.social.nombresedadsexo,
+			Variablesdejuego.variablesdejuego.social.nombresclasessociales,Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo);
+	arraytabledeinformacion[1] = tableedadsexo = tableedadsexoact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsedadsexo = tableedadsexoact.devolverarraydelabels();
+	
+	TableActualizable tablelealtadmiedoact = crearTabla2(8,5,Variablesdejuego.variablesdejuego.social.nombreslealtadmiedo,
+			Variablesdejuego.variablesdejuego.social.nombresclasessociales,Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo);
+	arraytabledeinformacion[2] = tablelealtadmiedo = tablelealtadmiedoact.devolverTable().left().top().padLeft(0).padTop(90); 
+	labelslealtadmiedo = tablelealtadmiedoact.devolverarraydelabels();
+	
+	TableActualizable tablenivelact = crearTabla2(8,6,Variablesdejuego.variablesdejuego.social.nombresnivel,
+			Variablesdejuego.variablesdejuego.social.nombresclasessociales,Variablesdejuego.variablesdejuego.social.intsvaloresnivel);
+	arraytabledeinformacion[3] = tablenivel = tablenivelact.devolverTable().left().top().padLeft(0).padTop(90);
+	labelsnivel = tablenivelact.devolverarraydelabels();
 	
 	//Y los Stacks
 	stacktabledeinformacion = new Stack();
@@ -132,7 +155,8 @@ public class MenuSocial extends MenuAbstracto{
 	stacktabledeinformacion.add(tablenivel);
 	
     //Ocultamos todas las tablas menos la primera
-    tablemedia.setVisible(true);
+    
+	tablemedia.setVisible(true);
     tableedadsexo.setVisible(false);
     tablelealtadmiedo.setVisible(false);
     tablenivel.setVisible(false);    
@@ -206,7 +230,9 @@ public class MenuSocial extends MenuAbstracto{
    	tabledebotones.padTop(20);
    	
    	//Subtablas de información
-   	tablemedia.left().top().padLeft(0).padTop(90);
+   	
+   	//tablemedia.left().top().padLeft(0).padTop(90);
+   	
    	tableedadsexo.left().top().padLeft(0).padTop(90);
    	tablelealtadmiedo.left().top().padLeft(0).padTop(90);
    	tablenivel.left().top().padLeft(0).padTop(90);
@@ -268,45 +294,6 @@ public class MenuSocial extends MenuAbstracto{
     tabledebotonesinformacion.add(BotonTipodeinformacion).padLeft(20);
    	tabledebotonesinformacion.row();
    	
-    //Las tablas de información Social
-   	//Hay que crear la primera fila con los nombres de las columnas 
-   	//Y después hay que crear las tablas con los nombres de los tipos de aldeanos
-   	
-   	
-   	escribirFilaTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
-   			0,5,null,0,0,null, anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion, espacioenblanco);
-    
-    crearTabla(tablemedia, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresmedios, 7, 6, arraydelabelsintssocial,
-    		anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
-    
-   	escribirFilaTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresedadsexo,
-   			0,6,null,0,0,null, anchocolumnasseiscolumnas, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion, espacioenblanco);
-   	
-   	crearTabla(tableedadsexo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo, 7, 7, arraydelabelsintssocial,
-    		anchocolumnasseiscolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
-   
-    escribirFilaTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombreslealtadmiedo,
-   			0,4,null,0,0,null, anchocolumnascuatrocolumnas, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion, espacioenblanco);
-    
-    crearTabla(tablelealtadmiedo, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo, 7, 5, arraydelabelsintssocial,
-    		anchocolumnascuatrocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
-   
-    escribirFilaTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresnivel,
-   			0,5,null,0,0,null, anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, 
-   			espacioentrefilastablainformacion, espacioenblanco);
-    
-    crearTabla(tablenivel, Variablesdejuego.variablesdejuego.social.nombresclasessociales, 
-    		Variablesdejuego.variablesdejuego.social.intsvaloresnivel, 7, 6, arraydelabelsintssocial,
-    		anchocolumnascincocolumnas, anchoprimeracolumna, estilolabel, espacioentrefilastablainformacion);
-   
-    
-   
    //La tabla de almacenes
     
     Image iconoalmacen2;
@@ -408,21 +395,21 @@ arraytabledeinformacion[3].setVisible(true);
 
 public void act(float deltatime){
 	scrollpanealmacenes.act(deltatime);
-	for (int i = 0; i<35; i++){
-		//Las primeras 35 son la media
-		arraydelabelsintssocial.get(i).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresmedios[i]);
-}
-	for (int i = 0; i<42; i++){	
-		//Las siguientes 42 son edad/sexo
-		arraydelabelsintssocial.get(i+35).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo[i]);
+	
+		
+	for(int i = 0; i<labelsmedia.length;i++){
+		labelsmedia[i].setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresmedios[i]);
 	}
-	for (int i = 0; i<28; i++){
-		//Las siguientes 28 son lealtad/miedo
-		arraydelabelsintssocial.get(i+77).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo[i]);
+	for(int i = 0; i<labelsedadsexo.length;i++){
+		labelsedadsexo[i].setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresedadsexo[i]);
 	}
-	for (int i = 0; i<35; i++){	
-		//Por último, el nivel
-		arraydelabelsintssocial.get(i+105).setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresnivel);
+	for(int i = 0; i<labelslealtadmiedo.length;i++){
+		labelslealtadmiedo[i].setText(""+Variablesdejuego.variablesdejuego.social.intsvaloreslealtadmiedo[i]);
 	}
+	for(int i = 0; i<labelsnivel.length;i++){
+		labelsnivel[i].setText(""+Variablesdejuego.variablesdejuego.social.intsvaloresnivel[i]);
+	}
+	
+	
 }
 };
