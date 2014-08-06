@@ -242,7 +242,7 @@ public class Social{
 	
 	//Los valores medios, calculados convirtiendo en int la media de cada vector que representa
 	//a un ciudadano
-	nombresvaloresmedios = new String[]{"Edad", "Sexo", "Lealtad", "Miedo", "Nivel"};
+	nombresvaloresmedios = new String[]{"Edad", "Lealtad", "Miedo", "Nivel"};
 			
 	//Los valores que representan las variables edad\sexo, medidos en número de individuos
 	nombresedadsexo = new String[]{"Niños", "Niñas", "Hombres", "Mujeres", "Ancianos", "Ancianas"};
@@ -254,42 +254,188 @@ public class Social{
 	nombresnivel = new String[]{"0-10", "11-20", "21-30", "31-40", "41-50"};
 	
 	//Inicialización de valores
-	intsvaloresmedios = new int[35];
+	intsvaloresmedios = new int[28];
 	intsvaloresedadsexo = new int[42];
 	intsvaloreslealtadmiedo = new int[28];
 	intsvaloresnivel = new int[35];
 	
-	}
-	
-	public void anadiraloscontadores(Individuo individuo){
-	
-	if(individuo.profesion=="campesinos"){
-		if(individuo.edad<10){
-			intsvaloresedadsexo[0]++;
-		}
-		else if((individuo.edad>=10)&&(individuo.edad<20)){
-			intsvaloresedadsexo[1]++;
-		}
-        else if((individuo.edad>=20)&&(individuo.edad<30)){
-        	intsvaloresedadsexo[2]++;
-		}
-        else if((individuo.edad>=30)&&(individuo.edad<40)){
-        	intsvaloresedadsexo[3]++;
-		}
-        else if((individuo.edad>=40)&&(individuo.edad<=50)){
-        	intsvaloresedadsexo[4]++;
-		}
-	}
- 
 }
-
-	
-//HAY QUE CREAR UN REGISTRO DE PRODUCCIONES Y UN CONTROL DE INDIVIDUOS	
 	
 	
+public void reseteararrayssociales(int[] arrayaresetear){
+   for(int i=0;i<arrayaresetear.length;i++){
+		arrayaresetear[i]=0;
+	}
 }
 
 
+public void Actualizarsocial(){
+	
+	//Actualización de los valores individuales
+	
+	//Primero los ponemos todos a 0
+	reseteararrayssociales(intsvaloresmedios);
+	reseteararrayssociales(intsvaloresedadsexo);
+	reseteararrayssociales(intsvaloreslealtadmiedo);
+	reseteararrayssociales(intsvaloresnivel);
+	
+	//PARA LAS MEDIAS
+	//MEDIAS TOTALES
+	int numeradoredadmediatotal=0;
+	int numeradorlealtadmediatotal=0;
+	int numeradormiedomediototal=0;
+	int numeradornivelmediototal=0;
+	int numerodeindividuos=Registrodeindividuos.registrodeindividuos.devolverarraydeindividuos().size;
+
+	//MEDIAS DE LOS CAMPESINOS
+	int numeradoredadmediacampesinos=0;
+	int numeradorlealtadmediacampesinos=0;
+	int numeradormiedomediocampesinos=0;
+	int numeradornivelmediocampesinos=0;
+	int denominadornumerodecampesinos=0;
+		
+	
+	//Ahora le solicitamos al registro de individuos la array de todos los individuos y, uno a uno, vamos añadiendo a los contadores correspondientes
+	for (int i=0;i<numerodeindividuos;i++){
+		
+		Individuo individuo = Registrodeindividuos.registrodeindividuos.devolverarraydeindividuos().get(i);
+		
+		//Primero con los campesinos
+		if(individuo.profesion=="campesinos"){
+		
+			denominadornumerodecampesinos++;
+			numeradoredadmediatotal+=individuo.edad;
+			numeradoredadmediacampesinos+=individuo.edad;
+			numeradorlealtadmediatotal+=individuo.lealtad;
+			numeradorlealtadmediacampesinos+=individuo.lealtad;
+			numeradormiedomediototal+=individuo.miedo;
+			numeradormiedomediocampesinos+=individuo.miedo;
+			numeradornivelmediototal+=individuo.nivel;
+			numeradornivelmediocampesinos+=individuo.nivel;
+			
+			//LAS  EDADES
+			if(individuo.edad<16){
+				//Para la media
+				
+				//Si es chico
+				if(individuo.sexo==true){
+			    intsvaloresedadsexo[0]++;
+				}
+				else{
+				intsvaloresedadsexo[1]++;	
+				}
+			}
+			else if((individuo.edad>=16)&&(individuo.edad<45)){
+				if(individuo.sexo==true){
+				    intsvaloresedadsexo[2]++;
+					}
+					else{
+					intsvaloresedadsexo[3]++;	
+					}
+			}
+	        else if((individuo.edad>=45)){
+	        	if(individuo.sexo==true){
+	    		    intsvaloresedadsexo[4]++;
+	    			}
+	    			else{
+	    			intsvaloresedadsexo[5]++;	
+	    			}
+	       }
+			//LA LEALTAD/MIEDO
+			if(individuo.lealtad>70){
+				intsvaloreslealtadmiedo[0]++;
+			}
+			else if((individuo.lealtad<=70)&&(individuo.lealtad>50)){
+				intsvaloreslealtadmiedo[1]++;
+			}
+			else if(individuo.lealtad<=50){
+				intsvaloreslealtadmiedo[2]++;
+			};
+			if(individuo.miedo>60){
+				intsvaloreslealtadmiedo[3]++;
+			}
+			//EL NIVEL
+			if(individuo.habilidad<=10){
+				intsvaloresnivel[0]++;
+			}
+			else if((individuo.habilidad>10)&&(individuo.habilidad<=20)){
+				intsvaloresnivel[1]++;
+			}
+	        else if((individuo.habilidad>20)&&(individuo.habilidad<=30)){
+	        	intsvaloresnivel[2]++;
+			}
+	        else if((individuo.habilidad>30)&&(individuo.habilidad<=40)){
+	        	intsvaloresnivel[3]++;
+			}
+	        else if((individuo.habilidad>40)&&(individuo.habilidad<=50)){
+	        	intsvaloresnivel[4]++;
+			}
+			
+		
+	   }
+		
+	}
+	
+	if(denominadornumerodecampesinos!=0){
+	
+	intsvaloresmedios[0]=(int)(numeradoredadmediacampesinos/denominadornumerodecampesinos);
+	intsvaloresmedios[1]=(int)(numeradorlealtadmediacampesinos/denominadornumerodecampesinos);
+	intsvaloresmedios[2]=(int)(numeradormiedomediocampesinos/denominadornumerodecampesinos);
+	intsvaloresmedios[3]=(int)(numeradornivelmediocampesinos/denominadornumerodecampesinos);
+	
+	}
+		
+	
+	//Actualización de los valores totales
+	//TOTAL EDAD SEXO
+	intsvaloresedadsexo[36]=intsvaloresedadsexo[0]+intsvaloresedadsexo[6]+intsvaloresedadsexo[12]+intsvaloresedadsexo[18]+
+			intsvaloresedadsexo[24]+intsvaloresedadsexo[30];
+	intsvaloresedadsexo[37]=intsvaloresedadsexo[1]+intsvaloresedadsexo[7]+intsvaloresedadsexo[13]+intsvaloresedadsexo[19]+
+			intsvaloresedadsexo[25]+intsvaloresedadsexo[31];
+	intsvaloresedadsexo[38]=intsvaloresedadsexo[2]+intsvaloresedadsexo[8]+intsvaloresedadsexo[14]+intsvaloresedadsexo[20]+
+			intsvaloresedadsexo[26]+intsvaloresedadsexo[32];
+	intsvaloresedadsexo[39]=intsvaloresedadsexo[3]+intsvaloresedadsexo[9]+intsvaloresedadsexo[15]+intsvaloresedadsexo[21]+
+			intsvaloresedadsexo[27]+intsvaloresedadsexo[33];
+	intsvaloresedadsexo[40]=intsvaloresedadsexo[4]+intsvaloresedadsexo[10]+intsvaloresedadsexo[16]+intsvaloresedadsexo[22]+
+			intsvaloresedadsexo[28]+intsvaloresedadsexo[34];
+	intsvaloresedadsexo[41]=intsvaloresedadsexo[5]+intsvaloresedadsexo[11]+intsvaloresedadsexo[17]+intsvaloresedadsexo[23]+
+			intsvaloresedadsexo[29]+intsvaloresedadsexo[35];
+	
+	//TOTAL LEALTAD MIEDO
+	intsvaloreslealtadmiedo[24]=intsvaloreslealtadmiedo[0]+intsvaloreslealtadmiedo[4]+intsvaloreslealtadmiedo[8]+intsvaloreslealtadmiedo[12]+
+			intsvaloreslealtadmiedo[16]+intsvaloreslealtadmiedo[20];
+	intsvaloreslealtadmiedo[25]=intsvaloreslealtadmiedo[1]+intsvaloreslealtadmiedo[5]+intsvaloreslealtadmiedo[9]+intsvaloreslealtadmiedo[13]+
+			intsvaloreslealtadmiedo[17]+intsvaloreslealtadmiedo[21];
+	intsvaloreslealtadmiedo[26]=intsvaloreslealtadmiedo[2]+intsvaloreslealtadmiedo[6]+intsvaloreslealtadmiedo[10]+intsvaloreslealtadmiedo[14]+
+			intsvaloreslealtadmiedo[18]+intsvaloreslealtadmiedo[22];
+	intsvaloreslealtadmiedo[27]=intsvaloreslealtadmiedo[3]+intsvaloreslealtadmiedo[7]+intsvaloreslealtadmiedo[11]+intsvaloreslealtadmiedo[15]+
+			intsvaloreslealtadmiedo[19]+intsvaloreslealtadmiedo[23];
+	
+	//TOTAL VALORES NIVEL
+	intsvaloresnivel[30]=intsvaloresnivel[0]+intsvaloresnivel[5]+intsvaloresnivel[10]+intsvaloresnivel[15]+intsvaloresnivel[20]+
+			intsvaloresnivel[25];
+	intsvaloresnivel[31]=intsvaloresnivel[1]+intsvaloresnivel[6]+intsvaloresnivel[11]+intsvaloresnivel[16]+intsvaloresnivel[21]+
+			intsvaloresnivel[26];
+	intsvaloresnivel[32]=intsvaloresnivel[2]+intsvaloresnivel[7]+intsvaloresnivel[12]+intsvaloresnivel[17]+intsvaloresnivel[22]+
+			intsvaloresnivel[27];
+	intsvaloresnivel[33]=intsvaloresnivel[3]+intsvaloresnivel[8]+intsvaloresnivel[13]+intsvaloresnivel[18]+intsvaloresnivel[23]+
+			intsvaloresnivel[28];
+	intsvaloresnivel[34]=intsvaloresnivel[4]+intsvaloresnivel[9]+intsvaloresnivel[14]+intsvaloresnivel[19]+intsvaloresnivel[24]+
+			intsvaloresnivel[29];
+	
+	
+	//LAS MEDIAS
+	if(numerodeindividuos!=0){
+	intsvaloresmedios[24]=(int)(numeradoredadmediatotal/numerodeindividuos);
+	intsvaloresmedios[25]=(int)(numeradorlealtadmediatotal/numerodeindividuos);
+	intsvaloresmedios[26]=(int)(numeradormiedomediototal/numerodeindividuos);
+	intsvaloresmedios[27]=(int)(numeradornivelmediototal/numerodeindividuos);
+	}
+};
+
+}
+	
+	
 
 
 
@@ -302,10 +448,14 @@ public void iniciar(){
 	
 };
 
+
+
 public void actualizar(){
 	this.almacen.Actualizaralmacen();
+	this.social.Actualizarsocial();
 }
+};
 
 	
 	
-}
+

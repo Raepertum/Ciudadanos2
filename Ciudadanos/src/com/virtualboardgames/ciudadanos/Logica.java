@@ -49,6 +49,9 @@ public class Logica extends InputAdapter implements InputProcessor{
 	int tiempoentreestaciones = 100;
 	int agno=1;
 	
+	//Este tiempo se usa para el actualizador lento (El que actualiza las variables una vez al segundo)
+	int segundosparaelactualizadorporsegundos=0;
+	
 	String estacion="primavera";
 	
 	//Los registros
@@ -112,7 +115,7 @@ public class Logica extends InputAdapter implements InputProcessor{
 		}	
 	};
 	
-	public void actualizar(float delta){
+	public void actualizaralframerate(float delta){
 		
 		recogereventosdeteclado();
 		tiempotranscurridoensegundos=(int)(TimeUtils.millis()-tiempoinicial)/1000;
@@ -120,12 +123,23 @@ public class Logica extends InputAdapter implements InputProcessor{
 		tiempotranscurridoenhoras=(int)tiempotranscurridoenminutos/60;
 		
 		//Provisional
-		actualizarvariables(delta);
+		actualizaralsegundo(delta);
 		actualizarestaciones();
 		actualizarcamposdecultivo();
 		actualizarmenus(delta);
 		actualizargeneradordeeventos();
+		
+		
+	
 	};
+	
+	public void actualizaralsegundo(float delta){
+		
+		if((int)tiempotranscurridoensegundos>segundosparaelactualizadorporsegundos){
+			segundosparaelactualizadorporsegundos=(int)tiempotranscurridoensegundos;
+			actualizarvariables(delta);
+		}
+	}
 	
 	public void actualizarmenus(float delta){
 		contenedorhud.actualizartiempo((int)tiempotranscurridoensegundos,tiempotranscurridoenminutos,tiempotranscurridoenhoras);
@@ -145,16 +159,29 @@ public class Logica extends InputAdapter implements InputProcessor{
 	public void actualizarestaciones(){
 		
 		if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==0){
+			if(estacion=="invierno"){
+				System.out.println("Cambio de estacion");
+			}
+			
 			estacion="primavera";
 		}
 		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==1){
+			if(estacion=="primavera"){
+				System.out.println("Cambio de estacion");
+				System.out.println("Vamos a recoger parte de la cosecha");
+			}
 			estacion="verano";
 		}
 		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==2){
+			if(estacion=="verano"){
+					System.out.println("Cambio de estacion");
+					System.out.println("Vamos a recoger la otra parte de la cosecha");
+			}
 			estacion="otoño";
 		}
 		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)==3){
 			estacion="invierno";
+			
 		}
 		else if((int)((tiempotranscurridoensegundos-ultimotiempo)/tiempoentreestaciones)>3){
 			ultimotiempo=tiempotranscurridoensegundos;

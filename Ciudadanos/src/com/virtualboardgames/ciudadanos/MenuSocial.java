@@ -111,7 +111,7 @@ public class MenuSocial extends MenuAbstracto{
 	
 	arraytabledeinformacion = new Table[4];
 	
-	TableActualizable tablemediaact = crearTabla2(8,6,Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
+	TableActualizable tablemediaact = crearTabla2(8,5,Variablesdejuego.variablesdejuego.social.nombresvaloresmedios,
 			Variablesdejuego.variablesdejuego.social.nombresclasessociales,Variablesdejuego.variablesdejuego.social.intsvaloresmedios);
 	arraytabledeinformacion[0] = tablemedia = tablemediaact.devolverTable().left().top().padLeft(0).padTop(90);
 	labelsmedia = tablemediaact.devolverarraydelabels(); 

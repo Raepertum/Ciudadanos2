@@ -19,19 +19,14 @@ public class Registrodefunciones {
 		case 100:switch (numerodeopcion){
 		//Se instala una familia de aldeanos, cuyo miedo y lealtad base depende de las opciones escogidas
 		case 0: instalaciondenuevosciudadanos("campesinos",100,20,0);
-		anadiralaproducciondetrigo(0);
 		break;
 		case 1: instalaciondenuevosciudadanos("campesinos",80,30,0);
-		anadiralaproducciondetrigo(0);
 		break;
 		case 2: instalaciondenuevosciudadanos("campesinos",70,50,0);
-		anadiralaproducciondetrigo(0);
 		break;
 		case 3: instalaciondenuevosciudadanos("campesinos",60,60,0);
-		anadiralaproducciondetrigo(0);
 		break;
 		case 4: instalaciondenuevosciudadanos("campesinos",50,80,0);
-		anadiralaproducciondetrigo(0);
 		break;
 		}
 		
@@ -49,8 +44,6 @@ public class Registrodefunciones {
 		
 	};
 	
-	private void anadiralaproducciondetrigo(int produccion){
-		
-	};
+	
 	
 }

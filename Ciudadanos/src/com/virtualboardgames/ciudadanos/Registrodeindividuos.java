@@ -24,10 +24,12 @@ public void anadirindividuos(Individuo individuo){
 public void crearnuevoindividuo(Familia familia,boolean sexo, int edad, int lealtad, int miedo, 
 		String profesion, int nivel){
 	Individuo individuo = new Individuo(sexo,edad,lealtad,miedo,profesion,nivel);
-	arraydeindividuos.add(individuo);
+	anadirindividuos(individuo);
 	familia.anadiralafamilia(individuo);
-	Variablesdejuego.variablesdejuego.social.anadiraloscontadores(individuo);
-	
+};
+
+public Array<Individuo> devolverarraydeindividuos(){
+	return arraydeindividuos;
 };
 
 
