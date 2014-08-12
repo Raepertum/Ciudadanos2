@@ -192,8 +192,38 @@ public class Logica extends InputAdapter implements InputProcessor{
 	
 	public void actualizargeneradordeeventos(){
 		
-		generadordeeventos.actualizar(tiempotranscurridoenminutos);
+		generadordeeventos.actualizar((int)tiempotranscurridoensegundos);
 		
+		
+		//Siempre que se haya instanciado el registro de funciones, of course
+		if(Registrodefunciones.registrodefunciones!=null){
+			
+		//Si la array de códigos contiene algún código
+		if(Registrodefunciones.registrodefunciones.devolvertamanoarraydecodigos()>0){
+			
+			//Desde 0 al tamaño de la array
+			for (int i= 0; i<Registrodefunciones.registrodefunciones.devolvertamanoarraydecodigos();i++){
+				//Conviertes los códigos en eventos
+				Evento evento = registrodeeventos.devolverevento(Registrodefunciones.registrodefunciones.devolvercodigosdeeventos(i));
+				Registrodefunciones.registrodefunciones.convertircodigoseneventos(evento);
+			}
+		}
+		//Ahora que los códigos están traspasados a la array de eventos pendientes contenida en el Registro de funciones, vamos a traspasarla
+		//Al generador de eventos con otro bucle
+		
+		if(Registrodefunciones.registrodefunciones.devolvertamañoarraydeeventos()>0){
+		for (int i=0; i<(Registrodefunciones.registrodefunciones.devolvertamañoarraydeeventos());i++){
+		
+			Evento evento = Registrodefunciones.registrodefunciones.devolvereventospendientes(i);
+			//Y así añadimos al generador :-)
+			generadordeeventos.anadirnuevoevento(evento);
+		}
+		
+		//A continuación, lo limpiamos todo para evitar duplicidades
+		Registrodefunciones.registrodefunciones.limpiareventospendientes();
+		
+		}
+		}
 	}
 	
 	public void actualizarcamposdecultivo(){

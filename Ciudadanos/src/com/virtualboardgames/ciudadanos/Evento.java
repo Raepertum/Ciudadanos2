@@ -20,8 +20,16 @@ public class Evento extends Stack {
 	LabelStyle estilolabel;
 	//Espacio en blanco
 	Label espacioenblanco;
+	//El tiempo en el que se va a ejecutar
+	int tiempodeejecucion;
+	//Estáactivo recoge si el evento es activable. Luego habrá que detallarlo más, para eventos recurrentes
+	boolean estaactivo = true;
 	
-	public Evento(String textoEvento, Opcion[] opciones){
+	
+	public Evento(String textoEvento, Opcion[] opciones, int tiempodeejecucionensegundos){
+		
+		//El momento en el que se va a ejecutar
+		tiempodeejecucion = tiempodeejecucionensegundos;
 		
 		//El estilo del label (Para el espacio en blanco)
 		estilolabel = Texturasysonidos.texturasysonidos.estilosyactores.estilolabeldefault;
@@ -87,12 +95,23 @@ public class Evento extends Stack {
 		contexto.addActor(this);
 		
 		//Subir el contador de eventos
-		
-		
 	}
+	
+	public int devolvertiempodeejecucion(){
+		return tiempodeejecucion;
+	}
+	
 	
 	public Evento comprobarsiesnull(){
 		return this;
+	}
+	
+	public boolean estaactivo(){
+		return estaactivo;
+	}
+	
+	public void pasarainactivo(){
+		estaactivo=false;
 	}
 
 }
